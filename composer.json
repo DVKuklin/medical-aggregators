@@ -1,0 +1,54 @@
+{
+    "name": "veezex/medical-services",
+    "description": "",
+    "keywords": [
+        "veezex",
+        "medical-services"
+    ],
+    "homepage": "https://github.com/veezex/medical-services",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vladimir Smirnov",
+            "email": "veez.ex@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "6.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "4.*",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Veezex\\Medical\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Veezex\\Medical\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Veezex\\Medical\\MedicalServiceProvider"
+            ],
+            "aliases": {
+                "MedicalServices": "Veezex\\Medical\\ServicesFacade"
+            }
+        }
+    }
+}
