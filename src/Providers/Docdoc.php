@@ -4,17 +4,26 @@
 namespace Veezex\Medical\Providers;
 
 
+use GuzzleHttp\Client;
+
 class Docdoc extends Provider
 {
     /**
      * @var string
      */
     protected $endpoint;
-
     /**
-     * @var resource
+     * @var Client
      */
-    protected $requestContext;
+    protected $client;
+    /**
+     * @var string
+     */
+    protected $login;
+    /**
+     * @var string
+     */
+    protected $password;
 
     /**
      * Docdoc constructor.
@@ -26,32 +35,21 @@ class Docdoc extends Provider
             ? 'https://api.bookingtest.docdoc.pro/public/rest/1.0.12/'
             : 'https://back.docdoc.ru/public/rest/1.0.12/';
 
-        $this->requestContext = $this->getRequestContext($settings['login'], $settings['password']);
-    }
-
-    /**
-     * @param string $login
-     * @param string $password
-     * @return resource
-     */
-    protected function getRequestContext(string $login, string $password)
-    {
-        return stream_context_create([
-            'https'=> [
-                'method' => 'GET',
-                'header' => 'Authorization: Basic ' . base64_encode("$login:$password"),
-                "protocol_version" => 1.1333
-            ]
-        ]);
+        $this->client = new Client();
+        $this->login = $settings['login'];
+        $this->password = $settings['password'];
     }
 
     /**
      * @param string $uri
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request(string $uri): array
+    public function apiGet(string $uri): array
     {
-        $response = file_get_contents("$this->endpoint$uri", false, $this->requestContext);
-        return json_decode($response, true);
+        $result = $this->client->request('GET', "$this->endpoint$uri", [
+            'auth' => [$this->login, $this->password]
+        ]);
+        return json_decode($result->getBody(), true);
     }
 }

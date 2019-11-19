@@ -3,18 +3,16 @@
 namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Providers\Docdoc;
-use Veezex\Medical\Providers\Dummy;
-use Veezex\Medical\Providers\Provider;
 
 class DocdocTest extends MedicalTestCase
 {
     /** @test */
     public function it_can_make_api_request()
     {
-        $this->setTestConfig();
+        $this->setTestConfig('', '');
         $provider = app(Docdoc::class);
 
-        dd($provider->request('doctor/list'));
+        dd($provider->apiGet('doctor/list'));
     }
 
     /**
