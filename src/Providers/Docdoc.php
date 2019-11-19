@@ -1,10 +1,11 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 
 namespace Veezex\Medical\Providers;
 
 
-use GuzzleHttp\Client;
+
+use Kozz\Laravel\Facades\Guzzle;
 
 class Docdoc extends Provider
 {
@@ -12,10 +13,6 @@ class Docdoc extends Provider
      * @var string
      */
     protected $endpoint;
-    /**
-     * @var Client
-     */
-    protected $client;
     /**
      * @var string
      */
@@ -35,7 +32,6 @@ class Docdoc extends Provider
             ? 'https://api.bookingtest.docdoc.pro/public/rest/1.0.12/'
             : 'https://back.docdoc.ru/public/rest/1.0.12/';
 
-        $this->client = new Client();
         $this->login = $settings['login'];
         $this->password = $settings['password'];
     }
@@ -47,7 +43,7 @@ class Docdoc extends Provider
      */
     public function apiGet(string $uri): array
     {
-        $result = $this->client->request('GET', "$this->endpoint$uri", [
+        $result = Guzzle::get("$this->endpoint$uri", [
             'auth' => [$this->login, $this->password]
         ]);
         return json_decode($result->getBody(), true);

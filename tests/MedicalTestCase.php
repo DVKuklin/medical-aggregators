@@ -2,9 +2,12 @@
 
 namespace Veezex\Medical\Tests;
 
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use Kozz\Laravel\Providers\Guzzle;
 use Orchestra\Testbench\TestCase;
 use Veezex\Medical\MedicalAggregatorProvider;
-use Veezex\Medical\AggregatorsFacade;
 
 class MedicalTestCase extends TestCase
 {
@@ -14,7 +17,7 @@ class MedicalTestCase extends TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [MedicalAggregatorProvider::class];
+        return [MedicalAggregatorProvider::class, Guzzle::class];
     }
 
     /**
@@ -24,7 +27,24 @@ class MedicalTestCase extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'MedicalAggregators' => AggregatorsFacade::class,
+            //'MedicalAggregators' => AggregatorsFacade::class,
         ];
+    }
+
+    /**
+     * @param array $params
+     */
+    protected function mockGuzzleResponses(array $params)
+    {
+        $mock = new MockHandler(
+            array_map(function ($paramsLine) {
+                return new Response(... $paramsLine);
+            }, $params)
+        );
+
+        $handler = HandlerStack::create($mock);
+        config([
+            'guzzle' => ['handler' => $handler],
+        ]);
     }
 }
