@@ -11,11 +11,11 @@ class DocdocTest extends MedicalTestCase
     {
         $this->setProviderConfig();
         $this->mockGuzzleResponses([
-            [200, [], '{}']
+            [200, [], '{"test":1}']
         ]);
 
         $provider = app(Docdoc::class);
-        dd($provider->apiGet('doctor/list'));
+        $this->assertEquals(['test' => 1], $provider->apiGet('someurl'));
     }
 
     /**
