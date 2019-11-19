@@ -10,7 +10,7 @@ class AggregatorsTest extends MedicalTestCase
     /** @test */
     public function it_has_one_dummy_provider_by_default()
     {
-        $service = \MedicalAggregators::get('dummy');
+        $service = app(Dummy::class);
         $this->assertInstanceOf(Dummy::class, $service);
         $this->assertInstanceOf(Provider::class, $service);
     }

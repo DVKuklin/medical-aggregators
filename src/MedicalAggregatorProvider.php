@@ -21,7 +21,7 @@ class MedicalAggregatorProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('medical-aggregators.php'),
+                __DIR__ . '/../config/config.php' => config_path('medical-aggregators.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,11 +50,13 @@ class MedicalAggregatorProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'medical-aggregators');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'medical-aggregators');
 
-        // Register the main class to use with the facade
-        $this->app->singleton('medical-aggregators', function () {
-            return new Aggregators;
-        });
+        $providers = config('medical-aggregators.providers');
+        foreach ($providers as $className => $settings) {
+            $this->app->singleton($className, function () use ($className, $settings) {
+                return new $className($settings);
+            });
+        }
     }
 }

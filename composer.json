@@ -1,11 +1,11 @@
 {
-    "name": "veezex/medical-services",
+    "name": "veezex/medical-aggregators",
     "description": "",
     "keywords": [
         "veezex",
-        "medical-services"
+        "medical-aggregators"
     ],
-    "homepage": "https://github.com/veezex/medical-services",
+    "homepage": "https://github.com/veezex/medical-aggregators",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -44,11 +44,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Veezex\\Medical\\MedicalServiceProvider"
-            ],
-            "aliases": {
-                "MedicalServices": "Veezex\\Medical\\ServicesFacade"
-            }
+                "Veezex\\Medical\\MedicalAggregatorProvider"
+            ]
         }
     }
 }
