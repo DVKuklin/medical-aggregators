@@ -54,8 +54,8 @@ class MedicalAggregatorProvider extends ServiceProvider
 
         $providers = config('medical-aggregators.providers');
         foreach ($providers as $className => $settings) {
-            $this->app->singleton($className, function () use ($className, $settings) {
-                return new $className($settings);
+            $this->app->singleton($className, function () use ($className) {
+                return new $className(config('medical-aggregators.providers.' . $className));
             });
         }
     }
