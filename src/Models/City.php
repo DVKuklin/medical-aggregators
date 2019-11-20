@@ -6,33 +6,43 @@ namespace Veezex\Medical\Models;
 
 class City extends Model
 {
-    public function getId(): int
-    {
-        return $this->data['id'];
-    }
-
+    /**
+     * @return string
+     */
     public function getName(): string
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
 
+    /**
+     * @return string
+     */
     public function getLat(): string
     {
-        return $this->data['lat'];
+        return $this->get('lat');
     }
 
+    /**
+     * @return string
+     */
     public function getLng(): string
     {
-        return $this->data['lng'];
+        return $this->get('lng');
     }
 
+    /**
+     * @return bool
+     */
     public function getHasDiagnostic(): bool
     {
-        return $this->data['has_diagnostic'];
+        return $this->get('has_diagnostic');
     }
 
+    /**
+     * @return int
+     */
     public function getTimezoneShift(): int
     {
-        return $this->data['timezone_shift'];
+        return $this->get('timezone_shift');
     }
 }

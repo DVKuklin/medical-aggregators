@@ -9,7 +9,7 @@ class Model
     /**
      * @var array
      */
-    protected $data;
+    private $data;
 
     /**
      * Model constructor.
@@ -18,5 +18,22 @@ class Model
     public function __construct(array $data)
     {
         $this->data = $data;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->get('id');
+    }
+
+    /**
+     * @param string $dataKey
+     * @return mixed
+     */
+    protected function get(string $dataKey)
+    {
+        return $this->data[$dataKey];
     }
 }

@@ -1,73 +1,93 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Veezex\Medical\Tests;
 
+use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
     /** @test */
+    public function it_can_get_moscow_areas()
+    {
+        $this->mockResponseFile('area.json');
+        $provider = app(Docdoc::class);
+
+        $areas = $provider->getMoscowAreas();
+        $this->assertCount(2, $areas);
+
+        $this->assertEquals($areas->get(0), new Area([
+            'id' => 1,
+            'name' => 'Центральный Округ',
+            'short_name' => 'ЦАО',
+        ]));
+
+        $this->assertEquals($areas->get(1), new Area([
+            'id' => 2,
+            'name' => 'Северный Округ',
+            'short_name' => 'САО',
+        ]));
+    }
+
+    /** @test */
     public function it_can_get_cities()
     {
         $this->mockResponseFile('city.json');
-
         $provider = app(Docdoc::class);
 
         $cities = $provider->getCities();
         $this->assertCount(2, $cities);
 
-        $city1 = $cities[0];
-        $cityCheck1 = new City([
+        $this->assertEquals($cities->get(0), new City([
             'id' => 1,
             'name' => 'Москва',
             'lat' => '55.755826',
             'lng' => '37.6173',
             'has_diagnostic' => true,
             'timezone_shift' => 3,
-        ]);
+        ]));
 
-        $this->assertEquals($city1, $cityCheck1);
-
-        $city2 = $cities[1];
-        $cityCheck2 = new City([
+        $this->assertEquals($cities->get(1), new City([
             'id' => 2,
             'name' => 'Санкт-Петербург',
             'lat' => '59.9342802',
             'lng' => '30.3350986',
             'has_diagnostic' => true,
             'timezone_shift' => 3,
-        ]);
-
-        $this->assertEquals($city2, $cityCheck2);
+        ]));
     }
 
     /** @test */
-    public function it_can_make_api_request()
+    public function throws_exception_if_error_request_status()
     {
-        $this->mockResponseJson('{"test":1}');
+        $this->expectException('GuzzleHttp\Exception\ClientException');
+
+        $this->mockResponseJson('{"test":1}', 401);
 
         $provider = app(Docdoc::class);
-        $this->assertEquals(['test' => 1], $provider->apiGet('someurl'));
+        $provider->apiGet('someurl');
     }
 
     /**
      * @param string $fileName
+     * @param int $status
      */
-    protected function mockResponseFile(string $fileName)
+    protected function mockResponseFile(string $fileName, int $status = 200)
     {
         $json = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'docdoc' . DIRECTORY_SEPARATOR . $fileName);
-        $this->mockResponseJson($json);
+        $this->mockResponseJson($json, $status);
     }
 
     /**
      * @param string $json
+     * @param int $status
      */
-    protected function mockResponseJson(string $json)
+    protected function mockResponseJson(string $json, int $status = 200)
     {
         $this->setProviderConfig();
         $this->mockGuzzleResponses([
-            [200, [], $json]
+            [$status, [], $json]
         ]);
     }
 

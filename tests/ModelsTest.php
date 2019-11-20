@@ -2,6 +2,7 @@
 
 namespace Veezex\Medical\Tests;
 
+use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 
 class ModelsTest extends MedicalTestCase
@@ -24,5 +25,19 @@ class ModelsTest extends MedicalTestCase
         $this->assertEquals($city->getLng(), '37.6173');
         $this->assertEquals($city->getHasDiagnostic(), true);
         $this->assertEquals($city->getTimezoneShift(), 3);
+    }
+
+    /** @test */
+    public function area_model_has_accessors()
+    {
+        $city = new Area([
+            'id' => 3,
+            'short_name' => 'Moscow1',
+            'name' => 'Moscow2'
+        ]);
+
+        $this->assertEquals($city->getId(), 3);
+        $this->assertEquals($city->getName(), 'Moscow2');
+        $this->assertEquals($city->getShortName(), 'Moscow1');
     }
 }

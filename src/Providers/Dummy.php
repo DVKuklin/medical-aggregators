@@ -2,10 +2,18 @@
 
 namespace Veezex\Medical\Providers;
 
+
+use Illuminate\Support\LazyCollection;
+
 class Dummy extends Provider
 {
-    public function getCities(): iterable
+    public function getCities(): LazyCollection
     {
-        return [];
+        return collect([]);
+    }
+
+    public function getMoscowAreas(): LazyCollection
+    {
+        return collect([]);
     }
 }

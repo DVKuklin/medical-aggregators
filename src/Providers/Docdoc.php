@@ -5,8 +5,10 @@ namespace Veezex\Medical\Providers;
 
 
 
+use Illuminate\Support\LazyCollection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\Area;
 
 class Docdoc extends Provider
 {
@@ -38,23 +40,44 @@ class Docdoc extends Provider
     }
 
     /**
-     * @return iterable
+     * @return LazyCollection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getCities(): iterable
+    public function getCities(): LazyCollection
     {
         $response = $this->apiGet('city');
 
-        return array_map(function($item) {
-            return new City([
-                'id' => $item['Id'],
-                'name' => $item['Name'],
-                'lat' => $item['Latitude'],
-                'lng' => $item['Longitude'],
-                'has_diagnostic' => $item['HasDiagnostic'],
-                'timezone_shift' => $item['TimeZone'] + 3,
-            ]);
-        }, $response['CityList']);
+        return new LazyCollection(function() use ($response) {
+            foreach ($response['CityList'] as $item) {
+                yield new City([
+                    'id' => $item['Id'],
+                    'name' => $item['Name'],
+                    'lat' => $item['Latitude'],
+                    'lng' => $item['Longitude'],
+                    'has_diagnostic' => $item['HasDiagnostic'],
+                    'timezone_shift' => $item['TimeZone'] + 3,
+                ]);
+            }
+        });
+    }
+
+    /**
+     * @return LazyCollection
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getMoscowAreas(): LazyCollection
+    {
+        $response = $this->apiGet('area');
+
+        return new LazyCollection(function() use ($response) {
+            foreach ($response['AreaList'] as $item) {
+                yield new Area([
+                    'id' => $item['Id'],
+                    'short_name' => $item['Name'],
+                    'name' => $item['FullName']
+                ]);
+            }
+        });
     }
 
     /**
