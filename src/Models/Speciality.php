@@ -6,7 +6,7 @@ namespace Veezex\Medical\Models;
 
 class Speciality extends Model
 {
-    protected $required = ['name', 'city_ids', 'branch_name', 'name_genitive', 'name_plural', 'name_plural_genitive', 'kids_reception'];
+    protected $required = ['name', 'city_ids', 'branch_name', 'genitive_name', 'plural_name', 'plural_genitive_name', 'kids_reception'];
 
     /**
      * @return bool
@@ -19,25 +19,25 @@ class Speciality extends Model
     /**
      * @return string
      */
-    public function getNamePluralGenitive(): string
+    public function getPluralGenitiveName(): string
     {
-        return $this->get('name_plural_genitive');
+        return $this->get('plural_genitive_name');
     }
 
     /**
      * @return string
      */
-    public function getNamePlural(): string
+    public function getPluralName(): string
     {
-        return $this->get('name_plural');
+        return $this->get('plural_name');
     }
 
     /**
      * @return string
      */
-    public function getNameGenitive(): string
+    public function getGenitiveName(): string
     {
-        return $this->get('name_genitive');
+        return $this->get('genitive_name');
     }
 
     /**
@@ -61,6 +61,6 @@ class Speciality extends Model
      */
     public function getCityIds(): array
     {
-        return $this->get('city_id');
+        return $this->get('city_ids');
     }
 }

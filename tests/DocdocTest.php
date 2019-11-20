@@ -24,9 +24,9 @@ class DocdocTest extends MedicalTestCase
             'id' => 67,
             'name'=> 'Акушер',
             'branch_name'=> 'Акушерство',
-            'name_genitive'=> 'Акушера',
-            'name_plural'=> 'Акушеры',
-            'name_plural_genitive'=> 'Акушеров',
+            'genitive_name'=> 'Акушера',
+            'plural_name'=> 'Акушеры',
+            'plural_genitive_name'=> 'Акушеров',
             'kids_reception'=> false,
             'city_ids' => [1,2]
         ]));
@@ -35,9 +35,9 @@ class DocdocTest extends MedicalTestCase
             'id' => 68,
             'name'=> 'Аллерголог',
             'branch_name'=> 'Аллергология',
-            'name_genitive'=> 'Аллерголога',
-            'name_plural'=> 'Аллергологи',
-            'name_plural_genitive'=> 'Аллергологов',
+            'genitive_name'=> 'Аллерголога',
+            'plural_name'=> 'Аллергологи',
+            'plural_genitive_name'=> 'Аллергологов',
             'kids_reception'=> true,
             'city_ids' => [2]
         ]));

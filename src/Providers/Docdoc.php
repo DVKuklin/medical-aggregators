@@ -155,9 +155,9 @@ class Docdoc extends Provider
                     'id' => $item['Id'],
                     'name'=> $item['Name'],
                     'branch_name'=> $item['BranchName'],
-                    'name_genitive'=> $item['NameGenitive'],
-                    'name_plural'=> $item['NamePlural'],
-                    'name_plural_genitive'=> $item['NamePluralGenitive'],
+                    'genitive_name'=> $item['NameGenitive'],
+                    'plural_name'=> $item['NamePlural'],
+                    'plural_genitive_name'=> $item['NamePluralGenitive'],
                     'kids_reception'=> $item['KidsReception'] === 1,
                     'city_ids' => [$cityId]
                 ];

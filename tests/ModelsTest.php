@@ -6,9 +6,36 @@ use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Speciality;
 
 class ModelsTest extends MedicalTestCase
 {
+    /** @test */
+    public function speciality_model_has_accessors()
+    {
+        $speciality = new Speciality([
+            'id' => 67,
+            'name' => 'Акушер',
+            'branch_name' => 'Акушерство',
+            'genitive_name' => 'Акушера',
+            'plural_name' => 'Акушеры',
+            'plural_genitive_name' => 'Акушеров',
+            'kids_reception' => false,
+            'city_ids' => [1, 2]
+        ]);
+
+        $this->assertEquals($speciality->getId(), 67);
+        $this->assertEquals($speciality->getName(), 'Акушер');
+        $this->assertEquals($speciality->getBranchName(), 'Акушерство');
+        $this->assertEquals($speciality->getGenitiveName(), 'Акушера');
+        $this->assertEquals($speciality->getPluralName(), 'Акушеры');
+        $this->assertEquals($speciality->getPluralGenitiveName(), 'Акушеров');
+        $this->assertEquals($speciality->getKidsReception(), false);
+
+        $this->assertEquals($speciality->getCityIds(), [1, 2]);
+    }
+
+
     /** @test */
     public function metro_model_has_accessors()
     {
