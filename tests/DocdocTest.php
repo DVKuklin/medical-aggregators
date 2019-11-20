@@ -14,7 +14,7 @@ class DocdocTest extends MedicalTestCase
 
         $provider = app(Docdoc::class);
 
-        $cities = $provider->cities();
+        $cities = $provider->getCities();
         $this->assertCount(2, $cities);
 
         $city1 = $cities[0];
