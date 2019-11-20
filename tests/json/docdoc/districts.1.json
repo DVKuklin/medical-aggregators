@@ -1,0 +1,15 @@
+{
+    "DistrictList": [
+        {
+            "Id": "1",
+            "Alias": "arbat",
+            "Name": "Арбат",
+            "Area": {
+                "Id": "1",
+                "Alias": "cao",
+                "Name": "ЦАО",
+                "FullName": "Центральный Округ"
+            }
+        }
+    ]
+}

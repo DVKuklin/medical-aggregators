@@ -6,6 +6,8 @@ namespace Veezex\Medical\Models;
 
 class City extends Model
 {
+    protected $required = ['name', 'lat', 'lng', 'has_diagnostic', 'timezone_shift'];
+
     /**
      * @return string
      */

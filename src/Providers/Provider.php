@@ -8,4 +8,5 @@ abstract class Provider
 {
     abstract public function getCities(): LazyCollection;
     abstract public function getMoscowAreas(): LazyCollection;
+    abstract public function getDistricts(array $cityIds): LazyCollection;
 }

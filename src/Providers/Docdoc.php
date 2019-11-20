@@ -9,6 +9,7 @@ use Illuminate\Support\LazyCollection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
+use Veezex\Medical\Models\District;
 
 class Docdoc extends Provider
 {
@@ -47,7 +48,7 @@ class Docdoc extends Provider
     {
         $response = $this->apiGet('city');
 
-        return new LazyCollection(function() use ($response) {
+        return (new LazyCollection(function() use ($response) {
             foreach ($response['CityList'] as $item) {
                 yield new City([
                     'id' => $item['Id'],
@@ -58,7 +59,7 @@ class Docdoc extends Provider
                     'timezone_shift' => $item['TimeZone'] + 3,
                 ]);
             }
-        });
+        }))->remember();
     }
 
     /**
@@ -69,7 +70,7 @@ class Docdoc extends Provider
     {
         $response = $this->apiGet('area');
 
-        return new LazyCollection(function() use ($response) {
+        return (new LazyCollection(function() use ($response) {
             foreach ($response['AreaList'] as $item) {
                 yield new Area([
                     'id' => $item['Id'],
@@ -77,7 +78,29 @@ class Docdoc extends Provider
                     'name' => $item['FullName']
                 ]);
             }
-        });
+        }))->remember();
+    }
+
+    /**
+     * @param array $cityIds
+     * @return LazyCollection
+     */
+    public function getDistricts(array $cityIds): LazyCollection
+    {
+        return (new LazyCollection(function() use ($cityIds) {
+            foreach ($cityIds as $cityId) {
+                $response = $this->apiGet("district/city/$cityId");
+
+                foreach ($response['DistrictList'] as $item) {
+                    yield new District([
+                        'id' => $item['Id'],
+                        'city_id' => $cityId,
+                        'area_id' => isset($item['Area']) ? $item['Area']['Id'] : null,
+                        'name' => $item['Name']
+                    ]);
+                }
+            }
+        }))->remember();
     }
 
     /**

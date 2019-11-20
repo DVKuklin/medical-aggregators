@@ -6,6 +6,8 @@ namespace Veezex\Medical\Models;
 
 class Area extends Model
 {
+    protected $required = ['name', 'short_name'];
+
     /**
      * @return string
      */

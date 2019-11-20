@@ -4,9 +4,26 @@ namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\District;
 
 class ModelsTest extends MedicalTestCase
 {
+    /** @test */
+    public function district_model_has_accessors()
+    {
+        $district = new District([
+            'id' => 3,
+            'name' => 'Железнодорожный район',
+            'area_id' => 22,
+            'city_id' => 33,
+        ]);
+
+        $this->assertEquals($district->getId(), 3);
+        $this->assertEquals($district->getAreaId(), 22);
+        $this->assertEquals($district->getCityId(), 33);
+        $this->assertEquals($district->getName(), 'Железнодорожный район');
+    }
+
     /** @test */
     public function city_model_has_accessors()
     {

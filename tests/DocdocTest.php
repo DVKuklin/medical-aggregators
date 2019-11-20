@@ -4,10 +4,35 @@ namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\District;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_districts()
+    {
+        $this->mockResponseFile(['districts.1.json', 'districts.2.json']);
+        $provider = app(Docdoc::class);
+
+        $districts = $provider->getDistricts([1,2]);
+        $this->assertCount(2, $districts);
+
+        $this->assertEquals($districts->get(0), new District([
+            'id' => 1,
+            'name' => 'Арбат',
+            'city_id' => 1,
+            'area_id' => 1,
+        ]));
+
+        $this->assertEquals($districts->get(1), new District([
+            'id' => 139,
+            'name' => 'Кировский',
+            'city_id' => 2,
+            'area_id' => null,
+        ]));
+    }
+
     /** @test */
     public function it_can_get_moscow_areas()
     {
@@ -63,32 +88,38 @@ class DocdocTest extends MedicalTestCase
     {
         $this->expectException('GuzzleHttp\Exception\ClientException');
 
-        $this->mockResponseJson('{"test":1}', 401);
+        $this->mockResponseJson(['{"test":1}'], 401);
 
         $provider = app(Docdoc::class);
         $provider->apiGet('someurl');
     }
 
     /**
-     * @param string $fileName
+     * @param $fileName
      * @param int $status
      */
-    protected function mockResponseFile(string $fileName, int $status = 200)
+    protected function mockResponseFile($fileName, int $status = 200)
     {
-        $json = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'docdoc' . DIRECTORY_SEPARATOR . $fileName);
-        $this->mockResponseJson($json, $status);
+        if (!is_array($fileName)) {
+            $fileName = [$fileName];
+        }
+
+        $filePrefix = __DIR__ . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'docdoc' . DIRECTORY_SEPARATOR;
+        $this->mockResponseJson(array_map(function($file) use ($filePrefix) {
+            return file_get_contents($filePrefix . $file);
+        }, $fileName), $status);
     }
 
     /**
-     * @param string $json
+     * @param array $bodies
      * @param int $status
      */
-    protected function mockResponseJson(string $json, int $status = 200)
+    protected function mockResponseJson(array $bodies, int $status = 200)
     {
         $this->setProviderConfig();
-        $this->mockGuzzleResponses([
-            [$status, [], $json]
-        ]);
+        $this->mockGuzzleResponses(array_map(function($body) use ($status) {
+            return [$status, [], $body];
+        }, $bodies));
     }
 
     /**

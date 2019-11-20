@@ -4,8 +4,12 @@
 namespace Veezex\Medical\Models;
 
 
+use InvalidArgumentException;
+
 class Model
 {
+    protected $required = [];
+
     /**
      * @var array
      */
@@ -17,7 +21,17 @@ class Model
      */
     public function __construct(array $data)
     {
+        $required = $this->required;
+        $required[] = 'id';
+
+        foreach ($required as $key) {
+            if (!array_key_exists($key, $data)) {
+                throw new InvalidArgumentException("Missing required field: $key");
+            }
+        }
+
         $this->data = $data;
+
     }
 
     /**
