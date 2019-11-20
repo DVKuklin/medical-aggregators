@@ -7,15 +7,41 @@ use Veezex\Medical\Providers\Docdoc;
 class DocdocTest extends MedicalTestCase
 {
     /** @test */
+    public function it_can_get_cities()
+    {
+        $this->mockResponseFile('city.json');
+
+        $provider = app(Docdoc::class);
+        $provider->cities();
+    }
+
+    /** @test */
     public function it_can_make_api_request()
     {
-        $this->setProviderConfig();
-        $this->mockGuzzleResponses([
-            [200, [], '{"test":1}']
-        ]);
+        $this->mockResponseJson('{"test":1}');
 
         $provider = app(Docdoc::class);
         $this->assertEquals(['test' => 1], $provider->apiGet('someurl'));
+    }
+
+    /**
+     * @param string $fileName
+     */
+    protected function mockResponseFile(string $fileName)
+    {
+        $json = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'docdoc' . DIRECTORY_SEPARATOR . $fileName);
+        $this->mockResponseJson($json);
+    }
+
+    /**
+     * @param string $json
+     */
+    protected function mockResponseJson(string $json)
+    {
+        $this->setProviderConfig();
+        $this->mockGuzzleResponses([
+            [200, [], $json]
+        ]);
     }
 
     /**

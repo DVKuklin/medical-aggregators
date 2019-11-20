@@ -37,6 +37,21 @@ class Docdoc extends Provider
     }
 
     /**
+     * @return iterable
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function cities(): iterable
+    {
+        $response = $this->apiGet('city');
+
+        foreach ($response['CityList'] as $item) {
+            dd($item);
+        }
+
+        return [];
+    }
+
+    /**
      * @param string $uri
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException

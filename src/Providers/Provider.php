@@ -2,7 +2,7 @@
 
 namespace Veezex\Medical\Providers;
 
-class Provider
+abstract class Provider
 {
-
+    abstract public function cities(): iterable;
 }

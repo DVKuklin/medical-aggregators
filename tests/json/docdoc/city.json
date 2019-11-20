@@ -1,0 +1,224 @@
+{
+    "CityList": [
+        {
+            "Id": "1",
+            "Name": "Москва",
+            "Alias": "msk",
+            "Phone": null,
+            "Latitude": "55.755826",
+            "Longitude": "37.6173",
+            "SearchType": 3,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "2",
+            "Name": "Санкт-Петербург",
+            "Alias": "spb",
+            "Phone": null,
+            "Latitude": "59.9342802",
+            "Longitude": "30.3350986",
+            "SearchType": 2,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "4",
+            "Name": "Екатеринбург",
+            "Alias": "ekb",
+            "Phone": null,
+            "Latitude": "56.8389261",
+            "Longitude": "60.6057025",
+            "SearchType": 4,
+            "HasDiagnostic": true,
+            "TimeZone": 2
+        },
+        {
+            "Id": "5",
+            "Name": "Новосибирск",
+            "Alias": "nsk",
+            "Phone": null,
+            "Latitude": "55.0083526",
+            "Longitude": "82.9357327",
+            "SearchType": 4,
+            "HasDiagnostic": true,
+            "TimeZone": 4
+        },
+        {
+            "Id": "6",
+            "Name": "Пермь",
+            "Alias": "perm",
+            "Phone": null,
+            "Latitude": "58",
+            "Longitude": "56.316667",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 2
+        },
+        {
+            "Id": "7",
+            "Name": "Нижний Новгород",
+            "Alias": "nn",
+            "Phone": null,
+            "Latitude": "56.2965039",
+            "Longitude": "43.9360589",
+            "SearchType": 4,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "8",
+            "Name": "Казань",
+            "Alias": "kazan",
+            "Phone": null,
+            "Latitude": "55.790278",
+            "Longitude": "49.134722",
+            "SearchType": 4,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "9",
+            "Name": "Самара",
+            "Alias": "samara",
+            "Phone": null,
+            "Latitude": "53.202778",
+            "Longitude": "50.140833",
+            "SearchType": 4,
+            "HasDiagnostic": true,
+            "TimeZone": 1
+        },
+        {
+            "Id": "11",
+            "Name": "Московская область",
+            "Alias": "mo",
+            "Phone": null,
+            "Latitude": "55.755826",
+            "Longitude": "37.6173",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "13",
+            "Name": "Уфа",
+            "Alias": "ufa",
+            "Phone": null,
+            "Latitude": "54.7430600",
+            "Longitude": "55.9677900",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 2
+        },
+        {
+            "Id": "15",
+            "Name": "Краснодар",
+            "Alias": "krd",
+            "Phone": null,
+            "Latitude": "45.0448400",
+            "Longitude": "38.9760300",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "17",
+            "Name": "Ростов-на-Дону",
+            "Alias": "rnd",
+            "Phone": null,
+            "Latitude": "47.2313500",
+            "Longitude": "39.7232800",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "19",
+            "Name": "Челябинск",
+            "Alias": "chlb",
+            "Phone": null,
+            "Latitude": "55.15402",
+            "Longitude": "61.42915",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 2
+        },
+        {
+            "Id": "21",
+            "Name": "Воронеж",
+            "Alias": "vrn",
+            "Phone": null,
+            "Latitude": "51.67204",
+            "Longitude": "39.1843",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "23",
+            "Name": "Ижевск",
+            "Alias": "izh",
+            "Phone": null,
+            "Latitude": "56.84976",
+            "Longitude": "53.20448",
+            "SearchType": 1,
+            "HasDiagnostic": false,
+            "TimeZone": 1
+        },
+        {
+            "Id": "24",
+            "Name": "Красноярск",
+            "Alias": "krsk",
+            "Phone": null,
+            "Latitude": "56.0021",
+            "Longitude": "92.7500",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 4
+        },
+        {
+            "Id": "26",
+            "Name": "Сочи",
+            "Alias": "sochi",
+            "Phone": null,
+            "Latitude": "43.3507",
+            "Longitude": "39.4313",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        },
+        {
+            "Id": "28",
+            "Name": "Волгоград",
+            "Alias": "volgograd",
+            "Phone": null,
+            "Latitude": "48.4157",
+            "Longitude": "44.2824",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 1
+        },
+        {
+            "Id": "30",
+            "Name": "Тюмень",
+            "Alias": "tyumen",
+            "Phone": null,
+            "Latitude": "57.09",
+            "Longitude": "65.32",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 2
+        },
+        {
+            "Id": "32",
+            "Name": "Ярославль",
+            "Alias": "yaroslavl",
+            "Phone": null,
+            "Latitude": "57.37",
+            "Longitude": "39.51",
+            "SearchType": 1,
+            "HasDiagnostic": true,
+            "TimeZone": 0
+        }
+    ]
+}
