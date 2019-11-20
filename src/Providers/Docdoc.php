@@ -5,7 +5,7 @@ namespace Veezex\Medical\Providers;
 
 
 
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
@@ -42,92 +42,94 @@ class Docdoc extends Provider
     }
 
     /**
-     * @return LazyCollection
+     * @return Collection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getCities(): LazyCollection
+    public function getCities(): Collection
     {
         $response = $this->apiGet('city');
 
-        return (new LazyCollection(function() use ($response) {
-            foreach ($response['CityList'] as $item) {
-                yield new City([
-                    'id' => $item['Id'],
-                    'name' => $item['Name'],
-                    'lat' => $item['Latitude'],
-                    'lng' => $item['Longitude'],
-                    'has_diagnostic' => $item['HasDiagnostic'],
-                    'timezone_shift' => $item['TimeZone'] + 3,
-                ]);
-            }
-        }))->remember();
+        return collect(array_map(function($item) {
+            return new City([
+                'id' => $item['Id'],
+                'name' => $item['Name'],
+                'lat' => $item['Latitude'],
+                'lng' => $item['Longitude'],
+                'has_diagnostic' => $item['HasDiagnostic'],
+                'timezone_shift' => $item['TimeZone'] + 3,
+            ]);
+        }, $response['CityList']));
     }
 
     /**
-     * @return LazyCollection
+     * @return Collection
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getMoscowAreas(): LazyCollection
+    public function getMoscowAreas(): Collection
     {
         $response = $this->apiGet('area');
 
-        return (new LazyCollection(function() use ($response) {
-            foreach ($response['AreaList'] as $item) {
-                yield new Area([
+        return collect(array_map(function($item) {
+            return new Area([
+                'id' => $item['Id'],
+                'short_name' => $item['Name'],
+                'name' => $item['FullName']
+            ]);
+        }, $response['AreaList']));
+    }
+
+    /**
+     * @param array $cityIds
+     * @return Collection
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getDistricts(array $cityIds): Collection
+    {
+        $districts = [];
+
+        foreach ($cityIds as $cityId) {
+            $response = $this->apiGet("district/city/$cityId");
+
+            $districts = array_merge($districts, array_map(function($item) use ($cityId) {
+                return new District([
                     'id' => $item['Id'],
-                    'short_name' => $item['Name'],
-                    'name' => $item['FullName']
+                    'city_id' => $cityId,
+                    'area_id' => isset($item['Area']) ? $item['Area']['Id'] : null,
+                    'name' => $item['Name']
                 ]);
-            }
-        }))->remember();
+            }, $response['DistrictList']));
+        }
+
+        return collect($districts);
     }
 
     /**
      * @param array $cityIds
-     * @return LazyCollection
+     * @return Collection
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getDistricts(array $cityIds): LazyCollection
+    public function getMetros(array $cityIds): Collection
     {
-        return (new LazyCollection(function() use ($cityIds) {
-            foreach ($cityIds as $cityId) {
-                $response = $this->apiGet("district/city/$cityId");
+        $metros = [];
 
-                foreach ($response['DistrictList'] as $item) {
-                    yield new District([
-                        'id' => $item['Id'],
-                        'city_id' => $cityId,
-                        'area_id' => isset($item['Area']) ? $item['Area']['Id'] : null,
-                        'name' => $item['Name']
-                    ]);
-                }
-            }
-        }))->remember();
-    }
+        foreach ($cityIds as $cityId) {
+            $response = $this->apiGet("metro/city/$cityId");
 
-    /**
-     * @param array $cityIds
-     * @return LazyCollection
-     */
-    public function getMetros(array $cityIds): LazyCollection
-    {
-        return (new LazyCollection(function() use ($cityIds) {
-            foreach ($cityIds as $cityId) {
-                $response = $this->apiGet("metro/city/$cityId");
+            $metros = array_merge($metros, array_map(function($item) use ($cityId) {
+                return new Metro([
+                    'id' => $item['Id'],
+                    'city_id' => $item['CityId'],
+                    'name' => $item['Name'],
+                    'line_name' => $item['LineName'],
+                    'line_color' => $item['LineColor'],
+                    'lng' => (string) $item['Longitude'],
+                    'lat' => (string) $item['Latitude'],
+                    'district_ids' => $item['DistrictIds'],
+                ]);
+            }, $response['MetroList']));
+        }
 
-                foreach ($response['MetroList'] as $item) {
-                    yield new Metro([
-                        'id' => $item['Id'],
-                        'city_id' => $item['CityId'],
-                        'name' => $item['Name'],
-                        'line_name' => $item['LineName'],
-                        'line_color' => $item['LineColor'],
-                        'lng' => (string) $item['Longitude'],
-                        'lat' => (string) $item['Latitude'],
-                        'district_ids' => $item['DistrictIds'],
-                    ]);
-                }
-            }
-        }))->remember();
+        return collect($metros);
     }
 
     /**
