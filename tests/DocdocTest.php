@@ -4,6 +4,8 @@ namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\Diagnostic;
+use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
 use Veezex\Medical\Models\Speciality;
@@ -11,6 +13,48 @@ use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_diagnostics()
+    {
+        $this->mockResponseFile(['diagnostics.json']);
+        $provider = app(Docdoc::class);
+
+        $diagnostics = $provider->getDiagnostics();
+        $this->assertCount(2, $diagnostics);
+
+        $this->assertEquals($diagnostics->get(0), new DiagnosticGroup([
+            'id' => 1,
+            'name'=> 'УЗИ (ультразвуковое исследование)',
+            'diagnostics' => collect([
+                new Diagnostic([
+                    'id' => 71,
+                    'name' => 'печени',
+                    'full_name' => 'УЗИ (ультразвуковое исследование) печени',
+                    'diagnostic_group_id' => 1,
+                ]),
+                new Diagnostic([
+                    'id' => 72,
+                    'name' => 'поджелудочной железы',
+                    'full_name' => 'УЗИ (ультразвуковое исследование) поджелудочной железы',
+                    'diagnostic_group_id' => 1,
+                ]),
+            ])
+        ]));
+
+        $this->assertEquals($diagnostics->get(1), new DiagnosticGroup([
+            'id' => 19,
+            'name'=> 'КТ (компьютерная томография)',
+            'diagnostics' => collect([
+                new Diagnostic([
+                    'id' => 118,
+                    'name' => 'головного мозга',
+                    'full_name' => 'КТ (компьютерная томография) головного мозга',
+                    'diagnostic_group_id' => 19,
+                ]),
+            ])
+        ]));
+    }
+
     /** @test */
     public function it_can_get_specialities()
     {
@@ -41,7 +85,6 @@ class DocdocTest extends MedicalTestCase
             'kids_reception'=> true,
             'city_ids' => [2]
         ]));
-
     }
 
     /** @test */

@@ -9,6 +9,8 @@ use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
+use Veezex\Medical\Models\Diagnostic;
+use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
 use Veezex\Medical\Models\Speciality;
@@ -168,6 +170,30 @@ class Docdoc extends Provider
             $item['id'] = intval($item['id']);
             return new Speciality($item);
         }, array_values($specialities)));
+    }
+
+    /**
+     * @return Collection
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getDiagnostics(): Collection
+    {
+        $response = $this->apiGet('diagnostic');
+
+        return collect(array_map(function($item) {
+            return new DiagnosticGroup([
+                'id' => $item['Id'],
+                'name' => $item['Name'],
+                'diagnostics' => collect(array_map(function($subItem) use ($item) {
+                    return new Diagnostic([
+                        'id' => $subItem['Id'],
+                        'name' => $subItem['Name'],
+                        'full_name' => "{$item['Name']} {$subItem['Name']}",
+                        'diagnostic_group_id' => $item['Id'],
+                    ]);
+                }, $item['SubDiagnosticList']))
+            ]);
+        }, $response['DiagnosticList']));
     }
 
     /**

@@ -1,0 +1,33 @@
+{
+    "DiagnosticList": [
+        {
+            "Id": "1",
+            "Name": "УЗИ (ультразвуковое исследование)",
+            "Alias": "uzi",
+            "SubDiagnosticList": [
+                {
+                    "Id": "71",
+                    "Name": "печени",
+                    "Alias": "uzi-pecheni"
+                },
+                {
+                    "Id": "72",
+                    "Name": "поджелудочной железы",
+                    "Alias": "uzi-podjeludochnoi-jelezi"
+                }
+            ]
+        },
+        {
+            "Id": "19",
+            "Name": "КТ (компьютерная томография)",
+            "Alias": "komputernaya-tomografiya",
+            "SubDiagnosticList": [
+                {
+                    "Id": "118",
+                    "Name": "головного мозга",
+                    "Alias": "kt-golovi"
+                }
+            ]
+        }
+    ]
+}
