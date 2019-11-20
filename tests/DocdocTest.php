@@ -2,6 +2,7 @@
 
 namespace Veezex\Medical\Tests;
 
+use Veezex\Medical\Models\City;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
@@ -12,7 +13,33 @@ class DocdocTest extends MedicalTestCase
         $this->mockResponseFile('city.json');
 
         $provider = app(Docdoc::class);
-        $provider->cities();
+
+        $cities = $provider->cities();
+        $this->assertCount(2, $cities);
+
+        $city1 = $cities[0];
+        $cityCheck1 = new City([
+            'id' => 1,
+            'name' => 'Москва',
+            'lat' => '55.755826',
+            'lng' => '37.6173',
+            'has_diagnostic' => true,
+            'timezone_shift' => 3,
+        ]);
+
+        $this->assertEquals($city1, $cityCheck1);
+
+        $city2 = $cities[1];
+        $cityCheck2 = new City([
+            'id' => 2,
+            'name' => 'Санкт-Петербург',
+            'lat' => '59.9342802',
+            'lng' => '30.3350986',
+            'has_diagnostic' => true,
+            'timezone_shift' => 3,
+        ]);
+
+        $this->assertEquals($city2, $cityCheck2);
     }
 
     /** @test */

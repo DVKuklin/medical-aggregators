@@ -4,7 +4,19 @@
 namespace Veezex\Medical\Models;
 
 
-abstract class Model
+class Model
 {
+    /**
+     * @var array
+     */
+    protected $data;
 
+    /**
+     * Model constructor.
+     * @param array $data
+     */
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+    }
 }

@@ -6,6 +6,7 @@ namespace Veezex\Medical\Providers;
 
 
 use Kozz\Laravel\Facades\Guzzle;
+use Veezex\Medical\Models\City;
 
 class Docdoc extends Provider
 {
@@ -44,11 +45,16 @@ class Docdoc extends Provider
     {
         $response = $this->apiGet('city');
 
-        foreach ($response['CityList'] as $item) {
-            dd($item);
-        }
-
-        return [];
+        return array_map(function($item) {
+            return new City([
+                'id' => $item['Id'],
+                'name' => $item['Name'],
+                'lat' => $item['Latitude'],
+                'lng' => $item['Longitude'],
+                'has_diagnostic' => $item['HasDiagnostic'],
+                'timezone_shift' => $item['TimeZone'] + 3,
+            ]);
+        }, $response['CityList']);
     }
 
     /**
