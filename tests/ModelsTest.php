@@ -4,12 +4,42 @@ namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\Diagnostic;
+use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
 use Veezex\Medical\Models\Speciality;
 
 class ModelsTest extends MedicalTestCase
 {
+    /** @test */
+    public function diagnostic_group_model_has_accessors()
+    {
+        $diagnosticGroup = new DiagnosticGroup([
+            'id' => 19,
+            'name'=> 'КТ (компьютерная томография)',
+            'diagnostics' => collect([
+                new Diagnostic([
+                    'id' => 118,
+                    'name' => 'головного мозга',
+                    'full_name' => 'КТ (компьютерная томография) головного мозга',
+                    'diagnostic_group_id' => 19,
+                ]),
+            ])
+        ]);
+
+        $this->assertEquals($diagnosticGroup->getId(), 19);
+        $this->assertEquals($diagnosticGroup->getName(), 'КТ (компьютерная томография)');
+
+        $this->assertCount(1, $diagnosticGroup->getDiagnostics());
+        $diagnostic = $diagnosticGroup->getDiagnostics()->get(0);
+
+        $this->assertEquals($diagnostic->getId(), 118);
+        $this->assertEquals($diagnostic->getName(), 'головного мозга');
+        $this->assertEquals($diagnostic->getFullName(), 'КТ (компьютерная томография) головного мозга');
+        $this->assertEquals($diagnostic->getDiagnosticGroupId(), 19);
+    }
+
     /** @test */
     public function speciality_model_has_accessors()
     {
@@ -34,7 +64,6 @@ class ModelsTest extends MedicalTestCase
 
         $this->assertEquals($speciality->getCityIds(), [1, 2]);
     }
-
 
     /** @test */
     public function metro_model_has_accessors()

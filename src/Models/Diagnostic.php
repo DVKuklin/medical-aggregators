@@ -17,6 +17,14 @@ class Diagnostic extends Model
     }
 
     /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->get('full_name');
+    }
+
+    /**
      * @return int
      */
     public function getDiagnosticGroupId(): int
