@@ -6,10 +6,44 @@ use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Speciality;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_specialities()
+    {
+        $this->mockResponseFile(['speciality.1.json', 'speciality.2.json']);
+        $provider = app(Docdoc::class);
+
+        $specialities = $provider->getSpecialities([1,2]);
+        $this->assertCount(2, $specialities);
+
+        $this->assertEquals($specialities->get(0), new Speciality([
+            'id' => 67,
+            'name'=> 'Акушер',
+            'branch_name'=> 'Акушерство',
+            'name_genitive'=> 'Акушера',
+            'name_plural'=> 'Акушеры',
+            'name_plural_genitive'=> 'Акушеров',
+            'kids_reception'=> false,
+            'city_ids' => [1,2]
+        ]));
+
+        $this->assertEquals($specialities->get(1), new Speciality([
+            'id' => 68,
+            'name'=> 'Аллерголог',
+            'branch_name'=> 'Аллергология',
+            'name_genitive'=> 'Аллерголога',
+            'name_plural'=> 'Аллергологи',
+            'name_plural_genitive'=> 'Аллергологов',
+            'kids_reception'=> true,
+            'city_ids' => [2]
+        ]));
+
+    }
+
     /** @test */
     public function it_can_get_metros()
     {

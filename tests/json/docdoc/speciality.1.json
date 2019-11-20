@@ -1,0 +1,16 @@
+{
+    "SpecList": [
+        {
+            "Id": "67",
+            "Name": "Акушер",
+            "Alias": "akusher",
+            "NameGenitive": "Акушера",
+            "NamePlural": "Акушеры",
+            "NamePluralGenitive": "Акушеров",
+            "IsSimple": true,
+            "BranchName": "Акушерство",
+            "BranchAlias": "akusherstvo",
+            "KidsReception": 0
+        }
+    ]
+}

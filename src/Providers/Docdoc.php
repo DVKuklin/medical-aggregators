@@ -11,6 +11,7 @@ use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Speciality;
 
 class Docdoc extends Provider
 {
@@ -130,6 +131,43 @@ class Docdoc extends Provider
         }
 
         return collect($metros);
+    }
+
+    /**
+     * @param array $cityIds
+     * @return Collection
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getSpecialities(array $cityIds): Collection
+    {
+        $specialities = [];
+
+        foreach ($cityIds as $cityId) {
+            $response = $this->apiGet("speciality/city/$cityId");
+
+            foreach ($response['SpecList'] as $item) {
+                if (isset($specialities[$item['Id']])) {
+                    $specialities[$item['Id']]['city_ids'][] = $cityId;
+                    continue;
+                }
+
+                $specialities[$item['Id']] = [
+                    'id' => $item['Id'],
+                    'name'=> $item['Name'],
+                    'branch_name'=> $item['BranchName'],
+                    'name_genitive'=> $item['NameGenitive'],
+                    'name_plural'=> $item['NamePlural'],
+                    'name_plural_genitive'=> $item['NamePluralGenitive'],
+                    'kids_reception'=> $item['KidsReception'] === 1,
+                    'city_ids' => [$cityId]
+                ];
+            }
+        }
+
+        return collect(array_map(function($item) {
+            $item['id'] = intval($item['id']);
+            return new Speciality($item);
+        }, array_values($specialities)));
     }
 
     /**

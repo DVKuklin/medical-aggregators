@@ -1,0 +1,28 @@
+{
+    "SpecList": [
+        {
+            "Id": "67",
+            "Name": "Акушер",
+            "Alias": "akusher",
+            "NameGenitive": "Акушера",
+            "NamePlural": "Акушеры",
+            "NamePluralGenitive": "Акушеров",
+            "IsSimple": true,
+            "BranchName": "Акушерство",
+            "BranchAlias": "akusherstvo",
+            "KidsReception": 0
+        },
+        {
+            "Id": "68",
+            "Name": "Аллерголог",
+            "Alias": "allergolog",
+            "NameGenitive": "Аллерголога",
+            "NamePlural": "Аллергологи",
+            "NamePluralGenitive": "Аллергологов",
+            "IsSimple": true,
+            "BranchName": "Аллергология",
+            "BranchAlias": "allergologiya",
+            "KidsReception": 1
+        }
+    ]
+}
