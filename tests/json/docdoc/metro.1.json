@@ -1,0 +1,15 @@
+{
+    "MetroList": [
+        {
+            "Id": "267",
+            "Name": "Ботаническая",
+            "LineName": "Первая Екатеринбург",
+            "LineColor": "cc0000",
+            "DistrictIds": [],
+            "CityId": "4",
+            "Alias": "botanichaskaya",
+            "Longitude": 60.63336182,
+            "Latitude": 56.79748535
+        }
+    ]
+}

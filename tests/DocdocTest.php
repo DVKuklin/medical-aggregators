@@ -5,10 +5,43 @@ namespace Veezex\Medical\Tests;
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\District;
+use Veezex\Medical\Models\Metro;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_metros()
+    {
+        $this->mockResponseFile(['metro.1.json', 'metro.2.json']);
+        $provider = app(Docdoc::class);
+
+        $metros = $provider->getMetros([1,2]);
+        $this->assertCount(2, $metros);
+
+        $this->assertEquals($metros->get(0), new Metro([
+            'id' => 267,
+            'city_id' => 4,
+            'name' => 'Ботаническая',
+            'line_name' => 'Первая Екатеринбург',
+            'line_color' => 'cc0000',
+            'lng' => '60.63336182',
+            'lat' => '56.79748535',
+            'district_ids' => [],
+        ]));
+
+        $this->assertEquals($metros->get(1), new Metro([
+            'id' => 1,
+            'city_id' => 1,
+            'name' => 'Авиамоторная',
+            'line_name' => 'Калининско-Солнцевская ',
+            'line_color' => 'ffdd03',
+            'lng' => '37.7166214',
+            'lat' => '55.75143051',
+            'district_ids' => [63],
+        ]));
+    }
+
     /** @test */
     public function it_can_get_districts()
     {

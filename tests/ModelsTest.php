@@ -5,9 +5,34 @@ namespace Veezex\Medical\Tests;
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\District;
+use Veezex\Medical\Models\Metro;
 
 class ModelsTest extends MedicalTestCase
 {
+    /** @test */
+    public function metro_model_has_accessors()
+    {
+        $district = new Metro([
+            'id' => 267,
+            'city_id' => 4,
+            'name' => 'Ботаническая',
+            'line_name' => 'Первая Екатеринбург',
+            'line_color' => 'cc0000',
+            'lng' => '60.63336182',
+            'lat' => '56.79748535',
+            'district_ids' => [],
+        ]);
+
+        $this->assertEquals($district->getId(), 267);
+        $this->assertEquals($district->getCityId(), 4);
+        $this->assertEquals($district->getName(), 'Ботаническая');
+        $this->assertEquals($district->getLineName(), 'Первая Екатеринбург');
+        $this->assertEquals($district->getLineColor(), 'cc0000');
+        $this->assertEquals($district->getLng(), '60.63336182');
+        $this->assertEquals($district->getLat(), '56.79748535');
+        $this->assertEquals($district->getDistrictIds(), []);
+    }
+
     /** @test */
     public function district_model_has_accessors()
     {

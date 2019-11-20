@@ -10,6 +10,7 @@ use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\District;
+use Veezex\Medical\Models\Metro;
 
 class Docdoc extends Provider
 {
@@ -97,6 +98,32 @@ class Docdoc extends Provider
                         'city_id' => $cityId,
                         'area_id' => isset($item['Area']) ? $item['Area']['Id'] : null,
                         'name' => $item['Name']
+                    ]);
+                }
+            }
+        }))->remember();
+    }
+
+    /**
+     * @param array $cityIds
+     * @return LazyCollection
+     */
+    public function getMetros(array $cityIds): LazyCollection
+    {
+        return (new LazyCollection(function() use ($cityIds) {
+            foreach ($cityIds as $cityId) {
+                $response = $this->apiGet("metro/city/$cityId");
+
+                foreach ($response['MetroList'] as $item) {
+                    yield new Metro([
+                        'id' => $item['Id'],
+                        'city_id' => $item['CityId'],
+                        'name' => $item['Name'],
+                        'line_name' => $item['LineName'],
+                        'line_color' => $item['LineColor'],
+                        'lng' => (string) $item['Longitude'],
+                        'lat' => (string) $item['Latitude'],
+                        'district_ids' => $item['DistrictIds'],
                     ]);
                 }
             }

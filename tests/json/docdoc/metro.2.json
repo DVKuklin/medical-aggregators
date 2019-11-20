@@ -1,0 +1,17 @@
+{
+    "MetroList": [
+        {
+            "Id": "1",
+            "Name": "Авиамоторная",
+            "LineName": "Калининско-Солнцевская ",
+            "LineColor": "ffdd03",
+            "DistrictIds": [
+                "63"
+            ],
+            "CityId": "1",
+            "Alias": "aviamotornaya",
+            "Longitude": 37.7166214,
+            "Latitude": 55.75143051
+        }
+    ]
+}
