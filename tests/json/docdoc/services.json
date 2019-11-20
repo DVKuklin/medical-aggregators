@@ -1,0 +1,23 @@
+{
+    "Total": 547,
+    "ServiceList": [
+        {
+            "Id": "1",
+            "Name": "Услуги",
+            "Lft": "1",
+            "Rgt": "7460",
+            "Depth": "0",
+            "SectorId": null,
+            "DiagnosticaId": null
+        },
+        {
+            "Id": "3427",
+            "Name": "Пластика уздечки верхней губы",
+            "Lft": "6351",
+            "Rgt": "6352",
+            "Depth": "2",
+            "SectorId": "90",
+            "DiagnosticaId": "91"
+        }
+    ]
+}

@@ -8,10 +8,27 @@ use Veezex\Medical\Models\Diagnostic;
 use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Service;
 use Veezex\Medical\Models\Speciality;
 
 class ModelsTest extends MedicalTestCase
 {
+    /** @test */
+    public function service_model_has_accessors()
+    {
+        $district = new Service([
+            'id' => 1,
+            'diagnostic_id' => null,
+            'speciality_id' => 22,
+            'name' => 'Услуги',
+        ]);
+
+        $this->assertEquals($district->getId(), 1);
+        $this->assertEquals($district->getName(), 'Услуги');
+        $this->assertEquals($district->getDiagnosticId(), null);
+        $this->assertEquals($district->getSpecialityId(), 22);
+    }
+
     /** @test */
     public function diagnostic_group_model_has_accessors()
     {

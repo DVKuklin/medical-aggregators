@@ -13,6 +13,7 @@ use Veezex\Medical\Models\Diagnostic;
 use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Service;
 use Veezex\Medical\Models\Speciality;
 
 class Docdoc extends Provider
@@ -194,6 +195,26 @@ class Docdoc extends Provider
                 }, $item['SubDiagnosticList']))
             ]);
         }, $response['DiagnosticList']));
+    }
+
+    /**
+     * @return Collection
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getServices(): Collection
+    {
+        $response = $this->apiGet('service/list');
+
+        $services = array_map(function($item) {
+            return new Service([
+                'id' => $item['Id'],
+                'diagnostic_id' => $item['DiagnosticaId'],
+                'speciality_id' => $item['SectorId'],
+                'name' => $item['Name']
+            ]);
+        }, $response['ServiceList']);
+
+        return collect($services);
     }
 
     /**

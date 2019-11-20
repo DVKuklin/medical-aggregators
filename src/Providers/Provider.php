@@ -11,4 +11,5 @@ abstract class Provider
     abstract public function getDistricts(array $cityIds): Collection;
     abstract public function getSpecialities(array $cityIds): Collection;
     abstract public function getDiagnostics(): Collection;
+    abstract public function getServices(): Collection;
 }

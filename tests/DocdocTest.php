@@ -8,11 +8,36 @@ use Veezex\Medical\Models\Diagnostic;
 use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
+use Veezex\Medical\Models\Service;
 use Veezex\Medical\Models\Speciality;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_services()
+    {
+        $this->mockResponseFile(['services.json']);
+        $provider = app(Docdoc::class);
+
+        $services = $provider->getServices();
+        $this->assertCount(2, $services);
+
+        $this->assertEquals($services->get(0), new Service([
+            'id' => 1,
+            'diagnostic_id' => null,
+            'speciality_id' => null,
+            'name' => 'Услуги',
+        ]));
+
+        $this->assertEquals($services->get(1), new Service([
+            'id' => 3427,
+            'diagnostic_id' => 91,
+            'speciality_id' => 90,
+            'name' => 'Пластика уздечки верхней губы',
+        ]));
+    }
+
     /** @test */
     public function it_can_get_diagnostics()
     {
