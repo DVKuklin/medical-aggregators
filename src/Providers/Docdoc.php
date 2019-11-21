@@ -288,7 +288,13 @@ class Docdoc extends Provider
                                 'special_price' => $service['SpecialPrice'],
                             ];
                         }, $item['Services']['ServiceList']),
-                        'diagnostic_ids' => array_column($item['Diagnostics'] ?? [], 'Id'),
+                        'diagnostic_ids' => array_map(function($diagnostic) {
+                            return [
+                                'id' => $diagnostic['Id'],
+                                'price' => $diagnostic['Price'],
+                                'special_price' => $diagnostic['SpecialPrice'] ?: null,
+                            ];
+                        }, $item['Diagnostics'] ?? []),
                     ]);
                 }
 

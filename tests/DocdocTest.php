@@ -12,9 +12,10 @@ class DocdocTest extends MedicalTestCase
         $this->mockResponseFile(['clinics.1.json', 'clinics.4.json']);
         $provider = app(Docdoc::class);
 
-        $clinics = $provider->getClinics([1, 2]);
+        $clinics = $provider->getClinics([1, 4]);
         $this->assertCount(2, $clinics);
 
+        // 1
         $clinic = $clinics->get(0);
         $this->assertEquals($clinic->getId(), 44);
         $this->assertEquals($clinic->getDistrictId(), 63);
@@ -73,7 +74,56 @@ class DocdocTest extends MedicalTestCase
         ]);
         $this->assertEquals($clinic->getDiagnosticIds(), []);
 
-        // todo: second model test
+        // 2
+        $clinic = $clinics->get(1);
+        $this->assertEquals($clinic->getId(), 2764);
+        $this->assertEquals($clinic->getDistrictId(), 154);
+        $this->assertEquals($clinic->getCityId(), 4);
+        $this->assertEquals($clinic->getBranchIds(), []);
+        $this->assertEquals($clinic->getRootClinicId(), 2764);
+        $this->assertEquals($clinic->getName(), 'Новая Больница');
+        $this->assertEquals($clinic->getShortName(), 'Новая Больница');
+        $this->assertEquals($clinic->getUrl(), "https://newhospital.ru/");
+        $this->assertEquals($clinic->getLng(), "60.5526580000");
+        $this->assertEquals($clinic->getLat(), "56.8313000000");
+        $this->assertEquals($clinic->getStreetId(), 5885);
+        $this->assertEquals($clinic->getAddrCity(), "Екатеринбург");
+        $this->assertEquals($clinic->getAddrStreet(), "ул. Заводская");
+        $this->assertEquals($clinic->getAddrHouse(), "д. 29");
+        $this->assertEquals($clinic->getDescription(), "Медицинское объединение Новая больница – это многопрофильная клиника полного цикла, включающая амбулаторно-поликлиническое отделение, стационар и специализированные городские центры.\r\nКлиника служит научной площадкой для семи кафедр Уральского государственного медицинского университета.\r\nПрименяются современные подходы к консервативным методам лечения, аппаратной и лабораторной диагностике. Имеются платные комплексные и специализированные программы медицинского обслуживания: экспресс-диагностика «Check Up», ведение беременности, годовые программы для детей и взрослых. В клинике можно вызвать детского или взрослого врача на дом в пределах Екатеринбурга и окрестностей (до 40 км от ЕКАД). Это амбулаторно-поликлиническое отделение, детская поликлиника, стационар, городские центры диагностики и лечения, центр иммунопрофилактики, стоматологическая клиника, косметологическая клиника, сеть аптек.");
+        $this->assertEquals($clinic->getShortDescription(), "Медицинское объединение Новая больница – это многопрофильная клиника полного цикла, включающая амбулаторно-поликлиническое отделение, стационар и специализированные городские центры.\r\nКлиника служит научной площадкой для семи кафедр Уральского государственного медицинского университета.\r\nПрименяются современные подходы к консервативным методам лечения, аппаратной и лабораторной диагностике. Имеются платные комплексные и специализированные программы медицинского обслуживания: экспресс-диагностика «Check Up», ведение беременности, годовые программы для детей и взрослых. В клинике можно вызвать детского или взрослого врача на дом в пределах Екатеринбурга и окрестностей (до 40 км от ЕКАД). Это амбулаторно-поликлиническое отделение, детская поликлиника, стационар, городские центры диагностики и лечения, центр иммунопрофилактики, стоматологическая клиника, косметологическая клиника, сеть аптек.");
+        $this->assertEquals($clinic->getTypeClinic(), true);
+        $this->assertEquals($clinic->getTypeDiagnostic(), true);
+        $this->assertEquals($clinic->getTypeDoctor(), false);
+        $this->assertEquals($clinic->getTypeText(), "многопрофильный медицинский центр");
+        $this->assertEquals($clinic->getPhone(), "73433555657");
+        $this->assertEquals($clinic->getReplacementPhone(), null);
+        $this->assertEquals($clinic->getDirectPhone(), "+7 (343) 355-56-57; +7 (343) 302-36-26");
+        $this->assertEquals($clinic->getLogo(), "https://cdn.docdoc.ru/clinic/logo/min_2764.jpg?1574300156");
+        $this->assertEquals($clinic->getEmail(), "market@newhospital.ru");
+        $this->assertEquals($clinic->getRating(), 9);
+        $this->assertEquals($clinic->getMinPrice(), 1150);
+        $this->assertEquals($clinic->getMaxPrice(), 1500);
+        $this->assertEquals($clinic->getOnlineSchedule(), true);
+        $this->assertEquals($clinic->getSchedule(), [
+            'monday' => ['07:30', '20:00'],
+            'tuesday' => ['07:30', '20:00'],
+            'wednesday' => ['07:30', '20:00'],
+            'thursday' => ['07:30', '20:00'],
+            'friday' => ['07:30', '20:00'],
+            'saturday' => ['08:00', '18:00'],
+            'sunday' => ['08:00', '16:00'],
+        ]);
+        $this->assertEquals($clinic->getHighlightDiscount(), 0);
+        $this->assertEquals($clinic->getRequestFormSurname(), false);
+        $this->assertEquals($clinic->getRequestFormBirthday(), false);
+        $this->assertEquals($clinic->getMetroIds(), []);
+        $this->assertEquals($clinic->getSpecialityIds(), [73,85,91,102,112,114]);
+        $this->assertEquals($clinic->getServiceIds(), []);
+        $this->assertEquals($clinic->getDiagnosticIds(), [
+            ['id' => 156, 'price' => 950, 'special_price' => null],
+            ['id' => 53, 'price' => 2650, 'special_price' => null],
+        ]);
     }
 
     /** @test */
