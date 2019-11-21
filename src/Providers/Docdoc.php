@@ -247,7 +247,7 @@ class Docdoc extends Provider
                 foreach ($response['ClinicList'] as $item) {
                     $clinics[] = new Clinic([
                         'id' => $item['Id'],
-                        'district_id' => $item['DistrictId'],
+                        'district_id' => intval($item['DistrictId']),
                         'city_id' => $cityId,
                         'branch_ids' => $item['BranchesId'],
                         'root_clinic_id' => $item['ParentId'],
@@ -256,7 +256,7 @@ class Docdoc extends Provider
                         'url' => $item['URL'],
                         'lng' => $item['Longitude'],
                         'lat' => $item['Latitude'],
-                        'street_id' => $item['StreetId'],
+                        'street_id' => intval($item['StreetId']),
                         'addr_city' => $item['City'],
                         'addr_street' => $item['Street'],
                         'addr_house' => $item['House'],
@@ -272,8 +272,8 @@ class Docdoc extends Provider
                         'logo' => $item['Logo'],
                         'email' => $item['Email'],
                         'rating' => $item['Rating'],
-                        'min_price' => $item['MinPrice'],
-                        'max_price' => $item['MaxPrice'],
+                        'min_price' => intval($item['MinPrice']),
+                        'max_price' => intval($item['MaxPrice']),
                         'online_schedule' => $item['ScheduleState'] === 'enable',
                         'schedule' => $this->convertSchedule($item['Schedule']),
                         'highlight_discount' => $item['HighlightDiscount'],
@@ -281,7 +281,13 @@ class Docdoc extends Provider
                         'request_form_birthday' => $item['RequestFormBirthday'],
                         'metro_ids' => array_column($item['Stations'] ?? [], 'Id'),
                         'speciality_ids' => array_column($item['Specialities'] ?? [], 'Id'),
-                        'service_ids' => array_column($item['Services']['ServiceList'], 'ServiceId'),
+                        'service_ids' => array_map(function($service) {
+                            return [
+                                'id' => $service['ServiceId'],
+                                'price' => $service['Price'],
+                                'special_price' => $service['SpecialPrice'],
+                            ];
+                        }, $item['Services']['ServiceList']),
                         'diagnostic_ids' => array_column($item['Diagnostics'] ?? [], 'Id'),
                     ]);
                 }

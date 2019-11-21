@@ -4,6 +4,7 @@ namespace Veezex\Medical\Tests;
 
 use Veezex\Medical\Models\Area;
 use Veezex\Medical\Models\City;
+use Veezex\Medical\Models\Clinic;
 use Veezex\Medical\Models\Diagnostic;
 use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
@@ -22,6 +23,67 @@ class DocdocTest extends MedicalTestCase
 
         $clinics = $provider->getClinics([1, 2]);
         $this->assertCount(2, $clinics);
+
+        $this->assertEquals(new Clinic([
+            'id' => 44,
+            'district_id' => 63,
+            'city_id' => 1,
+            'branch_ids' => [250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 2275, 2276, 15757, 33033, 42522],
+            'root_clinic_id' => 44,
+            'name' => 'МедЦентрСервис на Авиамоторной',
+            'short_name' => 'МедЦентрСервис на Авиамоторной',
+            'url' => 'http://www.medcentrservis.ru',
+            'lng' => "37.7165130000",
+            'lat' => "55.7534580000",
+            'street_id' => 12,
+            'addr_city' => "Москва",
+            'addr_street' => "ул. Авиамоторная",
+            'addr_house' => "д. 41Б",
+            'description' => "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
+            'short_description' => "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
+            'type_clinic' => true,
+            'type_diagnostic' => false,
+            'type_doctor' => false,
+            'type_text' => "медицинская клиника",
+            'phone' => "74952553137",
+            'replacement_phone' => null,
+            'direct_phone' => "+7 (495) 255-31-37; +7 (495) 104-77-99; +7 (495) 132-37-37; +7 (495) 151-23-32; +7 (495) 185-21-21",
+            'logo' => "https://cdn.bookingtest.docdoc.pro/clinic/logo/min_44.jpg?1573413879",
+            'email' => "test@test.ru",
+            'rating' => 9.04,
+            'min_price' => 1500,
+            'max_price' => 1500,
+            'online_schedule' => true,
+            'schedule' => [
+                'monday' => ['00:00', '24:00'],
+                'tuesday' => ['00:00', '24:00'],
+                'wednesday' => ['00:00', '24:00'],
+                'thursday' => ['00:00', '24:00'],
+                'friday' => ['00:00', '24:00'],
+                'saturday' => ['00:00', '24:00'],
+                'sunday' => ['00:00', '24:00'],
+            ],
+            'highlight_discount' => 0,
+            'request_form_surname' => false,
+            'request_form_birthday' => true,
+            'metro_ids' => [1],
+            'speciality_ids' => [70,72,73,91,93],
+            'service_ids' => [
+                ['id' => 3821, 'price' => 1700, 'special_price' => null],
+                ['id' => 3841, 'price' => 1000, 'special_price' => null],
+                ['id' => 3865, 'price' => 1500, 'special_price' => null],
+                ['id' => 3819, 'price' => 2500, 'special_price' => null],
+                ['id' => 3817, 'price' => 2500, 'special_price' => null],
+                ['id' => 3835, 'price' => 17000, 'special_price' => null],
+                ['id' => 3859, 'price' => 4600, 'special_price' => null],
+                ['id' => 3849, 'price' => 6200, 'special_price' => null],
+                ['id' => 4633, 'price' => 750, 'special_price' => null],
+                ['id' => 4625, 'price' => 1200, 'special_price' => 1000],
+            ],
+            'diagnostic_ids' => [],
+        ]), $clinics->get(0));
+
+        // todo: second model test
     }
 
     /** @test */

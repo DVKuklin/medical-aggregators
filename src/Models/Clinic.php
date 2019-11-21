@@ -238,9 +238,9 @@ class Clinic extends Model
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getRating(): string
+    public function getRating(): float
     {
         return $this->get('rating');
     }
@@ -278,9 +278,9 @@ class Clinic extends Model
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getHighlightDiscount(): ?int
+    public function getHighlightDiscount(): int
     {
         return $this->get('highlight_discount');
     }
