@@ -208,57 +208,7 @@ class Docdoc extends Provider
                 $response = $this->apiGet("clinic/list/city/$cityId/start/$start/count/$count");
 
                 foreach ($response['ClinicList'] as $item) {
-                    $clinics[] = new Clinic([
-                        'id' => $item['Id'],
-                        'district_id' => intval($item['DistrictId']),
-                        'city_id' => $cityId,
-                        'branch_ids' => $item['BranchesId'],
-                        'root_clinic_id' => $item['ParentId'],
-                        'name' => $item['Name'],
-                        'short_name' => $item['ShortName'],
-                        'url' => $item['URL'],
-                        'lng' => $item['Longitude'],
-                        'lat' => $item['Latitude'],
-                        'street_id' => intval($item['StreetId']),
-                        'addr_city' => $item['City'],
-                        'addr_street' => $item['Street'],
-                        'addr_house' => $item['House'],
-                        'description' => $item['Description'],
-                        'short_description' => $item['ShortDescription'],
-                        'type_clinic' => $item['isClinic'] === 'yes',
-                        'type_diagnostic' => $item['IsDiagnostic'] === 'yes',
-                        'type_doctor' => $item['IsDoctor'] === 'yes',
-                        'type_text' => $item['TypeOfInstitution'],
-                        'phone' => $item['Phone'],
-                        'replacement_phone' => $item['ReplacementPhone'],
-                        'direct_phone' => $item['PhoneAppointment'],
-                        'logo' => $item['Logo'],
-                        'email' => $item['Email'],
-                        'rating' => $item['Rating'],
-                        'min_price' => intval($item['MinPrice']),
-                        'max_price' => intval($item['MaxPrice']),
-                        'online_schedule' => $item['ScheduleState'] === 'enable',
-                        'schedule' => $this->convertSchedule($item['Schedule']),
-                        'highlight_discount' => $item['HighlightDiscount'],
-                        'request_form_surname' => $item['RequestFormSurname'],
-                        'request_form_birthday' => $item['RequestFormBirthday'],
-                        'metro_ids' => array_column($item['Stations'] ?? [], 'Id'),
-                        'speciality_ids' => array_column($item['Specialities'] ?? [], 'Id'),
-                        'service_ids' => array_map(function($service) {
-                            return [
-                                'id' => $service['ServiceId'],
-                                'price' => $service['Price'],
-                                'special_price' => $service['SpecialPrice'],
-                            ];
-                        }, $item['Services']['ServiceList']),
-                        'diagnostic_ids' => array_map(function($diagnostic) {
-                            return [
-                                'id' => $diagnostic['Id'],
-                                'price' => $diagnostic['Price'],
-                                'special_price' => $diagnostic['SpecialPrice'] ?: null,
-                            ];
-                        }, $item['Diagnostics'] ?? []),
-                    ]);
+                    $clinics[] = new Clinic(array_merge($item, ['CityId' => $cityId]));
                 }
 
                 $start += $count;
@@ -266,34 +216,6 @@ class Docdoc extends Provider
         }
 
         return collect($clinics);
-    }
-
-    /**
-     * @param array $scheduleArray
-     * @return array|null
-     */
-    protected function convertSchedule(array $scheduleArray): ?array
-    {
-        if (empty($scheduleArray)) {
-            return null;
-        }
-
-        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-        $data = [];
-        foreach ($scheduleArray as $line) {
-            $dataLine = [$line['StartTime'], $line['EndTime']];
-
-            if ($line['Day'] === '0') {
-                for ($i = 0; $i < 5; $i++) {
-                    $data[$days[$i]] = $dataLine;
-                }
-            } else {
-                $day = intval($line['Day']) - 1;
-                $data[$days[$day]] = $dataLine;
-            }
-        }
-
-        return $data;
     }
 
     /**

@@ -60,7 +60,7 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($clinic->getRequestFormBirthday(), true);
         $this->assertEquals($clinic->getMetroIds(), [1]);
         $this->assertEquals($clinic->getSpecialityIds(), [70,72,73,91,93]);
-        $this->assertEquals($clinic->getServiceIds(), [
+        $this->assertEquals($clinic->getServices(), [
             ['id' => 3821, 'price' => 1700, 'special_price' => null],
             ['id' => 3841, 'price' => 1000, 'special_price' => null],
             ['id' => 3865, 'price' => 1500, 'special_price' => null],
@@ -72,7 +72,7 @@ class DocdocTest extends MedicalTestCase
             ['id' => 4633, 'price' => 750, 'special_price' => null],
             ['id' => 4625, 'price' => 1200, 'special_price' => 1000],
         ]);
-        $this->assertEquals($clinic->getDiagnosticIds(), []);
+        $this->assertEquals($clinic->getDiagnostics(), []);
 
         // 2
         $clinic = $clinics->get(1);
@@ -119,8 +119,8 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($clinic->getRequestFormBirthday(), false);
         $this->assertEquals($clinic->getMetroIds(), []);
         $this->assertEquals($clinic->getSpecialityIds(), [73,85,91,102,112,114]);
-        $this->assertEquals($clinic->getServiceIds(), []);
-        $this->assertEquals($clinic->getDiagnosticIds(), [
+        $this->assertEquals($clinic->getServices(), []);
+        $this->assertEquals($clinic->getDiagnostics(), [
             ['id' => 156, 'price' => 950, 'special_price' => null],
             ['id' => 53, 'price' => 2650, 'special_price' => null],
         ]);

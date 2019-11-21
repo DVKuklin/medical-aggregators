@@ -7,42 +7,42 @@ namespace Veezex\Medical\Models;
 class Clinic extends Model
 {
     protected $required = [
-        'district_id',
-        'city_id',
-        'branch_ids',
-        'root_clinic_id',
-        'name',
-        'short_name',
-        'url',
-        'lng',
-        'lat',
-        'street_id',
-        'addr_city',
-        'addr_street',
-        'addr_house',
-        'description',
-        'short_description',
-        'type_clinic',
-        'type_diagnostic',
-        'type_doctor',
-        'type_text',
-        'phone',
-        'replacement_phone',
-        'direct_phone',
-        'logo',
-        'email',
-        'rating',
-        'min_price',
-        'max_price',
-        'online_schedule',
-        'schedule',
-        'highlight_discount',
-        'request_form_surname',
-        'request_form_birthday',
-        'metro_ids',
-        'speciality_ids',
-        'service_ids',
-        'diagnostic_ids',
+        'Id',
+        'DistrictId',
+        'CityId',
+        'BranchesId',
+        'ParentId',
+        'Name',
+        'ShortName',
+        'URL',
+        'Longitude',
+        'Latitude',
+        'StreetId',
+        'City',
+        'Street',
+        'House',
+        'Description',
+        'ShortDescription',
+        'isClinic',
+        'IsDiagnostic',
+        'IsDoctor',
+        'TypeOfInstitution',
+        'Phone',
+        'ReplacementPhone',
+        'PhoneAppointment',
+        'Logo',
+        'Email',
+        'Rating',
+        'MinPrice',
+        'MaxPrice',
+        'ScheduleState',
+        'Schedule',
+        'HighlightDiscount',
+        'RequestFormSurname',
+        'RequestFormBirthday',
+        'Stations',
+        'Specialities',
+        'Services',
     ];
 
     /**
@@ -50,7 +50,7 @@ class Clinic extends Model
      */
     public function getBranchIds(): array
     {
-        return $this->get('branch_ids');
+        return $this->get('BranchesId');
     }
 
     /**
@@ -58,7 +58,7 @@ class Clinic extends Model
      */
     public function getRootClinicId(): int
     {
-        return $this->get('root_clinic_id');
+        return $this->get('ParentId');
     }
 
     /**
@@ -66,7 +66,7 @@ class Clinic extends Model
      */
     public function getCityId(): int
     {
-        return $this->get('city_id');
+        return $this->get('CityId');
     }
 
     /**
@@ -74,7 +74,7 @@ class Clinic extends Model
      */
     public function getDistrictId(): int
     {
-        return $this->get('district_id');
+        return $this->get('DistrictId');
     }
 
     /**
@@ -82,7 +82,7 @@ class Clinic extends Model
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 
     /**
@@ -90,7 +90,7 @@ class Clinic extends Model
      */
     public function getShortName(): string
     {
-        return $this->get('short_name');
+        return $this->get('ShortName');
     }
 
     /**
@@ -98,7 +98,7 @@ class Clinic extends Model
      */
     public function getUrl(): string
     {
-        return $this->get('url');
+        return $this->get('URL');
     }
 
     /**
@@ -106,7 +106,7 @@ class Clinic extends Model
      */
     public function getLng(): string
     {
-        return $this->get('lng');
+        return $this->get('Longitude');
     }
 
     /**
@@ -114,7 +114,7 @@ class Clinic extends Model
      */
     public function getLat(): string
     {
-        return $this->get('lat');
+        return $this->get('Latitude');
     }
 
     /**
@@ -122,7 +122,7 @@ class Clinic extends Model
      */
     public function getStreetId(): int
     {
-        return $this->get('street_id');
+        return $this->get('StreetId');
     }
 
     /**
@@ -130,7 +130,7 @@ class Clinic extends Model
      */
     public function getAddrCity(): string
     {
-        return $this->get('addr_city');
+        return $this->get('City');
     }
 
     /**
@@ -138,7 +138,7 @@ class Clinic extends Model
      */
     public function getAddrStreet(): string
     {
-        return $this->get('addr_street');
+        return $this->get('Street');
     }
 
     /**
@@ -146,7 +146,7 @@ class Clinic extends Model
      */
     public function getAddrHouse(): string
     {
-        return $this->get('addr_house');
+        return $this->get('House');
     }
 
     /**
@@ -154,7 +154,7 @@ class Clinic extends Model
      */
     public function getDescription(): string
     {
-        return $this->get('description');
+        return $this->get('Description');
     }
 
     /**
@@ -162,7 +162,7 @@ class Clinic extends Model
      */
     public function getShortDescription(): string
     {
-        return $this->get('short_description');
+        return $this->get('ShortDescription');
     }
 
     /**
@@ -170,7 +170,7 @@ class Clinic extends Model
      */
     public function getTypeDiagnostic(): bool
     {
-        return $this->get('type_diagnostic');
+        return $this->get('IsDiagnostic') === 'yes';
     }
 
     /**
@@ -178,7 +178,7 @@ class Clinic extends Model
      */
     public function getTypeClinic(): bool
     {
-        return $this->get('type_clinic');
+        return $this->get('isClinic') === 'yes';
     }
 
     /**
@@ -186,7 +186,7 @@ class Clinic extends Model
      */
     public function getTypeDoctor(): bool
     {
-        return $this->get('type_doctor');
+        return $this->get('IsDoctor') === 'yes';
     }
 
     /**
@@ -194,7 +194,7 @@ class Clinic extends Model
      */
     public function getTypeText(): string
     {
-        return $this->get('type_text');
+        return $this->get('TypeOfInstitution');
     }
 
     /**
@@ -202,7 +202,7 @@ class Clinic extends Model
      */
     public function getPhone(): string
     {
-        return $this->get('phone');
+        return $this->get('Phone');
     }
 
     /**
@@ -210,7 +210,7 @@ class Clinic extends Model
      */
     public function getReplacementPhone(): ?string
     {
-        return $this->get('replacement_phone');
+        return $this->get('ReplacementPhone');
     }
 
     /**
@@ -218,7 +218,7 @@ class Clinic extends Model
      */
     public function getDirectPhone(): string
     {
-        return $this->get('direct_phone');
+        return $this->get('PhoneAppointment');
     }
 
     /**
@@ -226,7 +226,7 @@ class Clinic extends Model
      */
     public function getLogo(): string
     {
-        return $this->get('logo');
+        return $this->get('Logo');
     }
 
     /**
@@ -234,7 +234,7 @@ class Clinic extends Model
      */
     public function getEmail(): string
     {
-        return $this->get('email');
+        return $this->get('Email');
     }
 
     /**
@@ -242,7 +242,7 @@ class Clinic extends Model
      */
     public function getRating(): float
     {
-        return $this->get('rating');
+        return $this->get('Rating');
     }
 
     /**
@@ -250,7 +250,7 @@ class Clinic extends Model
      */
     public function getMinPrice(): int
     {
-        return $this->get('min_price');
+        return intval($this->get('MinPrice'));
     }
 
     /**
@@ -258,7 +258,7 @@ class Clinic extends Model
      */
     public function getMaxPrice(): int
     {
-        return $this->get('max_price');
+        return intval($this->get('MaxPrice'));
     }
 
     /**
@@ -266,7 +266,7 @@ class Clinic extends Model
      */
     public function getOnlineSchedule(): bool
     {
-        return $this->get('online_schedule');
+        return $this->get('ScheduleState') === 'enable';
     }
 
     /**
@@ -274,7 +274,9 @@ class Clinic extends Model
      */
     public function getSchedule(): array
     {
-        return $this->get('schedule');
+        return $this->convertSchedule(
+            $this->get('Schedule')
+        );
     }
 
     /**
@@ -282,7 +284,7 @@ class Clinic extends Model
      */
     public function getHighlightDiscount(): int
     {
-        return $this->get('highlight_discount');
+        return $this->get('HighlightDiscount');
     }
 
     /**
@@ -290,7 +292,7 @@ class Clinic extends Model
      */
     public function getRequestFormSurname(): bool
     {
-        return $this->get('request_form_surname');
+        return $this->get('RequestFormSurname');
     }
 
     /**
@@ -298,7 +300,7 @@ class Clinic extends Model
      */
     public function getRequestFormBirthday(): bool
     {
-        return $this->get('request_form_birthday');
+        return $this->get('RequestFormBirthday');
     }
 
     /**
@@ -306,7 +308,7 @@ class Clinic extends Model
      */
     public function getMetroIds(): array
     {
-        return $this->get('metro_ids');
+        return array_column($this->get('Stations', []), 'Id');
     }
 
     /**
@@ -314,22 +316,63 @@ class Clinic extends Model
      */
     public function getSpecialityIds(): array
     {
-        return $this->get('speciality_ids');
+        return array_column($this->get('Specialities', []), 'Id');
     }
 
     /**
      * @return array
      */
-    public function getServiceIds(): array
+    public function getServices(): array
     {
-        return $this->get('service_ids');
+        return array_map(function($service) {
+            return [
+                'id' => $service['ServiceId'],
+                'price' => $service['Price'],
+                'special_price' => $service['SpecialPrice'],
+            ];
+        }, $this->get('Services.ServiceList', []));
     }
 
     /**
      * @return array
      */
-    public function getDiagnosticIds(): array
+    public function getDiagnostics(): array
     {
-        return $this->get('diagnostic_ids');
+        return array_map(function($diagnostic) {
+            return [
+                'id' => $diagnostic['Id'],
+                'price' => $diagnostic['Price'],
+                'special_price' => $diagnostic['SpecialPrice'] ?: null,
+            ];
+        }, $this->get('Diagnostics', []));
     }
+
+    /**
+     * @param array $scheduleArray
+     * @return array|null
+     */
+    protected function convertSchedule(array $scheduleArray): ?array
+    {
+        if (empty($scheduleArray)) {
+            return null;
+        }
+
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $data = [];
+        foreach ($scheduleArray as $line) {
+            $dataLine = [$line['StartTime'], $line['EndTime']];
+
+            if ($line['Day'] === '0') {
+                for ($i = 0; $i < 5; $i++) {
+                    $data[$days[$i]] = $dataLine;
+                }
+            } else {
+                $day = intval($line['Day']) - 1;
+                $data[$days[$day]] = $dataLine;
+            }
+        }
+
+        return $data;
+    }
+
 }
