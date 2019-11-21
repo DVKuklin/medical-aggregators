@@ -157,7 +157,7 @@ class DocdocTest extends MedicalTestCase
         $diagnostics = $provider->getDiagnostics();
         $this->assertCount(2, $diagnostics);
 
-        //////////
+        // 1
         $diagnosticGroup = $diagnostics->get(0);
         $this->assertEquals($diagnosticGroup->getId(), 1);
         $this->assertEquals($diagnosticGroup->getName(), 'УЗИ (ультразвуковое исследование)');
@@ -175,7 +175,7 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($diagnostic2->getFullName(), 'УЗИ (ультразвуковое исследование) поджелудочной железы');
         $this->assertEquals($diagnostic2->getDiagnosticGroupId(), 1);
 
-        ////////////////
+        // 2
         $diagnosticGroup = $diagnostics->get(1);
         $this->assertEquals($diagnosticGroup->getId(), 19);
         $this->assertEquals($diagnosticGroup->getName(), 'КТ (компьютерная томография)');
