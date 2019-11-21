@@ -65,14 +65,7 @@ class Docdoc extends Provider
         $response = $this->apiGet('city');
 
         return collect(array_map(function($item) {
-            return new City([
-                'id' => $item['Id'],
-                'name' => $item['Name'],
-                'lat' => $item['Latitude'],
-                'lng' => $item['Longitude'],
-                'has_diagnostic' => $item['HasDiagnostic'],
-                'timezone_shift' => $item['TimeZone'] + 3,
-            ]);
+            return new City($item);
         }, $response['CityList']));
     }
 
@@ -85,11 +78,7 @@ class Docdoc extends Provider
         $response = $this->apiGet('area');
 
         return collect(array_map(function($item) {
-            return new Area([
-                'id' => $item['Id'],
-                'short_name' => $item['Name'],
-                'name' => $item['FullName']
-            ]);
+            return new Area($item);
         }, $response['AreaList']));
     }
 
@@ -106,12 +95,7 @@ class Docdoc extends Provider
             $response = $this->apiGet("district/city/$cityId");
 
             $districts = array_merge($districts, array_map(function($item) use ($cityId) {
-                return new District([
-                    'id' => $item['Id'],
-                    'city_id' => $cityId,
-                    'area_id' => isset($item['Area']) ? $item['Area']['Id'] : null,
-                    'name' => $item['Name']
-                ]);
+                return new District(array_merge($item, ['CityId' => $cityId]));
             }, $response['DistrictList']));
         }
 
@@ -130,17 +114,8 @@ class Docdoc extends Provider
         foreach ($cityIds as $cityId) {
             $response = $this->apiGet("metro/city/$cityId");
 
-            $metros = array_merge($metros, array_map(function($item) use ($cityId) {
-                return new Metro([
-                    'id' => $item['Id'],
-                    'city_id' => $item['CityId'],
-                    'name' => $item['Name'],
-                    'line_name' => $item['LineName'],
-                    'line_color' => $item['LineColor'],
-                    'lng' => (string) $item['Longitude'],
-                    'lat' => (string) $item['Latitude'],
-                    'district_ids' => $item['DistrictIds'],
-                ]);
+            $metros = array_merge($metros, array_map(function($item) {
+                return new Metro($item);
             }, $response['MetroList']));
         }
 

@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class Area extends Model
 {
-    protected $required = ['name', 'short_name'];
+    protected $required = ['Id', 'Name', 'FullName'];
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('FullName');
     }
 
     /**
@@ -21,6 +21,6 @@ class Area extends Model
      */
     public function getShortName(): string
     {
-        return $this->get('short_name');
+        return $this->get('Name');
     }
 }

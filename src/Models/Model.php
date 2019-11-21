@@ -4,12 +4,12 @@
 namespace Veezex\Medical\Models;
 
 
+use Illuminate\Support\Arr;
 use InvalidArgumentException;
 
 class Model
 {
     protected $required = [];
-    protected $idFields = ['id'];
 
     /**
      * @var array
@@ -22,16 +22,13 @@ class Model
      */
     public function __construct(array $data)
     {
-        $required = array_merge($this->required, $this->idFields);
-
-        foreach ($required as $key) {
-            if (!array_key_exists($key, $data)) {
-                throw new InvalidArgumentException("Missing required field: $key");
+        foreach ($this->required as $key) {
+            if (!Arr::has($data, $key)) {
+                throw new InvalidArgumentException("Missing required field: \"$key\"");
             }
         }
 
         $this->data = $data;
-
     }
 
     /**
@@ -39,15 +36,16 @@ class Model
      */
     public function getId(): int
     {
-        return $this->get('id');
+        return $this->get('Id');
     }
 
     /**
      * @param string $dataKey
+     * @param null $default
      * @return mixed
      */
-    protected function get(string $dataKey)
+    protected function get(string $dataKey, $default = null)
     {
-        return $this->data[$dataKey];
+        return Arr::get($this->data, $dataKey, $default);
     }
 }

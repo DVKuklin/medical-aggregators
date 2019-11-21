@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class District extends Model
 {
-    protected $required = ['name', 'city_id', 'area_id'];
+    protected $required = ['Id', 'CityId', 'Name', 'CityId'];
 
     /**
      * @return int
      */
     public function getCityId(): int
     {
-        return $this->get('city_id');
+        return $this->get('CityId');
     }
 
     /**
@@ -21,7 +21,7 @@ class District extends Model
      */
     public function getAreaId(): ?int
     {
-        return $this->get('area_id');
+        return $this->get('Area.Id');
     }
 
     /**
@@ -29,6 +29,6 @@ class District extends Model
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 }

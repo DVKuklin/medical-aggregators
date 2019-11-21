@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class City extends Model
 {
-    protected $required = ['name', 'lat', 'lng', 'has_diagnostic', 'timezone_shift'];
+    protected $required = ['Id', 'Name', 'Longitude', 'Latitude', 'HasDiagnostic', 'TimeZone'];
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 
     /**
@@ -21,7 +21,7 @@ class City extends Model
      */
     public function getLat(): string
     {
-        return $this->get('lat');
+        return $this->get('Latitude');
     }
 
     /**
@@ -29,7 +29,7 @@ class City extends Model
      */
     public function getLng(): string
     {
-        return $this->get('lng');
+        return $this->get('Longitude');
     }
 
     /**
@@ -37,7 +37,7 @@ class City extends Model
      */
     public function getHasDiagnostic(): bool
     {
-        return $this->get('has_diagnostic');
+        return $this->get('HasDiagnostic');
     }
 
     /**
@@ -45,6 +45,6 @@ class City extends Model
      */
     public function getTimezoneShift(): int
     {
-        return $this->get('timezone_shift');
+        return $this->get('TimeZone') + 3;
     }
 }

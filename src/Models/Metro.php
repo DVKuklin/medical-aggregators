@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class Metro extends Model
 {
-    protected $required = ['city_id', 'name', 'line_name', 'line_color', 'lat', 'lng', 'district_ids'];
+    protected $required = ['Id', 'CityId', 'Name', 'LineName', 'LineColor', 'Latitude', 'Longitude', 'DistrictIds'];
 
     /**
      * @return int
      */
     public function getDistrictIds(): array
     {
-        return $this->get('district_ids');
+        return $this->get('DistrictIds');
     }
 
     /**
@@ -21,7 +21,7 @@ class Metro extends Model
      */
     public function getLng(): string
     {
-        return $this->get('lng');
+        return $this->get('Longitude');
     }
 
     /**
@@ -29,7 +29,7 @@ class Metro extends Model
      */
     public function getLat(): string
     {
-        return $this->get('lat');
+        return $this->get('Latitude');
     }
 
     /**
@@ -37,7 +37,7 @@ class Metro extends Model
      */
     public function getLineColor(): string
     {
-        return $this->get('line_color');
+        return $this->get('LineColor');
     }
 
     /**
@@ -45,7 +45,7 @@ class Metro extends Model
      */
     public function getLineName(): string
     {
-        return $this->get('line_name');
+        return $this->get('LineName');
     }
 
     /**
@@ -53,7 +53,7 @@ class Metro extends Model
      */
     public function getCityId(): int
     {
-        return $this->get('city_id');
+        return $this->get('CityId');
     }
 
     /**
@@ -61,6 +61,6 @@ class Metro extends Model
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 }
