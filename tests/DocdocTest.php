@@ -49,6 +49,85 @@ class DocdocTest extends MedicalTestCase
                 ]
             ]
         ]);
+
+        // 2
+        $doctor = $doctors->get(1);
+        $this->assertEquals($doctor->getId(), 13581);
+        $this->assertEquals($doctor->getCityId(), 2);
+        $this->assertEquals($doctor->getName(), "Рубцова Ольга Игоревна");
+        $this->assertEquals($doctor->getSex(), 'male');
+        $this->assertEquals($doctor->getRating(), 4.4);
+        $this->assertEquals($doctor->getImage(), 'https://cdn.bookingtest.docdoc.pro/doctor/13581_small.jpg');
+        $this->assertEquals($doctor->getCategory(), null);
+        $this->assertEquals($doctor->getPhoneNumber(), 'тел 1');
+        $this->assertEquals($doctor->getDegree(), 'степень 1');
+        $this->assertEquals($doctor->getRank(), 'ранг 1');
+        $this->assertEquals($doctor->getDescription(), "Врач восстановительной медицины, диетолог, спортивный врач. Проводит индивидуальные занятия: при варикозном расширении вен, при заболеваниях опорно-двигательного аппарата. Разрабатывает индивидуальные, реабилитационные программы: при нарушении обмена веществ, при бронхиальной астме, хроническом бронхите, хроническом насморке, аденоидах, после травмы костей, связок, суставов, после перенесенного инсульта в восстановительный период, при заболеваниях сердечно-сосудистой системы.");
+        $this->assertEquals($doctor->getAbout(), 'Врач восстановительной медицины, диетолог, спортивный врач. Проводит индивидуальные занятия: при варикозном расширении вен, при заболеваниях опорно-двигательного аппарата. Разрабатывает индивидуальные, реабилитационные программы: при нарушении обмена веществ, при бронхиальной астме, хроническом бронхите, хроническом насморке, аденоидах, после травмы костей, связок, суставов, после перенесенного инсульта в восстановительный период, при заболеваниях сердечно-сосудистой системы.');
+        $this->assertEquals($doctor->getExperienceYears(), 23);
+        $this->assertEquals($doctor->getPrice(), 1000);
+        $this->assertEquals($doctor->getSpecialPrice(), null);
+        $this->assertEquals($doctor->getKidsReception(), false);
+        $this->assertEquals($doctor->getActive(), true);
+        $this->assertEquals($doctor->getDeparture(), false);
+        $this->assertEquals($doctor->getReviewsCount(), 24);
+        $this->assertEquals($doctor->getFocusClinicId(), 46120);
+        $this->assertEquals($doctor->getBookingClinicIds(), []);
+        $this->assertEquals($doctor->getClinicIds(), [
+            46120,
+            2890,
+            47342
+        ]);
+        $this->assertEquals($doctor->getPriceList(), [
+            '46120' => [
+                [
+                    'speciality_id' => 74,
+                    'price' => 1500,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+                [
+                    'speciality_id' => 155,
+                    'price' => 1000,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+                [
+                    'speciality_id' => 177,
+                    'price' => 1000,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+            ],
+            '2890' => [
+                [
+                    'speciality_id' => 74,
+                    'price' => 2000,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+            ],
+            '47342' => [
+                [
+                    'speciality_id' => 74,
+                    'price' => 1500,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+                [
+                    'speciality_id' => 155,
+                    'price' => 1000,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+                [
+                    'speciality_id' => 177,
+                    'price' => 1000,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ],
+            ]
+        ]);
     }
 
     /** @test */
