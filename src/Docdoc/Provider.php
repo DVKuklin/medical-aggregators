@@ -15,6 +15,7 @@ use Veezex\Medical\Docdoc\Models\Metro;
 use Veezex\Medical\Docdoc\Models\Service;
 use Veezex\Medical\Docdoc\Models\Speciality;
 use Veezex\Medical\Docdoc\Models\Clinic;
+use Veezex\Medical\Docdoc\Models\Doctor;
 use Veezex\Medical\ProviderContract;
 
 class Provider implements ProviderContract
@@ -187,7 +188,20 @@ class Provider implements ProviderContract
     {
         $doctors = [];
 
-        // todo
+        foreach ($cityIds as $cityId) {
+
+            $start = 0;
+            $count = 500;
+            do {
+                $response = $this->apiGet("doctor/list/city/$cityId/start/$start/count/$count");
+
+                foreach ($response['DoctorList'] as $item) {
+                    $doctors[] = new Doctor(array_merge($item, ['CityId' => $cityId]));
+                }
+
+                $start += $count;
+            } while (count($response['DoctorList']) === $count);
+        }
 
         return collect($doctors);
     }

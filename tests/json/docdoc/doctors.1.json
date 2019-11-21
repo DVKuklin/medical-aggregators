@@ -1,0 +1,109 @@
+{
+    "Total": 8081,
+    "DoctorList": [
+        {
+            "Id": 9587,
+            "Name": "Киселёва Татьяна Юрьевна",
+            "Rating": "4.6",
+            "Sex": 1,
+            "Img": "https://cdn.bookingtest.docdoc.pro/doctor/9587_small.jpg",
+            "AddPhoneNumber": "",
+            "Category": "Врач высшей категории",
+            "Degree": "",
+            "Rank": "",
+            "Description": "Акушер-гинеколог, венеролог, гинеколог, гинеколог-эндокринолог. Проводит прерывание беременности, патология шейки, эндокринология, акушерство, лечение и обследование супружеских пар, введение и удаление внутриматочной спирали, видеокольпоскопия. Принимает участие в конференциях.  ",
+            "ExperienceYear": 38,
+            "Price": 1500,
+            "SpecialPrice": null,
+            "Departure": 0,
+            "Clinics": [
+                252
+            ],
+            "Alias": "Kiseleva_Tatjana",
+            "Specialities": [
+                {
+                    "Id": "72",
+                    "Name": "Гинеколог",
+                    "Alias": "ginekolog",
+                    "NameGenitive": "Гинеколога",
+                    "NamePlural": "Гинекологи",
+                    "NamePluralGenitive": "Гинекологов",
+                    "IsSimple": true,
+                    "BranchName": "Гинекология",
+                    "BranchAlias": "ginekologiya"
+                }
+            ],
+            "Stations": [
+                {
+                    "Id": "18",
+                    "Name": "Беляево",
+                    "LineName": "Калужско-Рижская",
+                    "LineColor": "ff7f00",
+                    "CityId": "1",
+                    "Alias": "belyaevo",
+                    "DistrictIds": [
+                        "93"
+                    ],
+                    "Longitude": 37.52611542,
+                    "Latitude": 55.64235687
+                }
+            ],
+            "BookingClinics": [],
+            "isActive": true,
+            "TextAbout": "Акушер-гинеколог, венеролог, гинеколог, гинеколог-эндокринолог. Проводит прерывание беременности, патология шейки, эндокринология, акушерство, лечение и обследование супружеских пар, введение и удаление внутриматочной спирали, видеокольпоскопия. Принимает участие в конференциях.  ",
+            "InternalRating": 2244,
+            "OpinionCount": 251,
+            "Extra": null,
+            "KidsReception": "0",
+            "ClinicsInfo": [
+                {
+                    "ClinicId": 252,
+                    "Longitude": 37.523779,
+                    "Latitude": 55.644105,
+                    "Stations": [
+                        "18"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 72,
+                            "Price": 1500,
+                            "SpecialPrice": null,
+                            "InternalRating": 2244.0361950835,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "МедЦентрСервис на Беляево",
+                    "Street": "ул. Миклухо-Маклая",
+                    "House": "д. 43",
+                    "StationsDistance": [
+                        {
+                            "Station": 18,
+                            "TimeWalking": 364,
+                            "DistanceWalking": 460
+                        }
+                    ],
+                    "SlotsWork": true,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": true,
+                    "Recommend": false
+                }
+            ],
+            "Telemed": [
+                {
+                    "ClinicId": 252,
+                    "Chat": false,
+                    "Phone": false
+                }
+            ],
+            "ImgFormat": "https://cdn.bookingtest.docdoc.pro/doctor/9587.640x400.jpg?1574019605",
+            "RatingLabel": "Потрясающе",
+            "FocusClinic": 252,
+            "IsExclusivePrice": false,
+            "RatingReviewsLabel": "Потрясающий"
+        }
+    ]
+}

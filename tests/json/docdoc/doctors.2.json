@@ -1,0 +1,275 @@
+{
+    "Total": 711,
+    "DoctorList": [
+        {
+            "Id": 13581,
+            "Name": "Рубцова Ольга Игоревна",
+            "Rating": "4.4",
+            "Sex": 1,
+            "Img": "https://cdn.bookingtest.docdoc.pro/doctor/13581_small.jpg",
+            "AddPhoneNumber": "",
+            "Category": "Врач первой категории",
+            "Degree": "",
+            "Rank": "",
+            "Description": "Врач восстановительной медицины, диетолог, спортивный врач. Проводит индивидуальные занятия: при варикозном расширении вен, при заболеваниях опорно-двигательного аппарата. Разрабатывает индивидуальные, реабилитационные программы: при нарушении обмена веществ, при бронхиальной астме, хроническом бронхите, хроническом насморке, аденоидах, после травмы костей, связок, суставов, после перенесенного инсульта в восстановительный период, при заболеваниях сердечно-сосудистой системы.",
+            "ExperienceYear": 23,
+            "Price": 1000,
+            "SpecialPrice": null,
+            "Departure": 0,
+            "Clinics": [
+                46120,
+                2890,
+                47342
+            ],
+            "Alias": "Rubtsova_Olga",
+            "Specialities": [
+                {
+                    "Id": "74",
+                    "Name": "Диетолог",
+                    "Alias": "dietolog",
+                    "NameGenitive": "Диетолога",
+                    "NamePlural": "Диетологи",
+                    "NamePluralGenitive": "Диетологов",
+                    "IsSimple": true,
+                    "BranchName": "Диетология",
+                    "BranchAlias": "dietologiya"
+                },
+                {
+                    "Id": "155",
+                    "Name": "Спортивный врач",
+                    "Alias": "sportivniy-vrach",
+                    "NameGenitive": "Спортивного врача",
+                    "NamePlural": "Спортивные врачи",
+                    "NamePluralGenitive": "Спортивных врачей",
+                    "IsSimple": true,
+                    "BranchName": "Спортивная медицина",
+                    "BranchAlias": "sportivnaya-medicina"
+                },
+                {
+                    "Id": "177",
+                    "Name": "Врач ЛФК",
+                    "Alias": "vrach-lfk",
+                    "NameGenitive": "Врача ЛФК",
+                    "NamePlural": "Врачи ЛФК",
+                    "NamePluralGenitive": "Врачей ЛФК",
+                    "IsSimple": true,
+                    "BranchName": "Лечебная физкультура",
+                    "BranchAlias": "lechebnaya-fizkultura"
+                }
+            ],
+            "Stations": [
+                {
+                    "Id": "266",
+                    "Name": "Чкаловская",
+                    "LineName": "Первая Екатеринбург",
+                    "LineColor": "cc0000",
+                    "CityId": "4",
+                    "Alias": "chkalovskaya",
+                    "DistrictIds": [],
+                    "Longitude": 60.61070633,
+                    "Latitude": 56.80784225
+                },
+                {
+                    "Id": "265",
+                    "Name": "Геологическая",
+                    "LineName": "Первая Екатеринбург",
+                    "LineColor": "cc0000",
+                    "CityId": "4",
+                    "Alias": "geologicheskaya",
+                    "DistrictIds": [],
+                    "Longitude": 60.60375214,
+                    "Latitude": 56.82671356
+                },
+                {
+                    "Id": "323",
+                    "Name": "Площадь 1905 Года",
+                    "LineName": "Первая Екатеринбург",
+                    "LineColor": "cc0000",
+                    "CityId": "4",
+                    "Alias": "ploshchad_1905_goda",
+                    "DistrictIds": [
+                        "150"
+                    ],
+                    "Longitude": 60.59984589,
+                    "Latitude": 56.8362999
+                }
+            ],
+            "BookingClinics": [],
+            "isActive": true,
+            "TextAbout": "Врач восстановительной медицины, диетолог, спортивный врач. Проводит индивидуальные занятия: при варикозном расширении вен, при заболеваниях опорно-двигательного аппарата. Разрабатывает индивидуальные, реабилитационные программы: при нарушении обмена веществ, при бронхиальной астме, хроническом бронхите, хроническом насморке, аденоидах, после травмы костей, связок, суставов, после перенесенного инсульта в восстановительный период, при заболеваниях сердечно-сосудистой системы.",
+            "InternalRating": 42.5,
+            "OpinionCount": 24,
+            "Extra": null,
+            "KidsReception": "0",
+            "ClinicsInfo": [
+                {
+                    "ClinicId": 46120,
+                    "Longitude": 60.605416,
+                    "Latitude": 56.783756,
+                    "Stations": [
+                        "266"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 74,
+                            "Price": 1500,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        },
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 155,
+                            "Price": 1000,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        },
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 177,
+                            "Price": 1000,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "Медицинская клиника OrthoDoc’s (Ортодокс). Отделение реабилитации на Агрономической",
+                    "Street": "Агрономическая",
+                    "House": "д. 6А, пом. 1-11, 13-15",
+                    "StationsDistance": [
+                        {
+                            "Station": 266,
+                            "TimeWalking": 2331,
+                            "DistanceWalking": 3063
+                        }
+                    ],
+                    "SlotsWork": false,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": false,
+                    "Recommend": false
+                },
+                {
+                    "ClinicId": 2890,
+                    "Longitude": 60.621675,
+                    "Latitude": 56.830768,
+                    "Stations": [
+                        "265"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 74,
+                            "Price": 2000,
+                            "SpecialPrice": null,
+                            "InternalRating": 23.0714225,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "ВитаМедика",
+                    "Street": "ул. Мамина-Сибиряка",
+                    "House": "д. 193",
+                    "StationsDistance": [
+                        {
+                            "Station": 265,
+                            "TimeWalking": 1316,
+                            "DistanceWalking": 1711
+                        }
+                    ],
+                    "SlotsWork": false,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": false,
+                    "Recommend": false
+                },
+                {
+                    "ClinicId": 47342,
+                    "Longitude": 60.592686,
+                    "Latitude": 56.838913,
+                    "Stations": [
+                        "323"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 74,
+                            "Price": 1500,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        },
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 155,
+                            "Price": 1000,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        },
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 177,
+                            "Price": 1000,
+                            "SpecialPrice": null,
+                            "InternalRating": 42.5,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "Медицинская клиника OrthoDoc’s (Ортодокс). Консультативный центр на Антона Валека",
+                    "Street": "Антона Валека",
+                    "House": "д. 13, пом. № 27, 30",
+                    "StationsDistance": [
+                        {
+                            "Station": 323,
+                            "TimeWalking": 564,
+                            "DistanceWalking": 745
+                        }
+                    ],
+                    "SlotsWork": false,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": false,
+                    "Recommend": false
+                }
+            ],
+            "Telemed": [
+                {
+                    "ClinicId": 2890,
+                    "Chat": false,
+                    "Phone": false
+                },
+                {
+                    "ClinicId": 46120,
+                    "Chat": false,
+                    "Phone": false
+                },
+                {
+                    "ClinicId": 47342,
+                    "Chat": false,
+                    "Phone": false
+                }
+            ],
+            "ImgFormat": "https://cdn.bookingtest.docdoc.pro/doctor/13581.640x400.jpg?1573947997",
+            "RatingLabel": "Превосходно",
+            "FocusClinic": 46120,
+            "IsExclusivePrice": false,
+            "RatingReviewsLabel": "Превосходный"
+        }
+    ]
+}

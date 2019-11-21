@@ -7,6 +7,16 @@ use Veezex\Medical\Docdoc\Provider as Docdoc;
 class DocdocTest extends MedicalTestCase
 {
     /** @test */
+    public function it_can_get_doctors()
+    {
+        $this->mockResponseFile(['doctors.1.json', 'doctors.2.json']);
+        $provider = app(Docdoc::class);
+
+        $doctors = $provider->getDoctors([1, 2]);
+        $this->assertCount(2, $doctors);
+    }
+
+    /** @test */
     public function it_can_get_clinics()
     {
         $this->mockResponseFile(['clinics.1.json', 'clinics.4.json']);
