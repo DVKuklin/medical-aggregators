@@ -14,6 +14,41 @@ class DocdocTest extends MedicalTestCase
 
         $doctors = $provider->getDoctors([1, 2]);
         $this->assertCount(2, $doctors);
+
+        // 1
+        $doctor = $doctors->get(0);
+        $this->assertEquals($doctor->getId(), 9587);
+        $this->assertEquals($doctor->getCityId(), 1);
+        $this->assertEquals($doctor->getName(), "Киселёва Татьяна Юрьевна");
+        $this->assertEquals($doctor->getSex(), 'female');
+        $this->assertEquals($doctor->getRating(), 4.6);
+        $this->assertEquals($doctor->getImage(), 'https://cdn.bookingtest.docdoc.pro/doctor/9587_small.jpg');
+        $this->assertEquals($doctor->getCategory(), 'Врач высшей категории');
+        $this->assertEquals($doctor->getPhoneNumber(), null);
+        $this->assertEquals($doctor->getDegree(), null);
+        $this->assertEquals($doctor->getRank(), null);
+        $this->assertEquals($doctor->getDescription(), "Акушер-гинеколог, венеролог, гинеколог, гинеколог-эндокринолог. Проводит прерывание беременности, патология шейки, эндокринология, акушерство, лечение и обследование супружеских пар, введение и удаление внутриматочной спирали, видеокольпоскопия. Принимает участие в конференциях.  ");
+        $this->assertEquals($doctor->getAbout(), 'Акушер-гинеколог, венеролог, гинеколог, гинеколог-эндокринолог. Проводит прерывание беременности, патология шейки, эндокринология, акушерство, лечение и обследование супружеских пар, введение и удаление внутриматочной спирали, видеокольпоскопия. Принимает участие в конференциях.  ');
+        $this->assertEquals($doctor->getExperienceYears(), 38);
+        $this->assertEquals($doctor->getPrice(), 1500);
+        $this->assertEquals($doctor->getSpecialPrice(), null);
+        $this->assertEquals($doctor->getKidsReception(), false);
+        $this->assertEquals($doctor->getActive(), true);
+        $this->assertEquals($doctor->getDeparture(), false);
+        $this->assertEquals($doctor->getReviewsCount(), 251);
+        $this->assertEquals($doctor->getFocusClinicId(), 252);
+        $this->assertEquals($doctor->getBookingClinicIds(), []);
+        $this->assertEquals($doctor->getClinicIds(), [252]);
+        $this->assertEquals($doctor->getPriceList(), [
+            '252' => [
+                [
+                    'speciality_id' => 72,
+                    'price' => 1500,
+                    'special_price' => null,
+                    'departure_price' => [null, null]
+                ]
+            ]
+        ]);
     }
 
     /** @test */

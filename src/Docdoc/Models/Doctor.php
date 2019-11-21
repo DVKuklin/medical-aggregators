@@ -24,6 +24,7 @@ class Doctor extends Model
         'KidsReception',
         'isActive',
         'Departure',
+        'AddPhoneNumber',
         'OpinionCount',
         'FocusClinic',
         'BookingClinics',
@@ -79,7 +80,7 @@ class Doctor extends Model
      */
     public function getCategory(): ?string
     {
-        return $this->get('Category');
+        return $this->get('Category') ?: null;
     }
 
     /**
@@ -87,7 +88,7 @@ class Doctor extends Model
      */
     public function getDegree(): ?string
     {
-        return $this->get('Degree');
+        return $this->get('Degree') ?: null;
     }
 
     /**
@@ -95,7 +96,7 @@ class Doctor extends Model
      */
     public function getRank(): ?string
     {
-        return $this->get('Rank');
+        return $this->get('Rank') ?: null;
     }
 
     /**
@@ -163,11 +164,19 @@ class Doctor extends Model
     }
 
     /**
+     * @return string|null
+     */
+    public function getPhoneNumber(): ?string
+    {
+        return $this->get('AddPhoneNumber') ?: null;
+    }
+
+    /**
      * @return int
      */
     public function getReviewsCount(): int
     {
-        return $this->get('OpinionCount') === 1;
+        return $this->get('OpinionCount');
     }
 
     /**
@@ -207,6 +216,7 @@ class Doctor extends Model
                     'speciality_id' => $speciality['SpecialityId'],
                     'price' => $speciality['Price'],
                     'special_price' => $speciality['SpecialPrice'],
+                    'departure_price' => [$speciality['DeparturePriceFrom'] ?? null, $speciality['DeparturePriceTo'] ?? null],
                 ];
             }, $clinic['Specialities']);
         }
