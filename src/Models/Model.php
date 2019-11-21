@@ -36,7 +36,7 @@ class Model
      */
     public function getId(): int
     {
-        return $this->get('Id');
+        return intval($this->get('Id'));
     }
 
     /**

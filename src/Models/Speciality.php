@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class Speciality extends Model
 {
-    protected $required = ['name', 'city_ids', 'branch_name', 'genitive_name', 'plural_name', 'plural_genitive_name', 'kids_reception'];
+    protected $required = ['Id', 'Name', 'CityIds', 'BranchName', 'NameGenitive', 'NamePlural', 'NamePluralGenitive', 'KidsReception'];
 
     /**
      * @return bool
      */
     public function getKidsReception(): bool
     {
-        return $this->get('kids_reception');
+        return $this->get('KidsReception') === 1;
     }
 
     /**
@@ -21,7 +21,7 @@ class Speciality extends Model
      */
     public function getPluralGenitiveName(): string
     {
-        return $this->get('plural_genitive_name');
+        return $this->get('NamePluralGenitive');
     }
 
     /**
@@ -29,7 +29,7 @@ class Speciality extends Model
      */
     public function getPluralName(): string
     {
-        return $this->get('plural_name');
+        return $this->get('NamePlural');
     }
 
     /**
@@ -37,7 +37,7 @@ class Speciality extends Model
      */
     public function getGenitiveName(): string
     {
-        return $this->get('genitive_name');
+        return $this->get('NameGenitive');
     }
 
     /**
@@ -45,7 +45,7 @@ class Speciality extends Model
      */
     public function getBranchName(): string
     {
-        return $this->get('branch_name');
+        return $this->get('BranchName');
     }
 
     /**
@@ -53,7 +53,7 @@ class Speciality extends Model
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 
     /**
@@ -61,6 +61,6 @@ class Speciality extends Model
      */
     public function getCityIds(): array
     {
-        return $this->get('city_ids');
+        return $this->get('CityIds');
     }
 }

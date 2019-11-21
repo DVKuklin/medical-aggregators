@@ -8,14 +8,14 @@ use Illuminate\Support\Collection;
 
 class DiagnosticGroup extends Model
 {
-    protected $required = ['name', 'diagnostics'];
+    protected $required = ['Id', 'Name', 'SubDiagnosticList'];
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 
     /**
@@ -23,6 +23,8 @@ class DiagnosticGroup extends Model
      */
     public function getDiagnostics(): Collection
     {
-        return $this->get('diagnostics');
+        return collect(array_map(function($item) {
+            return new Diagnostic($item);
+        }, $this->get('SubDiagnosticList')));
     }
 }

@@ -9,7 +9,6 @@ use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
 use Veezex\Medical\Models\Area;
-use Veezex\Medical\Models\Diagnostic;
 use Veezex\Medical\Models\DiagnosticGroup;
 use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
@@ -136,25 +135,16 @@ class Docdoc extends Provider
 
             foreach ($response['SpecList'] as $item) {
                 if (isset($specialities[$item['Id']])) {
-                    $specialities[$item['Id']]['city_ids'][] = $cityId;
+                    $specialities[$item['Id']]['CityIds'][] = $cityId;
                     continue;
                 }
 
-                $specialities[$item['Id']] = [
-                    'id' => $item['Id'],
-                    'name'=> $item['Name'],
-                    'branch_name'=> $item['BranchName'],
-                    'genitive_name'=> $item['NameGenitive'],
-                    'plural_name'=> $item['NamePlural'],
-                    'plural_genitive_name'=> $item['NamePluralGenitive'],
-                    'kids_reception'=> $item['KidsReception'] === 1,
-                    'city_ids' => [$cityId]
-                ];
+                $item['CityIds'] = [$cityId];
+                $specialities[$item['Id']] = $item;
             }
         }
 
         return collect(array_map(function($item) {
-            $item['id'] = intval($item['id']);
             return new Speciality($item);
         }, array_values($specialities)));
     }
@@ -168,18 +158,7 @@ class Docdoc extends Provider
         $response = $this->apiGet('diagnostic');
 
         return collect(array_map(function($item) {
-            return new DiagnosticGroup([
-                'id' => $item['Id'],
-                'name' => $item['Name'],
-                'diagnostics' => collect(array_map(function($subItem) use ($item) {
-                    return new Diagnostic([
-                        'id' => $subItem['Id'],
-                        'name' => $subItem['Name'],
-                        'full_name' => "{$item['Name']} {$subItem['Name']}",
-                        'diagnostic_group_id' => $item['Id'],
-                    ]);
-                }, $item['SubDiagnosticList']))
-            ]);
+            return new DiagnosticGroup($item);
         }, $response['DiagnosticList']));
     }
 
