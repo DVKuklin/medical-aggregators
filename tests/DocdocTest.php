@@ -224,6 +224,19 @@ class DocdocTest extends MedicalTestCase
         $this->expectException('GuzzleHttp\Exception\ClientException');
 
         $this->mockResponseJson(['{"test":1}'], 401);
+        $this->setProviderConfig('', '', 'true', 1);
+
+        $provider = app(Docdoc::class);
+        $provider->apiGet('someurl');
+    }
+
+    /** @test */
+    public function throws_exception_if_error_request_status_after_tries()
+    {
+        $this->expectException('GuzzleHttp\Exception\ClientException');
+
+        $this->mockResponseJson(['{"test":1}', '{"test":1}'], 401);
+        $this->setProviderConfig('', '', 'true', 2);
 
         $provider = app(Docdoc::class);
         $provider->apiGet('someurl');
@@ -258,11 +271,12 @@ class DocdocTest extends MedicalTestCase
     }
 
     /**
-     * @param string $test
      * @param string $login
      * @param string $password
+     * @param string $test
+     * @param int $maxTries
      */
-    protected function setProviderConfig(string $login = '', string $password = '', string $test = 'true'): void
+    protected function setProviderConfig(string $login = '', string $password = '', string $test = 'true', int $maxTries = 2): void
     {
         config([
             'medical-aggregators.providers' => [
@@ -270,6 +284,8 @@ class DocdocTest extends MedicalTestCase
                     'test' => $test,
                     'login' => $login,
                     'password' => $password,
+                    'max_tries' => $maxTries,
+                    'retry_after' => 0,
                 ],
             ],
         ]);

@@ -10,6 +10,8 @@ return [
             'test' => env('MEDICAL_DOCDOC_MODE', 'true'),
             'login' => env('MEDICAL_DOCDOC_LOGIN', ''),
             'password' => env('MEDICAL_DOCDOC_PASSWORD', ''),
+            'max_tries' => 1,
+            'retry_after' => 90
         ],
     ]
 ];

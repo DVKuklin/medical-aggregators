@@ -4,7 +4,7 @@
 namespace Veezex\Medical\Providers;
 
 
-
+use Exception;
 use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
 use Veezex\Medical\Models\City;
@@ -30,6 +30,14 @@ class Docdoc extends Provider
      * @var string
      */
     protected $password;
+    /**
+     * @var int
+     */
+    private $max_tries;
+    /**
+     * @var int
+     */
+    private $retry_after;
 
     /**
      * Docdoc constructor.
@@ -43,11 +51,13 @@ class Docdoc extends Provider
 
         $this->login = $settings['login'];
         $this->password = $settings['password'];
+        $this->max_tries = $settings['max_tries'];
+        $this->retry_after = $settings['retry_after'];
     }
 
     /**
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getCities(): Collection
     {
@@ -67,7 +77,7 @@ class Docdoc extends Provider
 
     /**
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getMoscowAreas(): Collection
     {
@@ -85,7 +95,7 @@ class Docdoc extends Provider
     /**
      * @param array $cityIds
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getDistricts(array $cityIds): Collection
     {
@@ -110,7 +120,7 @@ class Docdoc extends Provider
     /**
      * @param array $cityIds
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getMetros(array $cityIds): Collection
     {
@@ -139,7 +149,7 @@ class Docdoc extends Provider
     /**
      * @param array $cityIds
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getSpecialities(array $cityIds): Collection
     {
@@ -175,7 +185,7 @@ class Docdoc extends Provider
 
     /**
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getDiagnostics(): Collection
     {
@@ -199,7 +209,7 @@ class Docdoc extends Provider
 
     /**
      * @return Collection
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function getServices(): Collection
     {
@@ -220,13 +230,27 @@ class Docdoc extends Provider
     /**
      * @param string $uri
      * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     public function apiGet(string $uri): array
     {
-        $result = Guzzle::get("$this->endpoint$uri", [
-            'auth' => [$this->login, $this->password]
-        ]);
+        $tries = $this->max_tries;
+
+        while ($tries--) {
+            try {
+                $result = Guzzle::get("$this->endpoint$uri", [
+                    'auth' => [$this->login, $this->password]
+                ]);
+                break;
+            } catch (Exception $e) {
+                if ($tries === 0) {
+                    throw $e;
+                } else {
+                    sleep($this->retry_after);
+                }
+            }
+        }
+
         return json_decode($result->getBody(), true);
     }
 }
