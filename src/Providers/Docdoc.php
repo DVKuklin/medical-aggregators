@@ -171,12 +171,7 @@ class Docdoc extends Provider
         $response = $this->apiGet('service/list');
 
         $services = array_map(function($item) {
-            return new Service([
-                'id' => $item['Id'],
-                'diagnostic_id' => $item['DiagnosticaId'],
-                'speciality_id' => $item['SectorId'],
-                'name' => $item['Name']
-            ]);
+            return new Service($item);
         }, $response['ServiceList']);
 
         return collect($services);

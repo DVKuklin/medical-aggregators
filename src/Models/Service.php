@@ -6,14 +6,14 @@ namespace Veezex\Medical\Models;
 
 class Service extends Model
 {
-    protected $required = ['name', 'diagnostic_id', 'speciality_id'];
+    protected $required = ['Id', 'Name', 'DiagnosticaId', 'SectorId'];
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return $this->get('name');
+        return $this->get('Name');
     }
 
     /**
@@ -21,7 +21,7 @@ class Service extends Model
      */
     public function getSpecialityId(): ?int
     {
-        return $this->get('speciality_id');
+        return $this->get('SectorId');
     }
 
     /**
@@ -29,6 +29,6 @@ class Service extends Model
      */
     public function getDiagnosticId(): ?int
     {
-        return $this->get('diagnostic_id');
+        return $this->get('DiagnosticaId');
     }
 }
