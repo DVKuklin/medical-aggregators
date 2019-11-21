@@ -15,6 +15,7 @@ use Veezex\Medical\Models\District;
 use Veezex\Medical\Models\Metro;
 use Veezex\Medical\Models\Service;
 use Veezex\Medical\Models\Speciality;
+use Veezex\Medical\Models\Clinic;
 
 class Docdoc extends Provider
 {
@@ -225,6 +226,99 @@ class Docdoc extends Provider
         }, $response['ServiceList']);
 
         return collect($services);
+    }
+
+    /**
+     * @param array $cityIds
+     * @return Collection
+     * @throws Exception
+     */
+    public function getClinics(array $cityIds): Collection
+    {
+        $clinics = [];
+
+        foreach ($cityIds as $cityId) {
+
+            $start = 0;
+            $count = 500;
+            do {
+                $response = $this->apiGet("clinic/list/city/$cityId/start/$start/count/$count");
+
+                foreach ($response['ClinicList'] as $item) {
+                    $clinics[] = new Clinic([
+                        'id' => $item['Id'],
+                        'district_id' => $item['DistrictId'],
+                        'city_id' => $cityId,
+                        'branch_ids' => $item['BranchesId'],
+                        'root_clinic_id' => $item['ParentId'],
+                        'name' => $item['Name'],
+                        'short_name' => $item['ShortName'],
+                        'url' => $item['URL'],
+                        'lng' => $item['Longitude'],
+                        'lat' => $item['Latitude'],
+                        'street_id' => $item['StreetId'],
+                        'addr_city' => $item['City'],
+                        'addr_street' => $item['Street'],
+                        'addr_house' => $item['House'],
+                        'description' => $item['Description'],
+                        'short_description' => $item['ShortDescription'],
+                        'type_clinic' => $item['isClinic'] === 'yes',
+                        'type_diagnostic' => $item['IsDiagnostic'] === 'yes',
+                        'type_doctor' => $item['IsDoctor'] === 'yes',
+                        'type_text' => $item['TypeOfInstitution'],
+                        'phone' => $item['Phone'],
+                        'replacement_phone' => $item['ReplacementPhone'],
+                        'direct_phone' => $item['PhoneAppointment'],
+                        'logo' => $item['Logo'],
+                        'email' => $item['Email'],
+                        'rating' => $item['Rating'],
+                        'min_price' => $item['MinPrice'],
+                        'max_price' => $item['MaxPrice'],
+                        'online_schedule' => $item['ScheduleState'] === 'enable',
+                        'schedule' => $this->convertSchedule($item['Schedule']),
+                        'highlight_discount' => $item['HighlightDiscount'],
+                        'request_form_surname' => $item['RequestFormSurname'],
+                        'request_form_birthday' => $item['RequestFormBirthday'],
+                        'metro_ids' => array_column($item['Stations'] ?? [], 'Id'),
+                        'speciality_ids' => array_column($item['Specialities'] ?? [], 'Id'),
+                        'service_ids' => array_column($item['Services']['ServiceList'], 'ServiceId'),
+                        'diagnostic_ids' => array_column($item['Diagnostics'] ?? [], 'Id'),
+                    ]);
+                }
+
+                $start += $count;
+            } while (count($response['ClinicList']) === $count);
+        }
+
+        return collect($clinics);
+    }
+
+    /**
+     * @param array $scheduleArray
+     * @return array|null
+     */
+    protected function convertSchedule(array $scheduleArray): ?array
+    {
+        if (empty($scheduleArray)) {
+            return null;
+        }
+
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $data = [];
+        foreach ($scheduleArray as $line) {
+            $dataLine = [$line['StartTime'], $line['EndTime']];
+
+            if ($line['Day'] === '0') {
+                for ($i = 0; $i < 5; $i++) {
+                    $data[$days[$i]] = $dataLine;
+                }
+            } else {
+                $day = intval($line['Day']) - 1;
+                $data[$days[$day]] = $dataLine;
+            }
+        }
+
+        return $data;
     }
 
     /**

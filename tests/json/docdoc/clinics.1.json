@@ -1,0 +1,873 @@
+{
+    "Total": 1433,
+    "ClinicList": [
+        {
+            "Id": 44,
+            "Name": "МедЦентрСервис на Авиамоторной",
+            "ShortName": "МедЦентрСервис на Авиамоторной",
+            "RewriteName": "medtsentrservis_na_aviamotornoj",
+            "URL": "http://www.medcentrservis.ru",
+            "Longitude": "37.7165130000",
+            "Latitude": "55.7534580000",
+            "City": "Москва",
+            "Street": "ул. Авиамоторная",
+            "StreetId": "12",
+            "House": "д. 41Б",
+            "Description": "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
+            "ShortDescription": "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
+            "IsDiagnostic": "no",
+            "isClinic": "yes",
+            "IsDoctor": "no",
+            "Phone": "74952553137",
+            "PhoneAppointment": "+7 (495) 255-31-37; +7 (495) 104-77-99; +7 (495) 132-37-37; +7 (495) 151-23-32; +7 (495) 185-21-21",
+            "logoPath": "44.jpg",
+            "ScheduleState": "enable",
+            "DistrictId": "63",
+            "Email": "test@test.ru",
+            "ReplacementPhone": null,
+            "MinPrice": "1500",
+            "MaxPrice": "1500",
+            "Logo": "https://cdn.bookingtest.docdoc.pro/clinic/logo/min_44.jpg?1573413879",
+            "Stations": [
+                {
+                    "Id": "1",
+                    "Name": "Авиамоторная",
+                    "LineName": "Калининско-Солнцевская ",
+                    "LineColor": "ffdd03",
+                    "CityId": "1"
+                }
+            ],
+            "Specialities": [
+                {
+                    "Id": "70",
+                    "Name": "Венеролог",
+                    "Alias": "venerolog"
+                },
+                {
+                    "Id": "72",
+                    "Name": "Гинеколог",
+                    "Alias": "ginekolog"
+                },
+                {
+                    "Id": "73",
+                    "Name": "Дерматолог",
+                    "Alias": "dermatolog"
+                },
+                {
+                    "Id": "91",
+                    "Name": "Терапевт",
+                    "Alias": "terapevt"
+                },
+                {
+                    "Id": "93",
+                    "Name": "Уролог",
+                    "Alias": "urolog"
+                }
+            ],
+            "Services": {
+                "Total": 125,
+                "ServiceList": [
+                    {
+                        "ServiceId": 3821,
+                        "ServiceName": "Кольпоскопия расширенная",
+                        "Price": 1700,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3841,
+                        "ServiceName": "Бужирование цервикального канала",
+                        "Price": 1000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3865,
+                        "ServiceName": "Подбор контрацепции",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3819,
+                        "ServiceName": "Установка ВМС",
+                        "Price": 2500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3817,
+                        "ServiceName": "Удаление ВМС",
+                        "Price": 2500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3835,
+                        "ServiceName": "Медикаментозное прерывание беременности",
+                        "Price": 17000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3859,
+                        "ServiceName": "Раздельное диагностическое выскабливание",
+                        "Price": 4600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3849,
+                        "ServiceName": "Вскрытие абсцесса бартолиновой железы",
+                        "Price": 6200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4633,
+                        "ServiceName": "Посев на кандидоз",
+                        "Price": 750,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4625,
+                        "ServiceName": "Посев на микоплазмы",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4627,
+                        "ServiceName": "Посев на уреаплазмоз",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4611,
+                        "ServiceName": "Мазок на флору",
+                        "Price": 750,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3857,
+                        "ServiceName": "Уменьшение малых половых губ",
+                        "Price": 19000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3929,
+                        "ServiceName": "Уменьшение больших половых губ",
+                        "Price": 50000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3875,
+                        "ServiceName": "Увеличение больших половых губ",
+                        "Price": 50000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4587,
+                        "ServiceName": "Мазок на флору из уретры",
+                        "Price": 750,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4585,
+                        "ServiceName": "Проба Зимницкого",
+                        "Price": 290,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4581,
+                        "ServiceName": "Общий анализ мочи",
+                        "Price": 360,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4583,
+                        "ServiceName": "Проба Реберга",
+                        "Price": 330,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4609,
+                        "ServiceName": "Соскоб на патогенные грибы кожи",
+                        "Price": 1000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3603,
+                        "ServiceName": "Удаление папиллом лазером",
+                        "Price": 400,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3683,
+                        "ServiceName": "Удаление бородавок жидким азотом",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3607,
+                        "ServiceName": "Удаление вросшего ногтя",
+                        "Price": 3000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3723,
+                        "ServiceName": "Удаление кератомы жидким азотом",
+                        "Price": 1300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3673,
+                        "ServiceName": "Криодеструкция папиллом",
+                        "Price": 1300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3733,
+                        "ServiceName": "Криодеструкция мозоли",
+                        "Price": 1300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3731,
+                        "ServiceName": "Криодеструкция родинки",
+                        "Price": 2200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3523,
+                        "ServiceName": "Удаление кондилом жидким азотом",
+                        "Price": 1400,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4531,
+                        "ServiceName": "Вестибулометрия",
+                        "Price": 0,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3965,
+                        "ServiceName": "Продувание слуховых труб по Политцеру",
+                        "Price": 600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3963,
+                        "ServiceName": "Пневмомассаж барабанной перепонки",
+                        "Price": 450,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3951,
+                        "ServiceName": "Промывание лакун небных миндалин",
+                        "Price": 1000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4025,
+                        "ServiceName": "Промывание носа Кукушка",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3989,
+                        "ServiceName": "Промывание полости носа",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3975,
+                        "ServiceName": "Анемизация слизистой носа при кровотечениях",
+                        "Price": 400,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3955,
+                        "ServiceName": "Удаление серной пробки",
+                        "Price": 800,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3957,
+                        "ServiceName": "Удаление инородного тела из уха",
+                        "Price": 1550,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3959,
+                        "ServiceName": "Удаление инородного тела из полости носа",
+                        "Price": 1550,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3961,
+                        "ServiceName": "Удаление инородного тела из глотки",
+                        "Price": 1550,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3769,
+                        "ServiceName": "Атравматичная чистка лица",
+                        "Price": 3600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3761,
+                        "ServiceName": "Ультразвуковая чистка лица",
+                        "Price": 2100,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3775,
+                        "ServiceName": "Ручная чистка лица",
+                        "Price": 2700,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3781,
+                        "ServiceName": "Дезинкрустация",
+                        "Price": 490,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3777,
+                        "ServiceName": "ABR-пилинг",
+                        "Price": 3000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3767,
+                        "ServiceName": "Дарсонвализация",
+                        "Price": 350,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4199,
+                        "ServiceName": "Аноскопия",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4203,
+                        "ServiceName": "Иссечение анальных трещин",
+                        "Price": 10000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4201,
+                        "ServiceName": "Удаление перианальных кондилом",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4207,
+                        "ServiceName": "Склеротерапия геморроидального узла",
+                        "Price": 5600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4205,
+                        "ServiceName": "Лигирование геморроидальных узлов латексными кольцами",
+                        "Price": 6000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4063,
+                        "ServiceName": "Паравертебральная блокада",
+                        "Price": 2000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4535,
+                        "ServiceName": "Классический общий массаж",
+                        "Price": 2000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4539,
+                        "ServiceName": "Сегментарный массаж",
+                        "Price": 3000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4537,
+                        "ServiceName": "Лимфодренажный массаж",
+                        "Price": 4000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4053,
+                        "ServiceName": "Анализ волос на наркотики",
+                        "Price": 14500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3855,
+                        "ServiceName": "TORCH-комплекс",
+                        "Price": 1950,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4603,
+                        "ServiceName": "Анализ крови на ТТГ",
+                        "Price": 495,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4599,
+                        "ServiceName": "Анализ крови на т3",
+                        "Price": 495,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4601,
+                        "ServiceName": "Анализ крови на т4",
+                        "Price": 495,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4607,
+                        "ServiceName": "Анализ на тиреоглобулин",
+                        "Price": 830,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4617,
+                        "ServiceName": "Анализ крови на инсулин",
+                        "Price": 600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4631,
+                        "ServiceName": "Анализ крови на С-пептид",
+                        "Price": 520,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4639,
+                        "ServiceName": "Анализ крови на альдостерон",
+                        "Price": 700,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4637,
+                        "ServiceName": "Анализ крови на АКТГ",
+                        "Price": 920,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4675,
+                        "ServiceName": "Анализ крови на соматомедин-С",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4621,
+                        "ServiceName": "Анализ крови на кортизол",
+                        "Price": 520,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4643,
+                        "ServiceName": "Анализ крови на ренин",
+                        "Price": 1050,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4679,
+                        "ServiceName": "Анализ крови на катехоламины",
+                        "Price": 2850,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4671,
+                        "ServiceName": "Анализ крови на стерильность",
+                        "Price": 2200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4647,
+                        "ServiceName": "Анализ мочи на кортизол",
+                        "Price": 990,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4673,
+                        "ServiceName": "Анализ мочи на катехоламины",
+                        "Price": 2370,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3459,
+                        "ServiceName": "Спермограмма",
+                        "Price": 1600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4661,
+                        "ServiceName": "Анализ крови на коагулограмму",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3485,
+                        "ServiceName": "Увеличение полового члена",
+                        "Price": 30000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3483,
+                        "ServiceName": "Удаление кисты придатка яичка",
+                        "Price": 17000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3487,
+                        "ServiceName": "Удаление множественных атером мошонки",
+                        "Price": 9200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3461,
+                        "ServiceName": "Лечебный массаж простаты",
+                        "Price": 900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3469,
+                        "ServiceName": "Циркумцизио (обрезание)",
+                        "Price": 13000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3467,
+                        "ServiceName": "Пластика короткой уздечки (френулотомия)",
+                        "Price": 8200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3477,
+                        "ServiceName": "Вазорезекция (стерилизация)",
+                        "Price": 8300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3479,
+                        "ServiceName": "Операция Винкельмана при водянке яичка",
+                        "Price": 14000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3519,
+                        "ServiceName": "Удаление кондилом солкодермом",
+                        "Price": 1300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3521,
+                        "ServiceName": "Удаление кондилом лазером",
+                        "Price": 1900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4209,
+                        "ServiceName": "Иссечение свища прямой кишки",
+                        "Price": 18000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4503,
+                        "ServiceName": "Магнитолазеротерапия",
+                        "Price": 750,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3773,
+                        "ServiceName": "Микродермабразия",
+                        "Price": 1600,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3765,
+                        "ServiceName": "Озонотерапия",
+                        "Price": 1500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3473,
+                        "ServiceName": "Пункция мошонки",
+                        "Price": 2500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3475,
+                        "ServiceName": "Разделение синехий крайней плоти",
+                        "Price": 9200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3517,
+                        "ServiceName": "Удаление кондилом радиоволновым методом",
+                        "Price": 1900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3895,
+                        "ServiceName": "Электрокоагуляция кондилом",
+                        "Price": 1000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3717,
+                        "ServiceName": "Электрокоагуляция родинки",
+                        "Price": 2200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3701,
+                        "ServiceName": "Электрокоагуляция кератомы",
+                        "Price": 1900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3665,
+                        "ServiceName": "Электрокоагуляция папиллом",
+                        "Price": 1000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3699,
+                        "ServiceName": "Электрокоагуляция бородавок",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3681,
+                        "ServiceName": "Радиоволновое удаление родинки",
+                        "Price": 2200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3705,
+                        "ServiceName": "Радиоволновое удаление кератомы",
+                        "Price": 1900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3679,
+                        "ServiceName": "Радиоволновое удаление бородавок",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3691,
+                        "ServiceName": "Хирургическое удаление родинки",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3687,
+                        "ServiceName": "Хирургическое удаление липомы",
+                        "Price": 2500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3707,
+                        "ServiceName": "Хирургическое удаление фибром",
+                        "Price": 3500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3697,
+                        "ServiceName": "Хирургическое удаление папиллом",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3969,
+                        "ServiceName": "Вскрытие паратонзиллярного абсцесса",
+                        "Price": 3500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4211,
+                        "ServiceName": "Удаление полипов прямой кишки",
+                        "Price": 4000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4251,
+                        "ServiceName": "Внутривенное капельное введение растворов",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4259,
+                        "ServiceName": "Плазмаферез дискретный",
+                        "Price": 5300,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4297,
+                        "ServiceName": "Иссечение бурсы локтевого сустава",
+                        "Price": 15000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4341,
+                        "ServiceName": "Лазерная терапия волос",
+                        "Price": 500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4619,
+                        "ServiceName": "Анализ на антитела к тиреопероксидазе",
+                        "Price": 590,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4655,
+                        "ServiceName": "Анализ крови на кальцитонин",
+                        "Price": 1050,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3671,
+                        "ServiceName": "Удаление липомы лазером",
+                        "Price": 4367,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3525,
+                        "ServiceName": "Хирургическое удаление кондилом",
+                        "Price": 1900,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4659,
+                        "ServiceName": "Анализ кала на дисбактериоз",
+                        "Price": 1650,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4629,
+                        "ServiceName": "Анализ кала на скрытую кровь",
+                        "Price": 370,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4605,
+                        "ServiceName": "Анализ кала на яйца гельминтов",
+                        "Price": 500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 4613,
+                        "ServiceName": "Анализ крови на ХГЧ",
+                        "Price": 495,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3825,
+                        "ServiceName": "Операция по восстановлению девственности",
+                        "Price": 18000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3827,
+                        "ServiceName": "Гинекологический массаж",
+                        "Price": 1200,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3923,
+                        "ServiceName": "Лабиопластика",
+                        "Price": 19000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3867,
+                        "ServiceName": "Лазерное лечение эрозии шейки матки",
+                        "Price": 2800,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3861,
+                        "ServiceName": "Санация влагалища",
+                        "Price": 700,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3883,
+                        "ServiceName": "Вакуумный аборт (мини)",
+                        "Price": 16500,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3899,
+                        "ServiceName": "Хирургический аборт",
+                        "Price": 15000,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3983,
+                        "ServiceName": "Аудиометрия",
+                        "Price": 0,
+                        "SpecialPrice": null
+                    },
+                    {
+                        "ServiceId": 3851,
+                        "ServiceName": "Конизация шейки матки",
+                        "Price": 9000,
+                        "SpecialPrice": null
+                    }
+                ]
+            },
+            "Schedule": [
+                {
+                    "Day": "0",
+                    "StartTime": "00:00",
+                    "EndTime": "24:00",
+                    "DayTitle": "пн-пт"
+                },
+                {
+                    "Day": "6",
+                    "StartTime": "00:00",
+                    "EndTime": "24:00",
+                    "DayTitle": "сб"
+                },
+                {
+                    "Day": "7",
+                    "StartTime": "00:00",
+                    "EndTime": "24:00",
+                    "DayTitle": "вс"
+                }
+            ],
+            "Order": 1289.07,
+            "Rating": 9.04,
+            "TypeOfInstitution": "медицинская клиника",
+            "ParentId": 44,
+            "BranchesId": [
+                "250",
+                "251",
+                "252",
+                "253",
+                "254",
+                "255",
+                "256",
+                "257",
+                "258",
+                "259",
+                "260",
+                "2275",
+                "2276",
+                "15757",
+                "33033",
+                "42522"
+            ],
+            "LowCostDoctor": {
+                "Rating": 4.75,
+                "Price": 900
+            },
+            "HighlightDiscount": 0,
+            "RequestFormSurname": false,
+            "RequestFormBirthday": true
+        }
+    ]
+}

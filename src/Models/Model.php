@@ -9,6 +9,7 @@ use InvalidArgumentException;
 class Model
 {
     protected $required = [];
+    protected $idFields = ['id'];
 
     /**
      * @var array
@@ -21,8 +22,7 @@ class Model
      */
     public function __construct(array $data)
     {
-        $required = $this->required;
-        $required[] = 'id';
+        $required = array_merge($this->required, $this->idFields);
 
         foreach ($required as $key) {
             if (!array_key_exists($key, $data)) {
