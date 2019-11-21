@@ -2,15 +2,6 @@
 
 namespace Veezex\Medical\Tests;
 
-use Veezex\Medical\Models\Area;
-use Veezex\Medical\Models\City;
-use Veezex\Medical\Models\Clinic;
-use Veezex\Medical\Models\Diagnostic;
-use Veezex\Medical\Models\DiagnosticGroup;
-use Veezex\Medical\Models\District;
-use Veezex\Medical\Models\Metro;
-use Veezex\Medical\Models\Service;
-use Veezex\Medical\Models\Speciality;
 use Veezex\Medical\Providers\Docdoc;
 
 class DocdocTest extends MedicalTestCase
@@ -24,64 +15,63 @@ class DocdocTest extends MedicalTestCase
         $clinics = $provider->getClinics([1, 2]);
         $this->assertCount(2, $clinics);
 
-        $this->assertEquals(new Clinic([
-            'id' => 44,
-            'district_id' => 63,
-            'city_id' => 1,
-            'branch_ids' => [250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 2275, 2276, 15757, 33033, 42522],
-            'root_clinic_id' => 44,
-            'name' => 'МедЦентрСервис на Авиамоторной',
-            'short_name' => 'МедЦентрСервис на Авиамоторной',
-            'url' => 'http://www.medcentrservis.ru',
-            'lng' => "37.7165130000",
-            'lat' => "55.7534580000",
-            'street_id' => 12,
-            'addr_city' => "Москва",
-            'addr_street' => "ул. Авиамоторная",
-            'addr_house' => "д. 41Б",
-            'description' => "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
-            'short_description' => "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.",
-            'type_clinic' => true,
-            'type_diagnostic' => false,
-            'type_doctor' => false,
-            'type_text' => "медицинская клиника",
-            'phone' => "74952553137",
-            'replacement_phone' => null,
-            'direct_phone' => "+7 (495) 255-31-37; +7 (495) 104-77-99; +7 (495) 132-37-37; +7 (495) 151-23-32; +7 (495) 185-21-21",
-            'logo' => "https://cdn.bookingtest.docdoc.pro/clinic/logo/min_44.jpg?1573413879",
-            'email' => "test@test.ru",
-            'rating' => 9.04,
-            'min_price' => 1500,
-            'max_price' => 1500,
-            'online_schedule' => true,
-            'schedule' => [
-                'monday' => ['00:00', '24:00'],
-                'tuesday' => ['00:00', '24:00'],
-                'wednesday' => ['00:00', '24:00'],
-                'thursday' => ['00:00', '24:00'],
-                'friday' => ['00:00', '24:00'],
-                'saturday' => ['00:00', '24:00'],
-                'sunday' => ['00:00', '24:00'],
-            ],
-            'highlight_discount' => 0,
-            'request_form_surname' => false,
-            'request_form_birthday' => true,
-            'metro_ids' => [1],
-            'speciality_ids' => [70,72,73,91,93],
-            'service_ids' => [
-                ['id' => 3821, 'price' => 1700, 'special_price' => null],
-                ['id' => 3841, 'price' => 1000, 'special_price' => null],
-                ['id' => 3865, 'price' => 1500, 'special_price' => null],
-                ['id' => 3819, 'price' => 2500, 'special_price' => null],
-                ['id' => 3817, 'price' => 2500, 'special_price' => null],
-                ['id' => 3835, 'price' => 17000, 'special_price' => null],
-                ['id' => 3859, 'price' => 4600, 'special_price' => null],
-                ['id' => 3849, 'price' => 6200, 'special_price' => null],
-                ['id' => 4633, 'price' => 750, 'special_price' => null],
-                ['id' => 4625, 'price' => 1200, 'special_price' => 1000],
-            ],
-            'diagnostic_ids' => [],
-        ]), $clinics->get(0));
+        $clinic = $clinics->get(0);
+        $this->assertEquals($clinic->getId(), 44);
+        $this->assertEquals($clinic->getDistrictId(), 63);
+        $this->assertEquals($clinic->getCityId(), 1);
+        $this->assertEquals($clinic->getBranchIds(), [250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 2275, 2276, 15757, 33033, 42522]);
+        $this->assertEquals($clinic->getRootClinicId(), 44);
+        $this->assertEquals($clinic->getName(), 'МедЦентрСервис на Авиамоторной');
+        $this->assertEquals($clinic->getShortName(), 'МедЦентрСервис на Авиамоторной');
+        $this->assertEquals($clinic->getUrl(), 'http://www.medcentrservis.ru');
+        $this->assertEquals($clinic->getLng(), "37.7165130000");
+        $this->assertEquals($clinic->getLat(), "55.7534580000");
+        $this->assertEquals($clinic->getStreetId(), 12);
+        $this->assertEquals($clinic->getAddrCity(), "Москва");
+        $this->assertEquals($clinic->getAddrStreet(), "ул. Авиамоторная");
+        $this->assertEquals($clinic->getAddrHouse(), "д. 41Б");
+        $this->assertEquals($clinic->getDescription(), "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.");
+        $this->assertEquals($clinic->getShortDescription(), "Многопрофильный медицинский центр. Диагностика и лечение взрослых. Расположен в 7 мин. ходьбы от м. Авиамоторная. Прием происходит по предварительной записи.");
+        $this->assertEquals($clinic->getTypeClinic(), true);
+        $this->assertEquals($clinic->getTypeDiagnostic(), false);
+        $this->assertEquals($clinic->getTypeDoctor(), false);
+        $this->assertEquals($clinic->getTypeText(), "медицинская клиника");
+        $this->assertEquals($clinic->getPhone(), "74952553137");
+        $this->assertEquals($clinic->getReplacementPhone(), null);
+        $this->assertEquals($clinic->getDirectPhone(), "+7 (495) 255-31-37; +7 (495) 104-77-99; +7 (495) 132-37-37; +7 (495) 151-23-32; +7 (495) 185-21-21");
+        $this->assertEquals($clinic->getLogo(), "https://cdn.bookingtest.docdoc.pro/clinic/logo/min_44.jpg?1573413879");
+        $this->assertEquals($clinic->getEmail(), "test@test.ru");
+        $this->assertEquals($clinic->getRating(), 9.04);
+        $this->assertEquals($clinic->getMinPrice(), 1500);
+        $this->assertEquals($clinic->getMaxPrice(), 1500);
+        $this->assertEquals($clinic->getOnlineSchedule(), true);
+        $this->assertEquals($clinic->getSchedule(), [
+            'monday' => ['00:00', '24:00'],
+            'tuesday' => ['00:00', '24:00'],
+            'wednesday' => ['00:00', '24:00'],
+            'thursday' => ['00:00', '24:00'],
+            'friday' => ['00:00', '24:00'],
+            'saturday' => ['00:00', '24:00'],
+            'sunday' => ['00:00', '24:00'],
+        ]);
+        $this->assertEquals($clinic->getHighlightDiscount(), 0);
+        $this->assertEquals($clinic->getRequestFormSurname(), false);
+        $this->assertEquals($clinic->getRequestFormBirthday(), true);
+        $this->assertEquals($clinic->getMetroIds(), [1]);
+        $this->assertEquals($clinic->getSpecialityIds(), [70,72,73,91,93]);
+        $this->assertEquals($clinic->getServiceIds(), [
+            ['id' => 3821, 'price' => 1700, 'special_price' => null],
+            ['id' => 3841, 'price' => 1000, 'special_price' => null],
+            ['id' => 3865, 'price' => 1500, 'special_price' => null],
+            ['id' => 3819, 'price' => 2500, 'special_price' => null],
+            ['id' => 3817, 'price' => 2500, 'special_price' => null],
+            ['id' => 3835, 'price' => 17000, 'special_price' => null],
+            ['id' => 3859, 'price' => 4600, 'special_price' => null],
+            ['id' => 3849, 'price' => 6200, 'special_price' => null],
+            ['id' => 4633, 'price' => 750, 'special_price' => null],
+            ['id' => 4625, 'price' => 1200, 'special_price' => 1000],
+        ]);
+        $this->assertEquals($clinic->getDiagnosticIds(), []);
 
         // todo: second model test
     }
@@ -95,19 +85,17 @@ class DocdocTest extends MedicalTestCase
         $services = $provider->getServices();
         $this->assertCount(2, $services);
 
-        $this->assertEquals($services->get(0), new Service([
-            'id' => 1,
-            'diagnostic_id' => null,
-            'speciality_id' => null,
-            'name' => 'Услуги',
-        ]));
+        $service = $services->get(0);
+        $this->assertEquals($service->getId(), 1);
+        $this->assertEquals($service->getName(), 'Услуги');
+        $this->assertEquals($service->getDiagnosticId(), null);
+        $this->assertEquals($service->getSpecialityId(), null);
 
-        $this->assertEquals($services->get(1), new Service([
-            'id' => 3427,
-            'diagnostic_id' => 91,
-            'speciality_id' => 90,
-            'name' => 'Пластика уздечки верхней губы',
-        ]));
+        $service = $services->get(1);
+        $this->assertEquals($service->getId(), 3427);
+        $this->assertEquals($service->getName(), 'Пластика уздечки верхней губы');
+        $this->assertEquals($service->getDiagnosticId(), 91);
+        $this->assertEquals($service->getSpecialityId(), 90);
     }
 
     /** @test */
@@ -119,37 +107,35 @@ class DocdocTest extends MedicalTestCase
         $diagnostics = $provider->getDiagnostics();
         $this->assertCount(2, $diagnostics);
 
-        $this->assertEquals($diagnostics->get(0), new DiagnosticGroup([
-            'id' => 1,
-            'name'=> 'УЗИ (ультразвуковое исследование)',
-            'diagnostics' => collect([
-                new Diagnostic([
-                    'id' => 71,
-                    'name' => 'печени',
-                    'full_name' => 'УЗИ (ультразвуковое исследование) печени',
-                    'diagnostic_group_id' => 1,
-                ]),
-                new Diagnostic([
-                    'id' => 72,
-                    'name' => 'поджелудочной железы',
-                    'full_name' => 'УЗИ (ультразвуковое исследование) поджелудочной железы',
-                    'diagnostic_group_id' => 1,
-                ]),
-            ])
-        ]));
+        //////////
+        $diagnosticGroup = $diagnostics->get(0);
+        $this->assertEquals($diagnosticGroup->getId(), 1);
+        $this->assertEquals($diagnosticGroup->getName(), 'УЗИ (ультразвуковое исследование)');
+        $this->assertCount(2, $diagnosticGroup->getDiagnostics());
 
-        $this->assertEquals($diagnostics->get(1), new DiagnosticGroup([
-            'id' => 19,
-            'name'=> 'КТ (компьютерная томография)',
-            'diagnostics' => collect([
-                new Diagnostic([
-                    'id' => 118,
-                    'name' => 'головного мозга',
-                    'full_name' => 'КТ (компьютерная томография) головного мозга',
-                    'diagnostic_group_id' => 19,
-                ]),
-            ])
-        ]));
+        $diagnostic1 = $diagnosticGroup->getDiagnostics()->get(0);
+        $this->assertEquals($diagnostic1->getId(), 71);
+        $this->assertEquals($diagnostic1->getName(), 'печени');
+        $this->assertEquals($diagnostic1->getFullName(), 'УЗИ (ультразвуковое исследование) печени');
+        $this->assertEquals($diagnostic1->getDiagnosticGroupId(), 1);
+
+        $diagnostic2 = $diagnosticGroup->getDiagnostics()->get(1);
+        $this->assertEquals($diagnostic2->getId(), 72);
+        $this->assertEquals($diagnostic2->getName(), 'поджелудочной железы');
+        $this->assertEquals($diagnostic2->getFullName(), 'УЗИ (ультразвуковое исследование) поджелудочной железы');
+        $this->assertEquals($diagnostic2->getDiagnosticGroupId(), 1);
+
+        ////////////////
+        $diagnosticGroup = $diagnostics->get(1);
+        $this->assertEquals($diagnosticGroup->getId(), 19);
+        $this->assertEquals($diagnosticGroup->getName(), 'КТ (компьютерная томография)');
+        $this->assertCount(1, $diagnosticGroup->getDiagnostics());
+
+        $diagnostic = $diagnosticGroup->getDiagnostics()->get(0);
+        $this->assertEquals($diagnostic->getId(), 118);
+        $this->assertEquals($diagnostic->getName(), 'головного мозга');
+        $this->assertEquals($diagnostic->getFullName(), 'КТ (компьютерная томография) головного мозга');
+        $this->assertEquals($diagnostic->getDiagnosticGroupId(), 19);
     }
 
     /** @test */
@@ -161,27 +147,25 @@ class DocdocTest extends MedicalTestCase
         $specialities = $provider->getSpecialities([1,2]);
         $this->assertCount(2, $specialities);
 
-        $this->assertEquals($specialities->get(0), new Speciality([
-            'id' => 67,
-            'name'=> 'Акушер',
-            'branch_name'=> 'Акушерство',
-            'genitive_name'=> 'Акушера',
-            'plural_name'=> 'Акушеры',
-            'plural_genitive_name'=> 'Акушеров',
-            'kids_reception'=> false,
-            'city_ids' => [1,2]
-        ]));
+        $speciality = $specialities->get(0);
+        $this->assertEquals($speciality->getId(), 67);
+        $this->assertEquals($speciality->getName(), 'Акушер');
+        $this->assertEquals($speciality->getBranchName(), 'Акушерство');
+        $this->assertEquals($speciality->getGenitiveName(), 'Акушера');
+        $this->assertEquals($speciality->getPluralName(), 'Акушеры');
+        $this->assertEquals($speciality->getPluralGenitiveName(), 'Акушеров');
+        $this->assertEquals($speciality->getKidsReception(), false);
+        $this->assertEquals($speciality->getCityIds(), [1, 2]);
 
-        $this->assertEquals($specialities->get(1), new Speciality([
-            'id' => 68,
-            'name'=> 'Аллерголог',
-            'branch_name'=> 'Аллергология',
-            'genitive_name'=> 'Аллерголога',
-            'plural_name'=> 'Аллергологи',
-            'plural_genitive_name'=> 'Аллергологов',
-            'kids_reception'=> true,
-            'city_ids' => [2]
-        ]));
+        $speciality = $specialities->get(1);
+        $this->assertEquals($speciality->getId(), 68);
+        $this->assertEquals($speciality->getName(), 'Аллерголог');
+        $this->assertEquals($speciality->getBranchName(), 'Аллергология');
+        $this->assertEquals($speciality->getGenitiveName(), 'Аллерголога');
+        $this->assertEquals($speciality->getPluralName(), 'Аллергологи');
+        $this->assertEquals($speciality->getPluralGenitiveName(), 'Аллергологов');
+        $this->assertEquals($speciality->getKidsReception(), true);
+        $this->assertEquals($speciality->getCityIds(), [2]);
     }
 
     /** @test */
@@ -193,27 +177,25 @@ class DocdocTest extends MedicalTestCase
         $metros = $provider->getMetros([1,2]);
         $this->assertCount(2, $metros);
 
-        $this->assertEquals($metros->get(0), new Metro([
-            'id' => 267,
-            'city_id' => 4,
-            'name' => 'Ботаническая',
-            'line_name' => 'Первая Екатеринбург',
-            'line_color' => 'cc0000',
-            'lng' => '60.63336182',
-            'lat' => '56.79748535',
-            'district_ids' => [],
-        ]));
+        $metro = $metros->get(0);
+        $this->assertEquals($metro->getId(), 267);
+        $this->assertEquals($metro->getCityId(), 4);
+        $this->assertEquals($metro->getName(), 'Ботаническая');
+        $this->assertEquals($metro->getLineName(), 'Первая Екатеринбург');
+        $this->assertEquals($metro->getLineColor(), 'cc0000');
+        $this->assertEquals($metro->getLng(), '60.63336182');
+        $this->assertEquals($metro->getLat(), '56.79748535');
+        $this->assertEquals($metro->getDistrictIds(), []);
 
-        $this->assertEquals($metros->get(1), new Metro([
-            'id' => 1,
-            'city_id' => 1,
-            'name' => 'Авиамоторная',
-            'line_name' => 'Калининско-Солнцевская ',
-            'line_color' => 'ffdd03',
-            'lng' => '37.7166214',
-            'lat' => '55.75143051',
-            'district_ids' => [63],
-        ]));
+        $metro = $metros->get(1);
+        $this->assertEquals($metro->getId(), 1);
+        $this->assertEquals($metro->getCityId(), 1);
+        $this->assertEquals($metro->getName(), 'Авиамоторная');
+        $this->assertEquals($metro->getLineName(), 'Калининско-Солнцевская ');
+        $this->assertEquals($metro->getLineColor(), 'ffdd03');
+        $this->assertEquals($metro->getLng(), '37.7166214');
+        $this->assertEquals($metro->getLat(), '55.75143051');
+        $this->assertEquals($metro->getDistrictIds(), [63]);
     }
 
     /** @test */
@@ -225,19 +207,17 @@ class DocdocTest extends MedicalTestCase
         $districts = $provider->getDistricts([1,2]);
         $this->assertCount(2, $districts);
 
-        $this->assertEquals($districts->get(0), new District([
-            'id' => 1,
-            'name' => 'Арбат',
-            'city_id' => 1,
-            'area_id' => 1,
-        ]));
+        $district = $districts->get(0);
+        $this->assertEquals($district->getId(), 1);
+        $this->assertEquals($district->getAreaId(), 1);
+        $this->assertEquals($district->getCityId(), 1);
+        $this->assertEquals($district->getName(), 'Арбат');
 
-        $this->assertEquals($districts->get(1), new District([
-            'id' => 139,
-            'name' => 'Кировский',
-            'city_id' => 2,
-            'area_id' => null,
-        ]));
+        $district = $districts->get(1);
+        $this->assertEquals($district->getId(), 139);
+        $this->assertEquals($district->getAreaId(), null);
+        $this->assertEquals($district->getCityId(), 2);
+        $this->assertEquals($district->getName(), 'Кировский');
     }
 
     /** @test */
@@ -249,17 +229,15 @@ class DocdocTest extends MedicalTestCase
         $areas = $provider->getMoscowAreas();
         $this->assertCount(2, $areas);
 
-        $this->assertEquals($areas->get(0), new Area([
-            'id' => 1,
-            'name' => 'Центральный Округ',
-            'short_name' => 'ЦАО',
-        ]));
+        $area = $areas->get(0);
+        $this->assertEquals($area->getId(), 1);
+        $this->assertEquals($area->getName(), 'Центральный Округ');
+        $this->assertEquals($area->getShortName(), 'ЦАО');
 
-        $this->assertEquals($areas->get(1), new Area([
-            'id' => 2,
-            'name' => 'Северный Округ',
-            'short_name' => 'САО',
-        ]));
+        $area = $areas->get(1);
+        $this->assertEquals($area->getId(), 2);
+        $this->assertEquals($area->getName(), 'Северный Округ');
+        $this->assertEquals($area->getShortName(), 'САО');
     }
 
     /** @test */
@@ -271,23 +249,22 @@ class DocdocTest extends MedicalTestCase
         $cities = $provider->getCities();
         $this->assertCount(2, $cities);
 
-        $this->assertEquals($cities->get(0), new City([
-            'id' => 1,
-            'name' => 'Москва',
-            'lat' => '55.755826',
-            'lng' => '37.6173',
-            'has_diagnostic' => true,
-            'timezone_shift' => 3,
-        ]));
+        $city = $cities->get(0);
+        $this->assertEquals($city->getId(), 1);
+        $this->assertEquals($city->getName(), 'Москва');
+        $this->assertEquals($city->getLat(), '55.755826');
+        $this->assertEquals($city->getLng(), '37.6173');
+        $this->assertEquals($city->getHasDiagnostic(), true);
+        $this->assertEquals($city->getTimezoneShift(), 3);
 
-        $this->assertEquals($cities->get(1), new City([
-            'id' => 2,
-            'name' => 'Санкт-Петербург',
-            'lat' => '59.9342802',
-            'lng' => '30.3350986',
-            'has_diagnostic' => true,
-            'timezone_shift' => 3,
-        ]));
+        $city = $cities->get(1);
+        $this->assertEquals($city->getId(), 2);
+        $this->assertEquals($city->getName(), 'Санкт-Петербург');
+        $this->assertEquals($city->getLat(), '59.9342802');
+        $this->assertEquals($city->getLng(), '30.3350986');
+        $this->assertEquals($city->getHasDiagnostic(), true);
+        $this->assertEquals($city->getTimezoneShift(), 3);
+
     }
 
     /** @test */
