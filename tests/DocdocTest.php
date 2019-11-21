@@ -2,7 +2,7 @@
 
 namespace Veezex\Medical\Tests;
 
-use Veezex\Medical\Providers\Docdoc;
+use Veezex\Medical\Docdoc\Provider as Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
@@ -373,7 +373,7 @@ class DocdocTest extends MedicalTestCase
     {
         config([
             'medical-aggregators.providers' => [
-                'Veezex\Medical\Providers\Docdoc' => [
+                Docdoc::class => [
                     'test' => $test,
                     'login' => $login,
                     'password' => $password,

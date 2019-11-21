@@ -1,22 +1,23 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
 
-namespace Veezex\Medical\Providers;
+namespace Veezex\Medical\Docdoc;
 
 
 use Exception;
 use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
-use Veezex\Medical\Models\City;
-use Veezex\Medical\Models\Area;
-use Veezex\Medical\Models\DiagnosticGroup;
-use Veezex\Medical\Models\District;
-use Veezex\Medical\Models\Metro;
-use Veezex\Medical\Models\Service;
-use Veezex\Medical\Models\Speciality;
-use Veezex\Medical\Models\Clinic;
+use Veezex\Medical\Docdoc\Models\City;
+use Veezex\Medical\Docdoc\Models\Area;
+use Veezex\Medical\Docdoc\Models\DiagnosticGroup;
+use Veezex\Medical\Docdoc\Models\District;
+use Veezex\Medical\Docdoc\Models\Metro;
+use Veezex\Medical\Docdoc\Models\Service;
+use Veezex\Medical\Docdoc\Models\Speciality;
+use Veezex\Medical\Docdoc\Models\Clinic;
+use Veezex\Medical\ProviderContract;
 
-class Docdoc extends Provider
+class Provider implements ProviderContract
 {
     /**
      * @var string
