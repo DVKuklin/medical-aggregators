@@ -233,6 +233,20 @@ class Docdoc extends Provider
      * @return Collection
      * @throws Exception
      */
+    public function getDoctors(array $cityIds): Collection
+    {
+        $doctors = [];
+
+        // todo
+
+        return collect($doctors);
+    }
+
+    /**
+     * @param array $cityIds
+     * @return Collection
+     * @throws Exception
+     */
     public function getClinics(array $cityIds): Collection
     {
         $clinics = [];
