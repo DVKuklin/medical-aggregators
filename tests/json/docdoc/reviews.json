@@ -1,0 +1,86 @@
+{
+    "ReviewList": [
+        {
+            "Id": "617708",
+            "Client": "efghih cdefgh",
+            "RatingQlf": "3",
+            "RatingAtt": "3",
+            "RatingRoom": "3",
+            "Text": "Елена Михайловна не до конца раскрыла всю информацию. Доктор по внешнему виду поставила диагноз и назначила лечение.",
+            "Date": "10.11.2019",
+            "DoctorId": "1679",
+            "ClinicId": "44",
+            "Answer": "",
+            "WaitingTime": null,
+            "RatingDoctor": "5",
+            "RatingClinic": null,
+            "TagClinicLocation": false,
+            "TagClinicService": false,
+            "TagClinicCost": false,
+            "TagClinicRecommend": false,
+            "TagDoctorAttention": false,
+            "TagDoctorExplain": false,
+            "TagDoctorQuality": false,
+            "TagDoctorRecommend": false,
+            "ReceptionDate": "02.11.2019",
+            "TagDoctorSatisfied": false,
+            "RatingDoctorLabel": "Средне"
+        },
+        {
+            "Id": "370096",
+            "Client": "opqrst ghihjl",
+            "RatingQlf": "0",
+            "RatingAtt": "0",
+            "RatingRoom": "0",
+            "Text": "Все было отлично. Елена Михайловна хороший специалист. Спасибо ей большое! Отзывы только самые хорошие.",
+            "Date": "28.03.2018",
+            "DoctorId": "1679",
+            "ClinicId": "44",
+            "Answer": "111",
+            "WaitingTime": null,
+            "RatingDoctor": null,
+            "RatingClinic": null,
+            "TagClinicLocation": false,
+            "TagClinicService": false,
+            "TagClinicCost": false,
+            "TagClinicRecommend": false,
+            "TagDoctorAttention": false,
+            "TagDoctorExplain": false,
+            "TagDoctorQuality": false,
+            "TagDoctorRecommend": false,
+            "ReceptionDate": "27.03.2018",
+            "TagDoctorSatisfied": false,
+            "RatingDoctorLabel": "нет оценки"
+        }
+    ],
+    "ReviewRating": {
+        "RatingValue": 4.51,
+        "RatingCount": 498,
+        "Rating": [
+            {
+                "RatingValue": 0,
+                "RatingCount": 2
+            },
+            {
+                "RatingValue": 1,
+                "RatingCount": 27
+            },
+            {
+                "RatingValue": 2,
+                "RatingCount": 7
+            },
+            {
+                "RatingValue": 3,
+                "RatingCount": 21
+            },
+            {
+                "RatingValue": 4,
+                "RatingCount": 63
+            },
+            {
+                "RatingValue": 5,
+                "RatingCount": 378
+            }
+        ]
+    }
+}

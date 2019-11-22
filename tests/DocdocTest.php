@@ -2,11 +2,94 @@
 
 namespace Veezex\Medical\Tests;
 
+use Illuminate\Support\Collection;
 use Veezex\Medical\Docdoc\Models\DoctorDetails;
 use Veezex\Medical\Docdoc\Provider as Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_clinic_reviews()
+    {
+        $this->mockResponseFile(['reviews.json']);
+        $provider = app(Docdoc::class);
+
+        $reviews = $provider->getClinicReviews(32);
+
+        $this->assertReviews($reviews);
+    }
+
+    /** @test */
+    public function it_can_get_doctor_reviews()
+    {
+        $this->mockResponseFile(['reviews.json']);
+        $provider = app(Docdoc::class);
+
+        $reviews = $provider->getDoctorReviews(32);
+
+        $this->assertReviews($reviews);
+    }
+
+    /**
+     * @param Collection $reviews
+     */
+    protected function assertReviews(Collection $reviews)
+    {
+        $this->assertCount(2, $reviews);
+
+        // 1
+        $review = $reviews->get(0);
+        $this->assertEquals($review->getId(), 617708);
+        $this->assertEquals($review->getClient(), 'efghih cdefgh');
+        $this->assertEquals($review->getRatingQlf(), 3);
+        $this->assertEquals($review->getRatingAtt(), 3);
+        $this->assertEquals($review->getRatingRoom(), 3);
+        $this->assertEquals($review->getText(), "Елена Михайловна не до конца раскрыла всю информацию. Доктор по внешнему виду поставила диагноз и назначила лечение.");
+        $this->assertEquals($review->getReviewTs(), 1573344000);
+        $this->assertEquals($review->getDoctorId(), 1679);
+        $this->assertEquals($review->getClinicId(), 44);
+        $this->assertEquals($review->getAnswer(), null);
+        $this->assertEquals($review->getWaitingTime(), null);
+        $this->assertEquals($review->getRatingDoctor(), 5);
+        $this->assertEquals($review->getRatingClinic(), null);
+        $this->assertEquals($review->getTagClinicLocation(), false);
+        $this->assertEquals($review->getTagClinicService(), false);
+        $this->assertEquals($review->getTagClinicCost(), false);
+        $this->assertEquals($review->getTagClinicRecommend(), false);
+        $this->assertEquals($review->getTagDoctorAttention(), false);
+        $this->assertEquals($review->getTagDoctorExplain(), false);
+        $this->assertEquals($review->getTagDoctorQuality(), false);
+        $this->assertEquals($review->getTagDoctorRecommend(), false);
+        $this->assertEquals($review->getTagDoctorSatisfied(), false);
+        $this->assertEquals($review->getReceptionTs(), 1572652800);
+
+        // 2
+        $review = $reviews->get(1);
+        $this->assertEquals($review->getId(), 370096);
+        $this->assertEquals($review->getClient(), 'opqrst ghihjl');
+        $this->assertEquals($review->getRatingQlf(), null);
+        $this->assertEquals($review->getRatingAtt(), null);
+        $this->assertEquals($review->getRatingRoom(), null);
+        $this->assertEquals($review->getText(), "Все было отлично. Елена Михайловна хороший специалист. Спасибо ей большое! Отзывы только самые хорошие.");
+        $this->assertEquals($review->getReviewTs(), 1522195200);
+        $this->assertEquals($review->getDoctorId(), 1679);
+        $this->assertEquals($review->getClinicId(), 44);
+        $this->assertEquals($review->getAnswer(), '111');
+        $this->assertEquals($review->getWaitingTime(), null);
+        $this->assertEquals($review->getRatingDoctor(), null);
+        $this->assertEquals($review->getRatingClinic(), null);
+        $this->assertEquals($review->getTagClinicLocation(), false);
+        $this->assertEquals($review->getTagClinicService(), false);
+        $this->assertEquals($review->getTagClinicCost(), false);
+        $this->assertEquals($review->getTagClinicRecommend(), false);
+        $this->assertEquals($review->getTagDoctorAttention(), false);
+        $this->assertEquals($review->getTagDoctorExplain(), false);
+        $this->assertEquals($review->getTagDoctorQuality(), false);
+        $this->assertEquals($review->getTagDoctorRecommend(), false);
+        $this->assertEquals($review->getTagDoctorSatisfied(), false);
+        $this->assertEquals($review->getReceptionTs(), 1522108800);
+    }
+
     /** @test */
     public function it_can_get_doctor_details()
     {

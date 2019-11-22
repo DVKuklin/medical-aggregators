@@ -13,6 +13,7 @@ use Veezex\Medical\Docdoc\Models\DiagnosticGroup;
 use Veezex\Medical\Docdoc\Models\District;
 use Veezex\Medical\Docdoc\Models\DoctorDetails;
 use Veezex\Medical\Docdoc\Models\Metro;
+use Veezex\Medical\Docdoc\Models\Review;
 use Veezex\Medical\Docdoc\Models\Service;
 use Veezex\Medical\Docdoc\Models\Speciality;
 use Veezex\Medical\Docdoc\Models\Clinic;
@@ -217,6 +218,43 @@ class Provider implements ProviderContract
         $response = $this->apiGet("doctor/$doctorId");
 
         return new DoctorDetails($response['Doctor'][0]);
+    }
+
+    /**
+     * @param int $doctorId
+     * @return Collection
+     * @throws Exception
+     */
+    public function getDoctorReviews(int $doctorId): Collection
+    {
+        return $this->getReviews($doctorId, 'review/doctor');
+    }
+
+    /**
+     * @param int $clinicId
+     * @return Collection
+     * @throws Exception
+     */
+    public function getClinicReviews(int $clinicId): Collection
+    {
+        return $this->getReviews($clinicId, 'review/clinic');
+    }
+
+    /**
+     * @param int $entityId
+     * @param string $apiUrl
+     * @return Collection
+     * @throws Exception
+     */
+    protected function getReviews(int $entityId, string $apiUrl): Collection
+    {
+        $response = $this->apiGet("$apiUrl/$entityId");
+
+        $reviews = array_map(function($item) {
+            return new Review($item);
+        }, $response['ReviewList']);
+
+        return collect($reviews);
     }
 
     /**
