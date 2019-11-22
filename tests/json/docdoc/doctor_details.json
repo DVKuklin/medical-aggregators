@@ -1,0 +1,213 @@
+{
+    "Doctor": [
+        {
+            "Id": 32,
+            "Name": "Ниязов Аслан Абдуллаевич",
+            "Rating": "4.3",
+            "Sex": 0,
+            "Img": "https://cdn.bookingtest.docdoc.pro/doctor/32_20191025123321_small.jpg",
+            "AddPhoneNumber": "",
+            "Category": "Врач высшей категории",
+            "Degree": "",
+            "Rank": "",
+            "Description": "Проводит диагностику и лечение всех урологических и андрологических заболеваний, занимается лечением заболеваний ППП и большинства заболеваний в дерматологии. Делает УЗИ по урологии, брюшной полости и адрологии.",
+            "TextEducation": "<ul><li>Диплом по специальности \"Лечебное дело (Лечебно-профилактическое дело)\", Кабардино-Балкарский государственный университет им. Бербекова (2005 г.)</li><li>Интернатура по специальности \"Хирургия\", Кабардино-Балкарский государственный университет им. Бербекова (2006 г.)</li><li>Ординатура по специальности \"Урология\", Кабардино-Балкарский государственный университет им. Бербекова (2008 г.)</li></ul>",
+            "TextAssociation": "",
+            "TextDegree": "",
+            "TextSpec": "<div><ul><li><b>Урология</b>: обследование, диагностика, лечение всех урологических и андрологических заболеваний;</li><li>все виды манипуляций по урологии;</li><li><b>дерматовенерология</b>: заболевания ППП и большинство заболеваний в дерматологии;</li><li><b>УЗД</b>: УЗИ по урологии, брюшной полости и адрологии.</li></ul></div>",
+            "TextCourse": "\"Повышение квалификации «Урология»\", Российская медицинская академия последипломного образования Росздрава (2013 г.) \"Повышение квалификации по специальности «Ультразвуковая диагностика»\", РУДН (2016 г.) \"Повышение квалификации по специальности \"Урология\"\", ООО \"Хорс-Групп\" (2018 г.)",
+            "TextExperience": "Уролог, \"Ниармедик\", город Москва Уролог, \"Медхелп\", город Москва Уролог, \"Он клиник\", город Москва",
+            "ExperienceYear": 13,
+            "Price": 1500,
+            "SpecialPrice": null,
+            "Departure": 0,
+            "Clinics": [
+                260,
+                33033
+            ],
+            "Alias": "Niazov_Aslan",
+            "Specialities": [
+                {
+                    "Id": "93",
+                    "Name": "Уролог",
+                    "Alias": "urolog",
+                    "NameGenitive": "Уролога",
+                    "NamePlural": "Урологи",
+                    "NamePluralGenitive": "Урологов",
+                    "IsSimple": true,
+                    "BranchName": "Урология",
+                    "BranchAlias": "urologiya"
+                }
+            ],
+            "Stations": [
+                {
+                    "Id": "157",
+                    "Name": "Улица 1905 года",
+                    "LineName": "Таганско-Краснопресненская",
+                    "LineColor": "92007b",
+                    "CityId": "1",
+                    "Alias": "ulica_1905_goda",
+                    "DistrictIds": [
+                        "6"
+                    ],
+                    "Longitude": 37.56142044,
+                    "Latitude": 55.7642746
+                },
+                {
+                    "Id": "84",
+                    "Name": "Митино",
+                    "LineName": "Арбатско-Покровская",
+                    "LineColor": "003399",
+                    "CityId": "1",
+                    "Alias": "mitino",
+                    "DistrictIds": [
+                        "114"
+                    ],
+                    "Longitude": 37.36122131,
+                    "Latitude": 55.84609985
+                }
+            ],
+            "BookingClinics": [],
+            "isActive": true,
+            "KidsReception": 0,
+            "ClinicsInfo": [
+                {
+                    "ClinicId": 260,
+                    "Longitude": 37.55796,
+                    "Latitude": 55.767306,
+                    "Stations": [
+                        "157"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 93,
+                            "Price": 1500,
+                            "SpecialPrice": null,
+                            "InternalRating": 1152.202025289,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "МедЦентрСервис на Улице 1905 года",
+                    "Street": "Улица 1905 года",
+                    "House": "д. 21",
+                    "StationsDistance": [
+                        {
+                            "Station": 157,
+                            "TimeWalking": 378,
+                            "DistanceWalking": 496
+                        }
+                    ],
+                    "SlotsWork": true,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": true,
+                    "Recommend": false
+                },
+                {
+                    "ClinicId": 33033,
+                    "Longitude": 37.371416,
+                    "Latitude": 55.846305,
+                    "Stations": [
+                        "84"
+                    ],
+                    "Specialities": [
+                        {
+                            "DeparturePriceFrom": null,
+                            "DeparturePriceTo": null,
+                            "SpecialityId": 93,
+                            "Price": 1500,
+                            "SpecialPrice": null,
+                            "InternalRating": 1881.81431405,
+                            "HighlightDiscount": 0,
+                            "StandardDocDoc": false
+                        }
+                    ],
+                    "ClinicName": "МедЦентрСервис в Митино",
+                    "Street": "ул. Митинская",
+                    "House": "д. 28, корп. 3",
+                    "StationsDistance": [
+                        {
+                            "Station": 84,
+                            "TimeWalking": 651,
+                            "DistanceWalking": 884
+                        }
+                    ],
+                    "SlotsWork": true,
+                    "DiscountCondition": 1,
+                    "RequestFormSurname": false,
+                    "RequestFormBirthday": true,
+                    "Recommend": false
+                }
+            ],
+            "OpinionCount": 110,
+            "TextAbout": "Проводит диагностику и лечение всех урологических и андрологических заболеваний, занимается лечением заболеваний ППП и большинства заболеваний в дерматологии. Делает УЗИ по урологии, брюшной полости и адрологии.",
+            "Telemed": {
+                "Chat": false,
+                "Phone": false
+            },
+            "ImgFormat": "https://cdn.bookingtest.docdoc.pro/doctor/32_20191025123321.640x400.jpg?1573377005",
+            "Surname": "Ниязов",
+            "RatingLabel": "Очень хорошо",
+            "Achievements": {
+                "Courses": [
+                    {
+                        "Name": "Повышение квалификации «Урология»",
+                        "Organization": "Российская медицинская академия последипломного образования Росздрава",
+                        "Year": "2013"
+                    },
+                    {
+                        "Name": "Повышение квалификации по специальности «Ультразвуковая диагностика»",
+                        "Organization": "РУДН",
+                        "Year": "2016"
+                    }
+                ],
+                "Education": [
+                    {
+                        "Name": "Кабардино-Балкарский государственный университет им. Бербекова",
+                        "Type": "ВУЗ",
+                        "Specialization": "Лечебное дело (Лечебно-профилактическое дело)",
+                        "Year": "2005"
+                    },
+                    {
+                        "Name": "Кабардино-Балкарский государственный университет им. Бербекова",
+                        "Type": "Интернатура",
+                        "Specialization": "Хирургия",
+                        "Year": "2006"
+                    }
+                ],
+                "Experience": [
+                    {
+                        "YearBegin": "",
+                        "YearEnd": "",
+                        "City": "Москва",
+                        "Organization": "\"Ниармедик\"",
+                        "Position": "Уролог"
+                    },
+                    {
+                        "YearBegin": "2003",
+                        "YearEnd": "2005",
+                        "City": "Москва",
+                        "Organization": "\"Медхелп\"",
+                        "Position": "Уролог"
+                    }
+                ]
+            },
+            "Specialization": [
+                {
+                    "Name": "Уролог",
+                    "Illnesses": [
+                        "Аденома",
+                        "Аденома предстательной железы",
+                        "Аденома простаты",
+                        "Азооспермия"
+                    ]
+                }
+            ],
+            "RatingReviewsLabel": "Очень хороший",
+            "IsExclusivePrice": false
+        }
+    ]
+}

@@ -11,6 +11,7 @@ use Veezex\Medical\Docdoc\Models\City;
 use Veezex\Medical\Docdoc\Models\Area;
 use Veezex\Medical\Docdoc\Models\DiagnosticGroup;
 use Veezex\Medical\Docdoc\Models\District;
+use Veezex\Medical\Docdoc\Models\DoctorDetails;
 use Veezex\Medical\Docdoc\Models\Metro;
 use Veezex\Medical\Docdoc\Models\Service;
 use Veezex\Medical\Docdoc\Models\Speciality;
@@ -204,6 +205,18 @@ class Provider implements ProviderContract
         }
 
         return collect($doctors);
+    }
+
+    /**
+     * @param int $doctorId
+     * @return DoctorDetails
+     * @throws Exception
+     */
+    public function getDoctorDetails(int $doctorId): DoctorDetails
+    {
+        $response = $this->apiGet("doctor/$doctorId");
+
+        return new DoctorDetails($response['Doctor'][0]);
     }
 
     /**

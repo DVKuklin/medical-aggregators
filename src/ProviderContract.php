@@ -3,6 +3,7 @@
 namespace Veezex\Medical;
 
 use Illuminate\Support\Collection;
+use Veezex\Medical\Docdoc\Models\DoctorDetails;
 
 interface ProviderContract
 {
@@ -14,4 +15,5 @@ interface ProviderContract
     public function getServices(): Collection;
     public function getClinics(array $cityIds): Collection;
     public function getDoctors(array $cityIds): Collection;
+    public function getDoctorDetails(int $doctorId): DoctorDetails;
 }

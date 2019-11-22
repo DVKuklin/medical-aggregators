@@ -2,10 +2,75 @@
 
 namespace Veezex\Medical\Tests;
 
+use Veezex\Medical\Docdoc\Models\DoctorDetails;
 use Veezex\Medical\Docdoc\Provider as Docdoc;
 
 class DocdocTest extends MedicalTestCase
 {
+    /** @test */
+    public function it_can_get_doctor_details()
+    {
+        $this->mockResponseFile(['doctor_details.json']);
+        $provider = app(Docdoc::class);
+
+        $details = $provider->getDoctorDetails(32);
+        $this->assertInstanceOf(DoctorDetails::class, $details);
+
+        $this->assertEquals($details->getId(), 32);
+        $this->assertEquals($details->getAssociationText(), null);
+        $this->assertEquals($details->getCourses(), [
+            [
+                'name' => 'Повышение квалификации «Урология»',
+                'org' => "Российская медицинская академия последипломного образования Росздрава",
+                'year' => 2013,
+            ],
+            [
+                'name' => "Повышение квалификации по специальности «Ультразвуковая диагностика»",
+                'org' => "РУДН",
+                'year' => 2016,
+            ]
+        ]);
+        $this->assertEquals($details->getEducation(), [
+            [
+                'name' => "Кабардино-Балкарский государственный университет им. Бербекова",
+                'type' => "ВУЗ",
+                'speciality' => "Лечебное дело (Лечебно-профилактическое дело)",
+                'year' => 2005,
+            ],
+            [
+                'name' => "Кабардино-Балкарский государственный университет им. Бербекова",
+                'type' => "Интернатура",
+                'speciality' => "Хирургия",
+                'year' => 2006,
+            ],
+        ]);
+        $this->assertEquals($details->getExperience(), [
+            [
+                'years' => [null, null],
+                'city' => "Москва",
+                'org' => "\"Ниармедик\"",
+                'position' => "Уролог",
+            ],
+            [
+                'years' => [2003, 2005],
+                'city' => "Москва",
+                'org' => "\"Медхелп\"",
+                'position' => "Уролог",
+            ],
+        ]);
+        $this->assertEquals($details->getSpecialization(), [
+            [
+                'name' => "Уролог",
+                'illnesses' => [
+                    "Аденома",
+                    "Аденома предстательной железы",
+                    "Аденома простаты",
+                    "Азооспермия"
+                ]
+            ]
+        ]);
+    }
+
     /** @test */
     public function it_can_get_doctors()
     {
