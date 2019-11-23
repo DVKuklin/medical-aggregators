@@ -280,11 +280,11 @@ class Clinic extends Model
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getHighlightDiscount(): int
+    public function getHighlightDiscount(): ?int
     {
-        return $this->get('HighlightDiscount');
+        return $this->get('HighlightDiscount') ?: null;
     }
 
     /**
