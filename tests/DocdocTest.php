@@ -437,11 +437,13 @@ class DocdocTest extends MedicalTestCase
 
         $diagnostic1 = $diagnosticGroup->getDiagnostics()->get(0);
         $this->assertEquals($diagnostic1->getId(), 71);
-        $this->assertEquals($diagnostic1->getName(), 'печени');
+        $this->assertEquals($diagnostic1->getShortName(), 'печени');
+        $this->assertEquals($diagnostic1->getName(), 'УЗИ (ультразвуковое исследование) печени');
 
         $diagnostic2 = $diagnosticGroup->getDiagnostics()->get(1);
         $this->assertEquals($diagnostic2->getId(), 72);
-        $this->assertEquals($diagnostic2->getName(), 'поджелудочной железы');
+        $this->assertEquals($diagnostic2->getShortName(), 'поджелудочной железы');
+        $this->assertEquals($diagnostic2->getName(), 'УЗИ (ультразвуковое исследование) поджелудочной железы');
 
         // 2
         $diagnosticGroup = $diagnostics->get(1);
@@ -451,7 +453,8 @@ class DocdocTest extends MedicalTestCase
 
         $diagnostic = $diagnosticGroup->getDiagnostics()->get(0);
         $this->assertEquals($diagnostic->getId(), 118);
-        $this->assertEquals($diagnostic->getName(), 'головного мозга');
+        $this->assertEquals($diagnostic->getShortName(), 'головного мозга');
+        $this->assertEquals($diagnostic->getName(), 'КТ (компьютерная томография) головного мозга');
     }
 
     /** @test */

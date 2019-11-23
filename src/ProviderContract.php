@@ -13,7 +13,7 @@ interface ProviderContract
     public function getDistricts(array $cityIds): Collection;
     public function getMetros(array $cityIds): Collection;
     public function getSpecialities(array $cityIds): Collection;
-    public function getDiagnostics(): Collection;
+    public function getDiagnosticGroups(): Collection;
     public function getServices(): Collection;
     public function getClinics(array $cityIds): Collection;
     public function getDoctors(array $cityIds): Collection;

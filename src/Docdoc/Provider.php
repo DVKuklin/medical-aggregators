@@ -165,7 +165,7 @@ class Provider implements ProviderContract
      * @return Collection
      * @throws \Exception
      */
-    public function getDiagnostics(): Collection
+    public function getDiagnosticGroups(): Collection
     {
         $response = $this->apiGet('diagnostic');
 

@@ -24,7 +24,7 @@ class DiagnosticGroup extends Model
     public function getDiagnostics(): Collection
     {
         return collect(array_map(function($item) {
-            return new Diagnostic($item);
+            return new Diagnostic(array_merge($item, ['GroupName' => $this->getName()]));
         }, $this->get('SubDiagnosticList')));
     }
 }
