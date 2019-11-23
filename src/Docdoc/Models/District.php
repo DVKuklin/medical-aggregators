@@ -6,7 +6,7 @@ namespace Veezex\Medical\Docdoc\Models;
 
 class District extends Model
 {
-    protected $required = ['Id', 'CityId', 'Name', 'Area.Id'];
+    protected $required = ['Id', 'CityId', 'Name'];
 
     /**
      * @return int
