@@ -426,7 +426,7 @@ class DocdocTest extends MedicalTestCase
         $this->mockResponseFile(['diagnostics.json']);
         $provider = app(Docdoc::class);
 
-        $diagnostics = $provider->getDiagnostics();
+        $diagnostics = $provider->getDiagnosticGroups();
         $this->assertCount(2, $diagnostics);
 
         // 1
