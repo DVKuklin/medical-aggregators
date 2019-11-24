@@ -356,8 +356,8 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($clinic->getName(), 'Новая Больница');
         $this->assertEquals($clinic->getShortName(), 'Новая Больница');
         $this->assertEquals($clinic->getUrl(), "https://newhospital.ru/");
-        $this->assertEquals($clinic->getLng(), "60.5526580000");
-        $this->assertEquals($clinic->getLat(), "56.8313000000");
+        $this->assertEquals($clinic->getLng(), null);
+        $this->assertEquals($clinic->getLat(), null);
         $this->assertEquals($clinic->getStreetId(), 5885);
         $this->assertEquals($clinic->getAddrCity(), "Екатеринбург");
         $this->assertEquals($clinic->getAddrStreet(), "ул. Заводская");

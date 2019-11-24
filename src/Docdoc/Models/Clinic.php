@@ -102,17 +102,17 @@ class Clinic extends Model
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLng(): string
+    public function getLng(): ?string
     {
         return $this->get('Longitude');
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLat(): string
+    public function getLat(): ?string
     {
         return $this->get('Latitude');
     }
