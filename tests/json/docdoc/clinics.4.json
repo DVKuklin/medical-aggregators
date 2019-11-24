@@ -79,26 +79,7 @@
                 "Total": 0,
                 "ServiceList": []
             },
-            "Schedule": [
-                {
-                    "Day": "0",
-                    "StartTime": "07:30",
-                    "EndTime": "20:00",
-                    "DayTitle": "пн-пт"
-                },
-                {
-                    "Day": "6",
-                    "StartTime": "08:00",
-                    "EndTime": "18:00",
-                    "DayTitle": "сб"
-                },
-                {
-                    "Day": "7",
-                    "StartTime": "08:00",
-                    "EndTime": "16:00",
-                    "DayTitle": "вс"
-                }
-            ],
+            "Schedule": [],
             "Order": 80,
             "Rating": 9,
             "TypeOfInstitution": "многопрофильный медицинский центр",

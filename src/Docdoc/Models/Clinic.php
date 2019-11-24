@@ -270,9 +270,9 @@ class Clinic extends Model
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getSchedule(): array
+    public function getSchedule(): ?array
     {
         return $this->convertSchedule(
             $this->get('Schedule')
