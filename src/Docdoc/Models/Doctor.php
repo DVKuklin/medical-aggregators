@@ -124,9 +124,9 @@ class Doctor extends Model
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): ?int
     {
         return $this->get('Price');
     }
