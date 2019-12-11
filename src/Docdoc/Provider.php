@@ -49,7 +49,7 @@ class Provider implements ProviderContract
      */
     public function __construct(array $settings)
     {
-        $this->endpoint = $settings['test'] === 'true'
+        $this->endpoint = $settings['test']
             ? 'https://api.bookingtest.docdoc.pro/public/rest/1.0.12/'
             : 'https://back.docdoc.ru/public/rest/1.0.12/';
 
