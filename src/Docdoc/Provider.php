@@ -7,17 +7,6 @@ namespace Veezex\Medical\Docdoc;
 use Exception;
 use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
-use Veezex\Medical\Docdoc\Models\City;
-use Veezex\Medical\Docdoc\Models\Area;
-use Veezex\Medical\Docdoc\Models\DiagnosticGroup;
-use Veezex\Medical\Docdoc\Models\District;
-use Veezex\Medical\Docdoc\Models\DoctorDetails;
-use Veezex\Medical\Docdoc\Models\Metro;
-use Veezex\Medical\Docdoc\Models\Review;
-use Veezex\Medical\Docdoc\Models\Service;
-use Veezex\Medical\Docdoc\Models\Speciality;
-use Veezex\Medical\Docdoc\Models\Clinic;
-use Veezex\Medical\Docdoc\Models\Doctor;
 use Veezex\Medical\ProviderContract;
 
 class Provider implements ProviderContract
@@ -42,6 +31,10 @@ class Provider implements ProviderContract
      * @var int
      */
     private $retry_after;
+    /**
+     * @var array
+     */
+    private $models;
 
     /**
      * Docdoc constructor.
@@ -57,6 +50,7 @@ class Provider implements ProviderContract
         $this->password = $settings['password'];
         $this->max_tries = $settings['max_tries'];
         $this->retry_after = $settings['retry_after'];
+        $this->models = $settings['models'];
     }
 
     /**
@@ -76,7 +70,7 @@ class Provider implements ProviderContract
         $response = $this->apiGet('city');
 
         return collect(array_map(function($item) {
-            return new City($item);
+            return new $this->models['City']($item);
         }, $response['CityList']));
     }
 
@@ -89,7 +83,7 @@ class Provider implements ProviderContract
         $response = $this->apiGet('area');
 
         return collect(array_map(function($item) {
-            return new Area($item);
+            return new $this->models['Area']($item);
         }, $response['AreaList']));
     }
 
@@ -106,7 +100,7 @@ class Provider implements ProviderContract
             $response = $this->apiGet("district/city/$cityId");
 
             $districts = array_merge($districts, array_map(function($item) use ($cityId) {
-                return new District(array_merge($item, ['CityId' => $cityId]));
+                return new $this->models['District'](array_merge($item, ['CityId' => $cityId]));
             }, $response['DistrictList']));
         }
 
@@ -126,7 +120,7 @@ class Provider implements ProviderContract
             $response = $this->apiGet("metro/city/$cityId");
 
             $metros = array_merge($metros, array_map(function($item) {
-                return new Metro($item);
+                return new $this->models['Metro']($item);
             }, $response['MetroList']));
         }
 
@@ -157,7 +151,7 @@ class Provider implements ProviderContract
         }
 
         return collect(array_map(function($item) {
-            return new Speciality($item);
+            return new $this->models['Speciality']($item);
         }, array_values($specialities)));
     }
 
@@ -170,7 +164,7 @@ class Provider implements ProviderContract
         $response = $this->apiGet('diagnostic');
 
         return collect(array_map(function($item) {
-            return new DiagnosticGroup($item);
+            return new $this->models['DiagnosticGroup']($item);
         }, $response['DiagnosticList']));
     }
 
@@ -183,7 +177,7 @@ class Provider implements ProviderContract
         $response = $this->apiGet('service/list');
 
         $services = array_map(function($item) {
-            return new Service($item);
+            return new $this->models['Service']($item);
         }, $response['ServiceList']);
 
         return collect($services);
@@ -206,7 +200,7 @@ class Provider implements ProviderContract
                 $response = $this->apiGet("doctor/list/city/$cityId/start/$start/count/$count");
 
                 foreach ($response['DoctorList'] as $item) {
-                    $doctors[] = new Doctor(array_merge($item, ['CityId' => $cityId]));
+                    $doctors[] = new $this->models['Doctor'](array_merge($item, ['CityId' => $cityId]));
                 }
 
                 $start += $count;
@@ -218,14 +212,14 @@ class Provider implements ProviderContract
 
     /**
      * @param int $doctorId
-     * @return DoctorDetails
+     * @return mixed
      * @throws Exception
      */
-    public function getDoctorDetails(int $doctorId): DoctorDetails
+    public function getDoctorDetails(int $doctorId)
     {
         $response = $this->apiGet("doctor/$doctorId");
 
-        return new DoctorDetails($response['Doctor'][0]);
+        return new $this->models['DoctorDetails']($response['Doctor'][0]);
     }
 
     /**
@@ -259,7 +253,7 @@ class Provider implements ProviderContract
         $response = $this->apiGet("$apiUrl/$entityId");
 
         $reviews = array_map(function($item) {
-            return new Review($item);
+            return new $this->models['Review']($item);
         }, $response['ReviewList']);
 
         return collect($reviews);
@@ -282,7 +276,7 @@ class Provider implements ProviderContract
                 $response = $this->apiGet("clinic/list/city/$cityId/start/$start/count/$count");
 
                 foreach ($response['ClinicList'] as $item) {
-                    $clinics[] = new Clinic(array_merge($item, ['CityId' => $cityId]));
+                    $clinics[] = new $this->models['Clinic'](array_merge($item, ['CityId' => $cityId]));
                 }
 
                 $start += $count;
