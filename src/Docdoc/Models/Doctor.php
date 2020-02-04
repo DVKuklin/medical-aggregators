@@ -37,7 +37,7 @@ class Doctor extends Model
     /**
      * @return array
      */
-    public function getSpecialities(): array
+    public function getSpecialityIds(): array
     {
         $specialities = $this->get('Specialities');
         if (!is_array($specialities)) {
@@ -52,7 +52,7 @@ class Doctor extends Model
     /**
      * @return array
      */
-    public function getStations(): array
+    public function getStationIds(): array
     {
         $stations = $this->get('Stations');
         if (!is_array($stations)) {

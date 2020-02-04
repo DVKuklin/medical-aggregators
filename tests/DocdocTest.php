@@ -166,8 +166,8 @@ class DocdocTest extends MedicalTestCase
         // 1
         $doctor = $doctors->get(0);
         $this->assertEquals($doctor->getId(), 9587);
-        $this->assertEquals($doctor->getStations(), [18]);
-        $this->assertEquals($doctor->getSpecialities(), [72]);
+        $this->assertEquals($doctor->getStationIds(), [18]);
+        $this->assertEquals($doctor->getSpecialityIds(), [72]);
         $this->assertEquals($doctor->getCityId(), 1);
         $this->assertEquals($doctor->getName(), "Киселёва Татьяна Юрьевна");
         $this->assertEquals($doctor->getSex(), 'female');
@@ -203,8 +203,8 @@ class DocdocTest extends MedicalTestCase
         // 2
         $doctor = $doctors->get(1);
         $this->assertEquals($doctor->getId(), 13581);
-        $this->assertEquals($doctor->getStations(), [266,265,323]);
-        $this->assertEquals($doctor->getSpecialities(), [74,155,177]);
+        $this->assertEquals($doctor->getStationIds(), [266,265,323]);
+        $this->assertEquals($doctor->getSpecialityIds(), [74,155,177]);
         $this->assertEquals($doctor->getCityId(), 2);
         $this->assertEquals($doctor->getName(), "Рубцова Ольга Игоревна");
         $this->assertEquals($doctor->getSex(), 'male');
