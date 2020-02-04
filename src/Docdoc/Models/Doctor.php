@@ -30,8 +30,24 @@ class Doctor extends Model
         'BookingClinics',
         'Clinics',
         'ClinicsInfo',
-        'Stations'
+        'Stations',
+        'Specialities'
     ];
+
+    /**
+     * @return array
+     */
+    public function getSpecialities(): array
+    {
+        $specialities = $this->get('Specialities');
+        if (!is_array($specialities)) {
+            return [];
+        }
+
+        return array_map(function($station) {
+            return intval($station['Id']);
+        }, $specialities);
+    }
 
     /**
      * @return array

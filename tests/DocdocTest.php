@@ -167,6 +167,7 @@ class DocdocTest extends MedicalTestCase
         $doctor = $doctors->get(0);
         $this->assertEquals($doctor->getId(), 9587);
         $this->assertEquals($doctor->getStations(), [18]);
+        $this->assertEquals($doctor->getSpecialities(), [73]);
         $this->assertEquals($doctor->getCityId(), 1);
         $this->assertEquals($doctor->getName(), "Киселёва Татьяна Юрьевна");
         $this->assertEquals($doctor->getSex(), 'female');
