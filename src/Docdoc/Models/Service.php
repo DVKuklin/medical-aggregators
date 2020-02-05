@@ -11,9 +11,9 @@ class Service extends Model
     /**
      * @return string
      */
-    public function getDepth(): string
+    public function getDepth(): int
     {
-        return $this->get('Depth');
+        return intval($this->get('Depth'));
     }
 
     /**
