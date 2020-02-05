@@ -405,12 +405,14 @@ class DocdocTest extends MedicalTestCase
 
         $service = $services->get(0);
         $this->assertEquals($service->getId(), 1);
+        $this->assertEquals($service->getDepth(), 0);
         $this->assertEquals($service->getName(), 'Услуги');
         $this->assertEquals($service->getDiagnosticId(), null);
         $this->assertEquals($service->getSpecialityId(), null);
 
         $service = $services->get(1);
         $this->assertEquals($service->getId(), 3427);
+        $this->assertEquals($service->getDepth(), 2);
         $this->assertEquals($service->getName(), 'Пластика уздечки верхней губы');
         $this->assertEquals($service->getDiagnosticId(), 91);
         $this->assertEquals($service->getSpecialityId(), 90);
