@@ -360,7 +360,10 @@ class Clinic extends Model
         $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         $data = [];
         foreach ($scheduleArray as $line) {
-            $dataLine = [$line['StartTime'], $line['EndTime']];
+            $dataLine = [
+                'from' => $this->timeStringToMinutes($line['StartTime']),
+                'to' => $this->timeStringToMinutes($line['EndTime'])
+            ];
 
             if ($line['Day'] === '0') {
                 for ($i = 0; $i < 5; $i++) {
@@ -375,4 +378,14 @@ class Clinic extends Model
         return $data;
     }
 
+    /**
+     * @param string $time
+     *
+     * @return integer
+     */
+    protected function timeStringToMinutes(string $time): int
+    {
+        [$hours, $minutes] = explode(':', $time);
+        return intval($hours) * 60 + intval($minutes);
+    }
 }

@@ -323,13 +323,13 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($clinic->getMaxPrice(), 1500);
         $this->assertEquals($clinic->getOnlineSchedule(), true);
         $this->assertEquals($clinic->getSchedule(), [
-            'monday' => ['00:00', '24:00'],
-            'tuesday' => ['00:00', '24:00'],
-            'wednesday' => ['00:00', '24:00'],
-            'thursday' => ['00:00', '24:00'],
-            'friday' => ['00:00', '24:00'],
-            'saturday' => ['00:00', '24:00'],
-            'sunday' => ['00:00', '24:00'],
+            'monday' => ['from' => 0, 'to' => 1440],
+            'tuesday' => ['from' => 0, 'to' => 1440],
+            'wednesday' => ['from' => 0, 'to' => 1440],
+            'thursday' => ['from' => 0, 'to' => 1440],
+            'friday' => ['from' => 0, 'to' => 1440],
+            'saturday' => ['from' => 0, 'to' => 1440],
+            'sunday' => ['from' => 0, 'to' => 1440],
         ]);
         $this->assertEquals($clinic->getHighlightDiscount(), 0);
         $this->assertEquals($clinic->getRequestFormSurname(), false);
