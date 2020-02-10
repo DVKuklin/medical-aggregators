@@ -72,7 +72,7 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($review->getRatingRoom(), null);
         $this->assertEquals($review->getText(), "Все было отлично. Елена Михайловна хороший специалист. Спасибо ей большое! Отзывы только самые хорошие.");
         $this->assertEquals($review->getReviewTs(), 1522195200);
-        $this->assertEquals($review->getDoctorId(), 1679);
+        $this->assertEquals($review->getDoctorId(), null);
         $this->assertEquals($review->getClinicId(), 44);
         $this->assertEquals($review->getAnswer(), '111');
         $this->assertEquals($review->getWaitingTime(), null);

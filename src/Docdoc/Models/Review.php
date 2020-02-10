@@ -41,9 +41,9 @@ class Review extends Model
     }
 
     /**
-     * @return int
+     * @return null|int
      */
-    public function getDoctorId(): int
+    public function getDoctorId(): ?int
     {
         return $this->get('DoctorId');
     }
