@@ -9,6 +9,11 @@ use Veezex\Medical\Docdoc\Provider as Docdoc;
 class DocdocTest extends MedicalTestCase
 {
     /** @test */
+    public function it_can_get_provider_name() {
+        $this->assertEquals('Docdoc', Docdoc::getProviderName());
+    }
+
+    /** @test */
     public function it_can_get_clinic_reviews()
     {
         $this->mockResponseFile(['reviews.json']);

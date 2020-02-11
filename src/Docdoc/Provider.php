@@ -56,7 +56,7 @@ class Provider implements ProviderContract
     /**
      * @return string
      */
-    public function getProviderName(): string
+    public static function getProviderName(): string
     {
         return 'Docdoc';
     }
