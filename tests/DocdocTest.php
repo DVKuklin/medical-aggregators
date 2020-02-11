@@ -10,7 +10,7 @@ class DocdocTest extends MedicalTestCase
 {
     /** @test */
     public function it_can_get_provider_name() {
-        $this->assertEquals('Docdoc', Docdoc::getProviderName());
+        $this->assertEquals('Docdoc', app(Docdoc::class)->getProviderName());
     }
 
     /** @test */

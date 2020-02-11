@@ -7,7 +7,7 @@ use Veezex\Medical\Docdoc\Models\DoctorDetails;
 
 interface ProviderContract
 {
-    public static function getProviderName(): string;
+    public function getProviderName(): string;
     public function getCities(): Collection;
     public function getMoscowAreas(): Collection;
     public function getDistricts(array $cityIds): Collection;
