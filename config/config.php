@@ -25,6 +25,7 @@ return [
                 'Speciality' => Veezex\Medical\Docdoc\Models\Speciality::class,
                 'Clinic' => Veezex\Medical\Docdoc\Models\Clinic::class,
                 'Doctor' => Veezex\Medical\Docdoc\Models\Doctor::class,
+                'Slot' => Veezex\Medical\Docdoc\Models\Slot::class,
             ]
         ],
     ]

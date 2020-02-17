@@ -69,7 +69,7 @@ class Provider implements ProviderContract
     {
         $response = $this->apiGet('city');
 
-        return collect(array_map(function($item) {
+        return collect(array_map(function ($item) {
             return new $this->models['City']($item);
         }, $response['CityList']));
     }
@@ -82,7 +82,7 @@ class Provider implements ProviderContract
     {
         $response = $this->apiGet('area');
 
-        return collect(array_map(function($item) {
+        return collect(array_map(function ($item) {
             return new $this->models['Area']($item);
         }, $response['AreaList']));
     }
@@ -99,7 +99,7 @@ class Provider implements ProviderContract
         foreach ($cityIds as $cityId) {
             $response = $this->apiGet("district/city/$cityId");
 
-            $districts = array_merge($districts, array_map(function($item) use ($cityId) {
+            $districts = array_merge($districts, array_map(function ($item) use ($cityId) {
                 return new $this->models['District'](array_merge($item, ['CityId' => $cityId]));
             }, $response['DistrictList']));
         }
@@ -119,7 +119,7 @@ class Provider implements ProviderContract
         foreach ($cityIds as $cityId) {
             $response = $this->apiGet("metro/city/$cityId");
 
-            $metros = array_merge($metros, array_map(function($item) {
+            $metros = array_merge($metros, array_map(function ($item) {
                 return new $this->models['Metro']($item);
             }, $response['MetroList']));
         }
@@ -150,7 +150,7 @@ class Provider implements ProviderContract
             }
         }
 
-        return collect(array_map(function($item) {
+        return collect(array_map(function ($item) {
             return new $this->models['Speciality']($item);
         }, array_values($specialities)));
     }
@@ -163,7 +163,7 @@ class Provider implements ProviderContract
     {
         $response = $this->apiGet('diagnostic');
 
-        return collect(array_map(function($item) {
+        return collect(array_map(function ($item) {
             return new $this->models['DiagnosticGroup']($item);
         }, $response['DiagnosticList']));
     }
@@ -176,7 +176,7 @@ class Provider implements ProviderContract
     {
         $response = $this->apiGet('service/list');
 
-        $services = array_map(function($item) {
+        $services = array_map(function ($item) {
             return new $this->models['Service']($item);
         }, $response['ServiceList']);
 
@@ -193,7 +193,6 @@ class Provider implements ProviderContract
         $doctors = [];
 
         foreach ($cityIds as $cityId) {
-
             $start = 0;
             $count = 500;
             do {
@@ -252,7 +251,7 @@ class Provider implements ProviderContract
     {
         $response = $this->apiGet("$apiUrl/$entityId");
 
-        $reviews = array_map(function($item) {
+        $reviews = array_map(function ($item) {
             return new $this->models['Review']($item);
         }, $response['ReviewList']);
 
@@ -269,7 +268,6 @@ class Provider implements ProviderContract
         $clinics = [];
 
         foreach ($cityIds as $cityId) {
-
             $start = 0;
             $count = 500;
             do {
@@ -284,6 +282,25 @@ class Provider implements ProviderContract
         }
 
         return collect($clinics);
+    }
+
+    /**
+     * @param integer $doctorId
+     * @param integer $clinicId
+     * @param integer $days
+     *
+     * @return Collection
+     */
+    public function getDoctorSlots(int $doctorId, int $clinicId, int $days): Collection
+    {
+        $from = date('Y-m-d');
+        $to = date('Y-m-d', time() + ($days * 24 * 3600));
+
+        $response = $this->apiGet("slot/list/doctor/{$doctorId}/clinic/{$clinicId}/from/{$from}/to/{$to}");
+
+        return collect($response['SlotList'])->transform(function($item) {
+            return new $this->models['Slot']($item);
+        });
     }
 
     /**

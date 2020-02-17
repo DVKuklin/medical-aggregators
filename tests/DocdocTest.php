@@ -96,6 +96,30 @@ class DocdocTest extends MedicalTestCase
     }
 
     /** @test */
+    public function it_can_get_doctor_slots()
+    {
+        $this->mockResponseFile(['slots.json']);
+        $provider = app(Docdoc::class);
+
+        $slots = $provider->getDoctorSlots(10, 20, 3);
+
+        $this->assertCount(8, $slots);
+
+        $slot0 = $slots->get(0);
+        $this->assertEquals($slot0->getStartTime(), '2020-02-18 14:00:00');
+        $this->assertEquals($slot0->getFinishTime(), '2020-02-18 14:15:00');
+        $this->assertCount(8, $slots);
+
+        $slot2 = $slots->get(2);
+        $this->assertEquals($slot2->getStartTime(), '2020-02-18 14:30:00');
+        $this->assertEquals($slot2->getFinishTime(), '2020-02-18 14:45:00');
+
+        $slot7 = $slots->get(7);
+        $this->assertEquals($slot7->getStartTime(), '2020-02-18 15:45:00');
+        $this->assertEquals($slot7->getFinishTime(), '2020-02-18 16:00:00');
+    }
+
+    /** @test */
     public function it_can_get_doctor_details()
     {
         $this->mockResponseFile(['doctor_details.json']);
@@ -670,6 +694,7 @@ class DocdocTest extends MedicalTestCase
                         'Speciality' => \Veezex\Medical\Docdoc\Models\Speciality::class,
                         'Clinic' => \Veezex\Medical\Docdoc\Models\Clinic::class,
                         'Doctor' => \Veezex\Medical\Docdoc\Models\Doctor::class,
+                        'Slot' => \Veezex\Medical\Docdoc\Models\Slot::class,
                     ]
                 ],
             ],
