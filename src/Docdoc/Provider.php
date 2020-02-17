@@ -310,6 +310,12 @@ class Provider implements ProviderContract
             }
         }
 
-        return json_decode($result->getBody(), true);
+        $result = json_decode($result->getBody(), true);
+
+        if (array_key_exists('status', $result) && $result['status'] === 'error') {
+            throw new Exception('Medical loader exception: ' . $result['message']);
+        }
+
+        return $result;
     }
 }
