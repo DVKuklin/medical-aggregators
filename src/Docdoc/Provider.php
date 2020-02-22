@@ -304,6 +304,25 @@ class Provider implements ProviderContract
     }
 
     /**
+     * @param integer $diagnosticId
+     * @param integer $clinicId
+     * @param integer $days
+     *
+     * @return Collection
+     */
+    public function getDiagnosticSlots(int $diagnosticId, int $clinicId, int $days): Collection
+    {
+        $from = date('Y-m-d');
+        $to = date('Y-m-d', time() + ($days * 24 * 3600));
+
+        $response = $this->apiGet("slot/list/diagnostic/{$diagnosticId}/clinic/{$clinicId}/from/{$from}/to/{$to}");
+
+        return collect($response['SlotList'])->transform(function($item) {
+            return new $this->models['Slot']($item);
+        });
+    }
+
+    /**
      * @param string $uri
      * @return array
      * @throws \Exception

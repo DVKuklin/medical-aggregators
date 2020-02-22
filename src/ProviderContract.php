@@ -17,6 +17,7 @@ interface ProviderContract
     public function getServices(): Collection;
     public function getClinics(array $cityIds): Collection;
     public function getDoctorSlots(int $doctorId, int $clinicId, int $days): Collection;
+    public function getDiagnosticSlots(int $diagnosticId, int $clinicId, int $days): Collection;
     public function getDoctors(array $cityIds): Collection;
     public function getDoctorDetails(int $doctorId);
     public function getClinicReviews(int $clinicId): Collection;
