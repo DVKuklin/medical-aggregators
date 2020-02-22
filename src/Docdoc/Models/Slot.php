@@ -11,6 +11,14 @@ class Slot extends Model
     /**
      * @return string
      */
+    public function getSlotId(): string
+    {
+        return $this->get('Id');
+    }
+
+    /**
+     * @return string
+     */
     public function getStartTime(): string
     {
         return $this->get('StartTime');
