@@ -44,7 +44,7 @@ class Provider implements ProviderContract
     {
         $this->endpoint = $settings['test']
             ? 'https://api.bookingtest.docdoc.pro/public/rest/1.0.12/'
-            : 'https://back.docdoc.ru/public/rest/1.0.12/';
+            : 'https://api.docdoc.ru/public/rest/1.0.12/';
 
         $this->login = $settings['login'];
         $this->password = $settings['password'];
