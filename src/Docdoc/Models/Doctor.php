@@ -13,6 +13,7 @@ class Doctor extends Model
         'Sex',
         'Rating',
         'Img',
+        'ImgFormat',
         'Category',
         'Degree',
         'Rank',
@@ -105,6 +106,14 @@ class Doctor extends Model
     public function getImage(): string
     {
         return $this->get('Img');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageFormat(): ?string
+    {
+        return $this->get('ImgFormat');
     }
 
     /**

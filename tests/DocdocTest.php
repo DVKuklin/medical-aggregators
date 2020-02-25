@@ -232,6 +232,7 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($doctor->getSex(), 'female');
         $this->assertEquals($doctor->getRating(), 4.6);
         $this->assertEquals($doctor->getImage(), 'https://cdn.bookingtest.docdoc.pro/doctor/9587_small.jpg');
+        $this->assertEquals($doctor->getImageFormat(), 'https://cdn.bookingtest.docdoc.pro/doctor/9587.640x400.jpg?1574019605');
         $this->assertEquals($doctor->getCategory(), 'Врач высшей категории');
         $this->assertEquals($doctor->getPhoneNumber(), null);
         $this->assertEquals($doctor->getDegree(), null);
@@ -269,6 +270,7 @@ class DocdocTest extends MedicalTestCase
         $this->assertEquals($doctor->getSex(), 'male');
         $this->assertEquals($doctor->getRating(), 4.4);
         $this->assertEquals($doctor->getImage(), 'https://cdn.bookingtest.docdoc.pro/doctor/13581_small.jpg');
+        $this->assertEquals($doctor->getImageFormat(), 'https://cdn.bookingtest.docdoc.pro/doctor/13581.640x400.jpg?1573947997');
         $this->assertEquals($doctor->getCategory(), null);
         $this->assertEquals($doctor->getPhoneNumber(), 'тел 1');
         $this->assertEquals($doctor->getDegree(), 'степень 1');
