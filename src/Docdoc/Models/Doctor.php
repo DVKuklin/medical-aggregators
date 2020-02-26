@@ -101,9 +101,9 @@ class Doctor extends Model
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->get('Img');
     }

@@ -222,9 +222,9 @@ class Clinic extends Model
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLogo(): string
+    public function getLogo(): ?string
     {
         return $this->get('Logo');
     }
