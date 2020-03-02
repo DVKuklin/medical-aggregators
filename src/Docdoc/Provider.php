@@ -327,9 +327,10 @@ class Provider implements ProviderContract
      *
      * @return void
      */
-    public function postRequest(array $data): void
+    public function postRequest(array $data): int
     {
         $response = $this->apiPost("request", $data);
+        return $response['Response']['id'];
     }
 
     /**

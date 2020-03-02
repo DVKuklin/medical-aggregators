@@ -619,6 +619,16 @@ class DocdocTest extends MedicalTestCase
     }
 
     /** @test */
+    public function it_can_send_request()
+    {
+        $this->mockResponseFile('request.json');
+        $provider = app(Docdoc::class);
+
+        $requestId = $provider->postRequest([]);
+        $this->assertEquals(12602696, $requestId);
+    }
+
+    /** @test */
     public function it_can_get_cities()
     {
         $this->mockResponseFile('city.json');
