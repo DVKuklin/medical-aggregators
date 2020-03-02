@@ -323,19 +323,58 @@ class Provider implements ProviderContract
     }
 
     /**
+     * @param array $data
+     *
+     * @return void
+     */
+    public function postRequest(array $data): void
+    {
+        $response = $this->apiPost("request", $data);
+    }
+
+    /**
      * @param string $uri
      * @return array
      * @throws \Exception
      */
-    public function apiGet(string $uri): array
+    protected function apiGet(string $uri, string $method = 'get'): array
+    {
+        return $this->apiRequest(function() use ($uri) {
+            return Guzzle::get("$this->endpoint$uri", [
+                'auth' => [$this->login, $this->password]
+            ]);
+        });
+    }
+
+    /**
+     * @param string $uri
+     * @param array $params
+     *
+     * @return array
+     */
+    protected function apiPost(string $uri, array $params): array
+    {
+        return $this->apiRequest(function() use ($uri, $params) {
+            return Guzzle::post("$this->endpoint$uri", [
+                'auth' => [$this->login, $this->password],
+                'json' => $params
+            ]);
+        });
+    }
+
+    /**
+     * @param \Closure $requester
+     *
+     * @return array
+     */
+    protected function apiRequest(\Closure $requester): array 
     {
         $tries = $this->max_tries;
 
         while ($tries--) {
             try {
-                $result = Guzzle::get("$this->endpoint$uri", [
-                    'auth' => [$this->login, $this->password]
-                ]);
+                $result = $requester();
+
                 break;
             } catch (Exception $e) {
                 if ($tries === 0) {

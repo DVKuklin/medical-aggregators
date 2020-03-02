@@ -22,4 +22,5 @@ interface ProviderContract
     public function getDoctorDetails(int $doctorId);
     public function getClinicReviews(int $clinicId): Collection;
     public function getDoctorReviews(int $doctorId): Collection;
+    public function postRequest(array $data): void;
 }

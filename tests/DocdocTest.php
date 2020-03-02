@@ -654,7 +654,7 @@ class DocdocTest extends MedicalTestCase
         $this->setProviderConfig('', '', 'true', 1);
 
         $provider = app(Docdoc::class);
-        $provider->apiGet('someurl');
+        $provider->getCities();
     }
 
     /** @test */
@@ -666,7 +666,7 @@ class DocdocTest extends MedicalTestCase
         $this->setProviderConfig('', '', 'true', 2);
 
         $provider = app(Docdoc::class);
-        $provider->apiGet('someurl');
+        $provider->getCities();
     }
 
     /**
