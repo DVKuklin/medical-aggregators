@@ -1,13 +1,13 @@
 <?php
 
-namespace Veezex\Medical\Tests;
+namespace DVKuklin\Medical\Tests;
 
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Kozz\Laravel\Providers\Guzzle;
 use Orchestra\Testbench\TestCase;
-use Veezex\Medical\MedicalAggregatorProvider;
+use DVKuklin\Medical\MedicalAggregatorProvider;
 
 class MedicalTestCase extends TestCase
 {

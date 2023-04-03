@@ -1,6 +1,6 @@
 <?php
 
-namespace Veezex\Medical;
+namespace DVKuklin\Medical;
 
 use Illuminate\Support\ServiceProvider;
 

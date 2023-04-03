@@ -1,17 +1,17 @@
 {
-    "name": "veezex/medical-aggregators",
+    "name": "dvkuklin/medical-loaders",
     "description": "",
     "keywords": [
-        "veezex",
-        "medical-aggregators"
+        "DVKuklin",
+        "medical-loaders"
     ],
-    "homepage": "https://github.com/veezex/medical-aggregators",
+    "homepage": "https://github.com/DVKuklin/medical-aggregators",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Vladimir Smirnov",
-            "email": "veez.ex@gmail.com",
+            "name": "den",
+            "email": "gdvkuklin@gmail.com",
             "role": "Developer"
         }
     ],
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Veezex\\Medical\\": "src"
+            "DVKuklin\\Medical\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Veezex\\Medical\\Tests\\": "tests"
+            "DVKuklin\\Medical\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Veezex\\Medical\\MedicalAggregatorProvider"
+                "DVKuklin\\Medical\\MedicalAggregatorProvider"
             ]
         }
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Veezex\Medical;
+namespace DVKuklin\Medical;
 
 use Illuminate\Support\Collection;
-use Veezex\Medical\Docdoc\Models\DoctorDetails;
+use DVKuklin\Medical\Docdoc\Models\DoctorDetails;
 
 interface ProviderContract
 {

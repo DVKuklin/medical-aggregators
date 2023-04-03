@@ -1,13 +1,13 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
 
-namespace Veezex\Medical\Docdoc;
+namespace DVKuklin\Medical\Docdoc;
 
 
 use Exception;
 use Illuminate\Support\Collection;
 use Kozz\Laravel\Facades\Guzzle;
-use Veezex\Medical\ProviderContract;
+use DVKuklin\Medical\ProviderContract;
 
 class Provider implements ProviderContract
 {
